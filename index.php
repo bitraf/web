@@ -128,7 +128,6 @@ programvare.
     <tr>
       <th class=ne>22:00<br>&#8942;
   </table>
-  <p>* Hver fjerde uke</p>
 
   <h2>Priser</h2>
 
