@@ -1,0 +1,20 @@
+RewriteEngine on
+AddDefaultCharset UTF-8
+
+RewriteRule ^wiki/(.*)$ /mediawiki/index.php?title=$1 [L,QSA]
+
+# Moved links
+RewriteRule ^arrangementer$ http://www.meetup.com/bitraf/ [R]
+RewriteRule ^kontorplasser$ /wiki/Kontorplasser [R]
+RewriteRule ^foreningen$ /wiki/Foreningen [R]
+RewriteRule ^foreningen/vedtekter$ /wiki/Foreningen [R]
+RewriteRule ^foreningen/generalforsamling$ /wiki/Foreningen [R]
+RewriteRule ^generalforsamling$ /wiki/Foreningen [R]
+RewriteRule ^bedriftspartner$ /wiki/Bedriftsmedlemskap [R]
+RewriteRule ^build-night$ /wiki/Byggekveld [R]
+RewriteRule ^prosjekter$ /wiki/Prosjekter [R]
+RewriteRule ^foreningen/styrevedtak$ /styrevedtak/ [R]
+
+RewriteRule ^referat-fra-konstituerende-generalforsamling$ /referat-fra-konstituerende-generalforsamling.php [L]
+RewriteRule ^styrevedtak/styrevedtak-([0-9]+)$ /styrevedtak/styrevedtak-$1.html [L]
+RewriteRule ^galleri$ /galleri.php [L]
