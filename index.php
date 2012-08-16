@@ -147,7 +147,7 @@ kontorplass.
       <th>Detaljer
     <tr>
       <th><a href='/kontorplasser'>Kontorplass</a>
-      <td class=n>1000 kr + MVA
+      <td class=n>Fra 1200 kr + MVA
       <td>30 dagers oppsigelsestid
     <tr>
       <th>Støttemedlem

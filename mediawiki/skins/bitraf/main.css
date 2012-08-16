@@ -218,11 +218,6 @@ textarea {
         margin-bottom: 5px;
 }
 
-pre {
-  margin: 2em;
-  border: solid 1px black;
-}
-
 h1.firstHeading, h2 {
   border-bottom: solid 1px black;
 }
