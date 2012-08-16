@@ -18,3 +18,5 @@ RewriteRule ^foreningen/styrevedtak$ /styrevedtak/ [R]
 RewriteRule ^referat-fra-konstituerende-generalforsamling$ /referat-fra-konstituerende-generalforsamling.php [L]
 RewriteRule ^styrevedtak/styrevedtak-([0-9]+)$ /styrevedtak/styrevedtak-$1.html [L]
 RewriteRule ^galleri$ /galleri.php [L]
+
+RewriteRule ^photos/([A-Z0-9.]+)$ /image.php?name=$1 [L]
