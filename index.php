@@ -29,7 +29,7 @@
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
   <div class=info>
-  <p><span class=start>Bitraf er
+  <p><span class=start>Bitraf er et <a
   href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace</a> i Oslo som er
   åpent for hvem som helst 7 dager i uken, hele døgnet. Målgruppen er folk som
   er interessert i programmering, digital kunst, elektronikk og/eller fri
