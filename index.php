@@ -1,4 +1,4 @@
-<?php header('Content-Type: text/html; charset=UTF-8'); ?>
+<? header('Content-Type: text/html; charset=UTF-8'); ?>
 <!DOCTYPE html>
 <meta charset=utf-8>
 <title>Bitraf, Oslo</title>
