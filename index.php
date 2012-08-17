@@ -1,8 +1,18 @@
-<? header('Content-Type: text/html; charset=UTF-8'); ?>
+<?php header('Content-Type: text/html; charset=UTF-8'); ?>
 <!DOCTYPE html>
+<meta charset=utf-8>
 <title>Bitraf, Oslo</title>
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<style>@import '/style/main.css';</style>
+<link href='/style/main.css' rel='stylesheet' type='text/css'>
+<style>
+.info {
+  columns: 3;
+  margin: 10px 0;
+}
+.info p { margin: 16px 0; }
+.info p:first-child { margin: 0; }
+.info .start { font-weight: 600; }
+</style>
 <body onload="initialize()" onunload="GUnload()">
 <div id='globalWrapper'>
   <div style='border-bottom: 1px solid black; padding-bottom: 5px; margin-bottom: 10px'>
@@ -18,17 +28,22 @@
   <img src='/images/bitraf-rom-960.jpg' alt='' title='Bitrafs lokale, August 2012'>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
-  <h2>Hva er Bitraf?</h2>
+  <div class=info>
+  <p><span class=start>Bitraf er
+  href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace</a> i Oslo som er
+  åpent for hvem som helst 7 dager i uken, hele døgnet. Målgruppen er folk som
+  er interessert i programmering, digital kunst, elektronikk og/eller fri
+  programvare.
 
-  <p>Bitraf er et <a 
-href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace</a> i Oslo som er 
-åpent for hvem som helst 7 dager i uken, hele døgnet. Målgruppen er folk som er 
-interessert i programmering, digital kunst, elektronikk og/eller fri 
-programvare.
+  <p>Jobb med egne prosjekter i et sosialt miljø, hold eller
+  delta på en workshop, et game jam, hackathon, bug squashing party eller
+  et godt gammeldags LAN-party. Vi tilbyr også kontorplasser for frilansere og
+  startups som ønsker å jobbe i et slikt miljø.
 
-  <p>Her kan du jobbe med dine egne prosjekter i et sosialt miljø, holde eller delta på en workshop, delta på game jam, hackathon, bug squashing party eller et godt gammeldags LAN-party. Vi tilbyr også kontorplasser for frilansere og startups som ønsker å jobbe i et slikt miljø.
-
-  <p>Bitraf er et gjørokrati; den som gjør noe bestemmer hvordan det blir. Vil du holde et arrangement, bygge noe eller forbedre noe i lokalet, er det bare å gjøre det.
+  <p>Bitraf er et gjørokrati; den som gjør noe bestemmer hvordan det blir. Vil
+  du holde et arrangement, bygge noe eller forbedre noe i lokalet, er det bare
+  å gjøre det.
+  </div>
 
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>

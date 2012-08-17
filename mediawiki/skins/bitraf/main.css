@@ -1,6 +1,7 @@
 #siteSub { display: none; }
 
-body { font-family: Helvetica, Arial, sans-serif; margin: 0; padding: 0; background: #fff; color: #fff; background: #333; }
+html, body { margin: 0; padding; 0; }
+body { font-family: Helvetica, Arial, sans-serif; color: #fff; background: #333; }
 a { color: #ff6000; text-decoration: underline; }
 a:visited { color: #a63e00; text-decoration: underline; }
 
