@@ -33,7 +33,7 @@
   href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace</a> i Oslo som er
   åpent for hvem som helst 7 dager i uken, hele døgnet. Målgruppen er folk som
   er interessert i programmering, digital kunst, elektronikk og/eller fri
-  programvare.
+  programvare.</span>
 
   <p>Jobb med egne prosjekter i et sosialt miljø, hold eller
   delta på en workshop, et game jam, hackathon, bug squashing party eller
@@ -62,7 +62,6 @@
         <p><a href='http://www.meetup.com/bitraf/events/76406612/'>Game Jam: Ludum Dare 24</a>
         <p>Ludum Dare er en online-arrangert spillutviklingshelg, hvor man 
         konkurrer i å lage et spill på 48 timer med et gitt tema.
-    <tr>
   </table>
 
   <p>Du finner fler arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
@@ -71,8 +70,7 @@
 
   <p><a href='mailto:post@bitraf.no'>post@bitraf.no</a> (går til fler personer) eller 90&nbsp;94&nbsp;35&nbsp;97.
 
-  <h2>Kart</h2>
-  <a name='kart'></a>
+  <h2 id='kart'>Kart</h2>
 
   <p><div id='map-canvas' style='width: 960px; height: 600px'></div>
   <script> 
@@ -191,3 +189,4 @@ kontorplass.
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
               })();
 </script>
+  </div>
