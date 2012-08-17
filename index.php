@@ -47,8 +47,6 @@ programvare.
         <p><a href='http://www.meetup.com/bitraf/events/76406612/'>Game Jam: Ludum Dare 24</a>
         <p>Ludum Dare er en online-arrangert spillutviklingshelg, hvor man 
         konkurrer i å lage et spill på 48 timer med et gitt tema.
-        members. We also have Arduino kits for sale and will provide both 
-        beginner and advanced help with new and ongoing projects.
     <tr>
   </table>
 
