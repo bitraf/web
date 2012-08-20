@@ -16,13 +16,13 @@
 <body onload="initialize()" onunload="GUnload()">
 <div id='globalWrapper'>
   <div style='border-bottom: 1px solid black; padding-bottom: 5px; margin-bottom: 10px'>
-  <a href='/'><img src='/images/bitraf-274px.png' alt='Bitraf' style='width:150px'></a>
-  <div style='position: absolute; top: 40px; left: 220px' class='header-links'>
+  <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
+  <div style='position: absolute; top: 55px; left: 250px' class='header-links'>
     <a href='/wiki/'>Wiki</a> | <a href='/prosjekter'>Prosjekter</a> | <a href='/kontorplasser'>Kontorplasser</a> | <a href='/galleri'>Galleri</a> | <a href='/foreningen'>Foreningen</a><br>
     <a href='/bedriftspartner'>Bedriftsmedlemskap</a> </div>
-  <div style='position: absolute; top: 65px; right: 40px'><a href="https://twitter.com/Bitraffineriet" ><img src='/images/twitter-bird-white-on-blue.png' alt='' style='height: 28px'></a></div>
-  <div style='position: absolute; top: 65px; right: 74px'><a href='https://www.facebook.com/groups/359953377375502/'><img src='/images/f_logo.png' alt='Facebook' style='height: 28px'></a></div>
-  <div style='position: absolute; top: 65px; right: 109px'><a href='http://meetup.com/bitraf/'><img src='/images/logo_tilt.gif' alt='Meetup' style='height: 28px'></a></div>
+  <div style='position: absolute; top: 72px; right: 40px'><a href="https://twitter.com/Bitraffineriet" ><img src='/images/twitter-bird-white-on-blue.png' alt='' style='height: 28px'></a></div>
+  <div style='position: absolute; top: 72px; right: 74px'><a href='https://www.facebook.com/groups/359953377375502/'><img src='/images/f_logo.png' alt='Facebook' style='height: 28px'></a></div>
+  <div style='position: absolute; top: 72px; right: 109px'><a href='http://meetup.com/bitraf/'><img src='/images/logo_tilt.gif' alt='Meetup' style='height: 28px'></a></div>
   </div>
 
   <img src='/images/bitraf-rom-960.jpg' alt='' title='Bitrafs lokale, August 2012'>
