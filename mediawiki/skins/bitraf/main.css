@@ -1,17 +1,16 @@
 #siteSub { display: none; }
 
 html, body { margin: 0; padding; 0; }
-body { font-family: Helvetica, Arial, sans-serif; color: #fff; background: #333; }
+body { font-family: Helvetica, Arial, sans-serif; color: #fff; background: #333; -webkit-font-smoothing: antialiased; }
 a { color: #ff6000; text-decoration: underline; }
 a:visited { color: #a63e00; text-decoration: underline; }
 
-.header-links { color: #ddd; }
-.header-links a { color: #444; }
-.header-links a:visited { text-decoration: none; }
+.header-links { color: #ddd; font-weight: bold; }
+.header-links a:visited { color: #fc6600 }
 .header-links a:hover { text-decoration: underline; }
 
-header { margin-bottom: 25px; display: block; }
-.header-links { position: absolute; top: 82px; left: 250px; }
+header { margin-bottom: 15px; display: block; }
+.header-links { position: absolute; top: 82px; right: 160px; }
 
 .button { position: absolute; top: 72px; right: 40px; }
 .button img { height: 28px; }
