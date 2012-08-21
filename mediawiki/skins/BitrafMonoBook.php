@@ -111,16 +111,18 @@ class BitrafMonoBookTemplate extends QuickTemplate {
 <?php if($this->data['body_onload']) { ?> onload="<?php $this->text('body_onload') ?>"<?php } ?>
  class="mediawiki <?php $this->text('dir') ?> <?php $this->text('pageclass') ?> <?php $this->text('skinnameclass') ?>">
 	<div id="globalWrapper">
-          <div style='border-bottom: 1px solid black; padding-bottom: 5px; margin-bottom: 10px'>
-          <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
-          <div style='position: absolute; top: 55px; left: 250px' class='header-links'>
-            <a href='/wiki/'>Wiki</a> | <a href='/prosjekter'>Prosjekter</a> | <a href='/kontorplasser'>Kontorplasser</a> | <a href='/galleri'>Galleri</a> | <a href='/foreningen'>Foreningen</a><br>
-            <a href='/bedriftspartner'>Bedriftsmedlemskap</a> </div>
-          <div style='position: absolute; top: 72px; right: 40px'><a href="https://twitter.com/Bitraffineriet" ><img src='/images/twitter-bird-white-on-blue.png' alt='' style='height: 28px'></a></div>
-          <div style='position: absolute; top: 72px; right: 74px'><a href='https://www.facebook.com/groups/359953377375502/'><img src='/images/f_logo.png' alt='Facebook' style='height: 28px'></a></div>
-          <div style='position: absolute; top: 72px; right: 109px'><a href='http://meetup.com/bitraf/'><img src='/images/logo_tilt.gif' alt='Meetup' style='height: 28px'></a></div>
-          </div>
-		<div id="column-content">
+  <header>
+    <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
+    <div class='header-links'>
+      <a href='/wiki/'>Wiki</a> | <a href='/prosjekter'>Prosjekter</a> | <a href='/kontorplasser'>Kontorplasser</a> | <a href='/galleri'>Galleri</a> | <a href='/foreningen'>Foreningen</a> |
+      <a href='/bedriftspartner'>Bedriftsmedlemskap</a>
+    </div>
+    <div class="button twitter-button"><a href="https://twitter.com/Bitraffineriet" ><img src='/images/twitter-bird-white-on-blue.png' alt='Twitter'></a></div>
+    <div class="button facebook-button"><a href='https://www.facebook.com/groups/359953377375502/'><img src='/images/f_logo.png' alt='Facebook'></a></div>
+    <div class="button meetup-button"><a href='http://meetup.com/bitraf/'><img src='/images/logo_tilt.gif' alt='Meetup'></a></div>
+  </header>
+
+	<div id="column-content">
 	<div id="content">
 	<div class='content-actions'>
 			<ul>

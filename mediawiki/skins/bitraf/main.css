@@ -5,7 +5,18 @@ body { font-family: Helvetica, Arial, sans-serif; color: #fff; background: #333;
 a { color: #ff6000; text-decoration: underline; }
 a:visited { color: #a63e00; text-decoration: underline; }
 
-.header-links { color: #aaa; }
+.header-links { color: #ddd; }
+.header-links a { color: #555; }
+.header-links a:visited { color: #ba8; }
+
+header { margin-bottom: 25px; display: block; }
+.header-links { position: absolute; top: 82px; left: 250px; }
+
+.button { position: absolute; top: 72px; right: 40px; }
+.button img { height: 28px; }
+.facebook-button { right: 74px; }
+.meetup-button { right: 109px; }
+
 .grid-table { border-collapse: collapse; margin: 15px auto; }
 .grid-table th,
 .grid-table td { text-align: left; vertical-align: top; border: 1px solid #aaa; padding: 5px 10px; }
