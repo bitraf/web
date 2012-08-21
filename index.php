@@ -9,7 +9,7 @@
   margin: 10px 0;
 }
 .info p { margin: 1em 0; }
-.info :first-child { font-weight: 600; margin: 0; }
+.info :first-child { font-weight: bold; margin: 0; }
 .info :nth-child(2) { width: 300px; margin-right: 20px; float: left; }
 .info :nth-child(3), .info :nth-child(4) { margin-left: 320px; }
 
@@ -42,7 +42,7 @@
   et godt gammeldags LAN-party. Vi tilbyr også kontorplasser for frilansere og
   startups som ønsker å jobbe i et slikt miljø.
 
-  <p >Bitraf holder til i 80m² lokaler <a href=#kart>ved Alexander Kiellands plass</a>.
+  <p >Bitraf holder til i 128.5m² lokaler <a href=#kart>ved Alexander Kiellands plass</a>.
   
   <!--p>Bitraf er et gjørokrati; den som gjør noe bestemmer hvordan det blir. Vil
   du holde et arrangement, bygge noe eller forbedre noe i lokalet, er det bare
