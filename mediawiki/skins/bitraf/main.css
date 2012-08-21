@@ -6,8 +6,9 @@ a { color: #ff6000; text-decoration: underline; }
 a:visited { color: #a63e00; text-decoration: underline; }
 
 .header-links { color: #ddd; }
-.header-links a { color: #555; }
-.header-links a:visited { color: #ba8; }
+.header-links a { color: #444; }
+.header-links a:visited { text-decoration: none; }
+.header-links a:hover { text-decoration: underline; }
 
 header { margin-bottom: 25px; display: block; }
 .header-links { position: absolute; top: 82px; left: 250px; }
