@@ -38,11 +38,9 @@
 
   <p >Bitraf holder til i 128.5m² lokaler <a href=#kart>ved Alexander Kiellands plass</a>.
 
-  <!--p>Bitraf er et gjørokrati; den som gjør noe bestemmer hvordan det blir. Vil
-  du holde et arrangement, bygge noe eller forbedre noe i lokalet, er det bare
-  å gjøre det.-->
   </div>
 
+<!--
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
     <tr>
@@ -61,6 +59,7 @@
         <p>Ludum Dare er en online-arrangert spillutviklingshelg, hvor man
         konkurrer i å lage et spill på 48 timer med et gitt tema.
   </table>
+-->
 
   <p>Du finner fler arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
 
