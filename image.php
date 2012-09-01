@@ -1,7 +1,7 @@
 <?
 $path = $_GET['name'];
 
-if (!preg_match('/^[A-Z0-9.]*$/', $path) || !file_exists("/photos/{$path}"))
+if (!preg_match('/^[A-Za-z0-9.-]*$/', $path) || !file_exists("/photos/{$path}"))
 {
   header('HTTP/1.1 404 Not Found');
   echo "404 Not found";
