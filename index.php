@@ -186,4 +186,8 @@ kontorplass.
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
               })();
 </script>
+
+  <h2>Bedriftsmedlemmer</h2>
+  <p>
+  <a href="http://agens.no"><img src="images/agens.png" alt="Agens"></a>
   </div>
