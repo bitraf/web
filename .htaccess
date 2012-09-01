@@ -19,4 +19,4 @@ RewriteRule ^referat-fra-konstituerende-generalforsamling$ /referat-fra-konstitu
 RewriteRule ^styrevedtak/styrevedtak-([0-9]+)$ /styrevedtak/styrevedtak-$1.html [L]
 RewriteRule ^galleri$ /galleri.php [L]
 
-RewriteRule ^photos/([A-Z0-9.]+)$ /image.php?name=$1 [L]
+RewriteRule ^photos/([A-Za-z0-9.-]+)$ /image.php?name=$1 [L]
