@@ -40,26 +40,25 @@
 
   </div>
 
-<!--
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
     <tr>
-      <th><p>Fredag 24. august, 19:00
+      <th><p>Torsdag 13. september, 18:00
       <td style='width: 700px'>
-        <p><a href='http://www.meetup.com/bitraf/events/77720112/'>Åpen kveld på Bitraf</a>
-        <p>Er du nysgjerrig på hva et Hackerspace er og hva man gjør der? Denne
-        kvelden holder Bitraf åpent hus og alle er velkommen til å hilse på.
-        <p>Det blir grilling (etter førstemann til mølla-prinsippet) så kom
-        gjerne rett fra jobb. Ta med venner og bekjente og besøk Oslos største
-        Hackerspace!
+        <p><a href='http://www.meetup.com/bitraf/events/77223072/'>3D-printer-meetup</a>
+        <p>This evening we'll gather RepRap'ers and anyone interested for a 
+        special 3D printing meetup! If you have a printer, bring it along. If 
+        you're just curious, drop by and we'll explain the process for you.
+        We'll also bring some printed samples that you can take home.
+<!--
     <tr>
       <th><p>Lørdag 25. august, 09:00
       <td style='width: 700px'>
         <p><a href='http://www.meetup.com/bitraf/events/76406612/'>Game Jam: Ludum Dare 24</a>
         <p>Ludum Dare er en online-arrangert spillutviklingshelg, hvor man
         konkurrer i å lage et spill på 48 timer med et gitt tema.
-  </table>
 -->
+  </table>
 
   <p>Du finner fler arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
 
@@ -137,7 +136,7 @@
       <th class=ne>22:00<br>&#8942;
   </table>
 
-  <h2>Priser</h2>
+  <h2>Priser, medlemskap</h2>
 
   <p>Det er gratis å være på Bitraf. Lokalet er likevel betalt for
 av foreningens medlemmer og vi oppfordrer besøkende til å melde seg inn.
@@ -155,7 +154,7 @@ kontorplass.
       <th>Detaljer
     <tr>
       <th><a href='/kontorplasser'>Kontorplass</a>
-      <td class=n>Fra 1200 kr + MVA
+      <td class=n>Fra 1200 kr
       <td>30 dagers oppsigelsestid
     <tr>
       <th>Støttemedlem
@@ -171,7 +170,7 @@ kontorplass.
       <td>
   </table>
 
-  <p>Vi tar betalt med faktura per e-post.</p>
+  <p>Du kan bruke <a href='//p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien i vinduskarmen</a>.</p>
 
   <h2>IRC</h2>
 
