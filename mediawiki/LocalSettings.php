@@ -52,6 +52,8 @@ $wgScriptExtension  = ".php";
 
 ## UPO means: this is also a user preference option
 
+$wgGroupPermissions['*']['edit'] = false;
+
 $wgEnableEmail      = true;
 $wgEnableUserEmail  = false; # UPO
 
@@ -131,3 +133,6 @@ if (is_file("/etc/mediawiki-extensions/extensions.php")) {
 $wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) );
 
 $wgArticlePath = '/wiki/$1';
+
+ini_set( 'pcre.backtrack_limit', '8M' );
+require_once( "$IP/extensions/SpamBlacklist/SpamBlacklist.php" );
