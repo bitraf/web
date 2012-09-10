@@ -1,6 +1,9 @@
 RewriteEngine on
 AddDefaultCharset UTF-8
 
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
 RewriteRule ^wiki/(.*)$ /mediawiki/index.php?title=$1 [L,QSA]
 
 # Moved links
