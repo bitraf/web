@@ -43,13 +43,19 @@
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
     <tr>
-      <th><p>Torsdag 13. september, 18:00
+      <th><p>Torsdag 20. september, 18:00
       <td style='width: 700px'>
-        <p><a href='http://www.meetup.com/bitraf/events/77223072/'>3D-printer-meetup</a>
-        <p>This evening we'll gather RepRap'ers and anyone interested for a 
-        special 3D printing meetup! If you have a printer, bring it along. If 
-        you're just curious, drop by and we'll explain the process for you.
-        We'll also bring some printed samples that you can take home.
+        <p><a href='http://www.meetup.com/bitraf/events/81174332/'>Byggekveld - Arduino workshop</a>
+	<p>Denne byggekvelden holder vi Arduino-workshop hvor vi går gjennm
+	   oppsett og bruk samt gir oppgaver som du kan løse med delene i startsettet til
+	   Arduino.
+
+	<p>Vi har arduino uno som selges gjennom p2k for kr 300. Vi har også
+	   andre komponenter som kan brukes. Flere kan for øvrig jobbe med samme sett
+	   hvis du vil spleise med noen.
+
+
+    
 <!--
     <tr>
       <th><p>Lørdag 25. august, 09:00
