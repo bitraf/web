@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <meta charset=utf-8>
 <title>Bitraf, Oslo</title>
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="//maps.google.com/maps/api/js?sensor=false"></script>
 <link href='/style/main.css' rel='stylesheet' type='text/css'>
 <style>
 .info {
@@ -33,10 +33,11 @@
 
   <p>Jobb med egne prosjekter i et sosialt miljø, hold eller
   delta på en workshop, et game jam, hackathon, bug squashing party eller
-  et godt gammeldags LAN-party. Vi tilbyr også kontorplasser for frilansere og
-  startups som ønsker å jobbe i et slikt miljø.
+  et godt gammeldags LAN-party.  Bitraf er fullstendig brukerstyrt, så du 
+  bestemmer hva som foregår.  På dagtid sitter det typisk frilansere og 
+  entrepenører og jobber her, og det kan du også.
 
-  <p >Bitraf holder til i 128.5m² lokaler <a href=#kart>ved Alexander Kiellands plass</a>.
+  <p>Bitraf holder til i 128.5m² lokaler <a href=#kart>ved Alexander Kiellands plass</a>.
 
   </div>
 
@@ -53,9 +54,6 @@
 	<p>Vi har arduino uno som selges gjennom p2k for kr 300. Vi har også
 	   andre komponenter som kan brukes. Flere kan for øvrig jobbe med samme sett
 	   hvis du vil spleise med noen.
-
-
-    
 <!--
     <tr>
       <th><p>Lørdag 25. august, 09:00
@@ -177,6 +175,13 @@ kontorplass.
   </table>
 
   <p>Du kan bruke <a href='//p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien i vinduskarmen</a>.</p>
+
+  <p>Kontonummer (for folk som ikke har fått faktura og for donasjoner): 1503.273.5581</p>
+
+  <p>Et par ting har vist seg å være vanskelig å kommunisere, og er verdt å 
+  gjenta: <em>Hvem som helst</em> kan komme hit mandag&ndash;fredag etter 
+  16:00, og hele lørdag og søndag, <em>uten å betale</em>.  Hvem som helst kan holde et 
+  arrangement, så lenge det ikke kolliderer med et annet.
 
   <h2>IRC</h2>
 
