@@ -41,6 +41,7 @@
 
   </div>
 
+<!--
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
     <tr>
@@ -54,15 +55,8 @@
 	<p>Vi har arduino uno som selges gjennom p2k for kr 300. Vi har også
 	   andre komponenter som kan brukes. Flere kan for øvrig jobbe med samme sett
 	   hvis du vil spleise med noen.
-<!--
-    <tr>
-      <th><p>Lørdag 25. august, 09:00
-      <td style='width: 700px'>
-        <p><a href='http://www.meetup.com/bitraf/events/76406612/'>Game Jam: Ludum Dare 24</a>
-        <p>Ludum Dare er en online-arrangert spillutviklingshelg, hvor man
-        konkurrer i å lage et spill på 48 timer med et gitt tema.
--->
   </table>
+-->
 
   <p>Du finner fler arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
 
@@ -123,7 +117,7 @@
     <tr>
       <th>18:00
       <td style='border: none' rowspan='5'>
-      <td rowspan=5 class=ne>Spill-<br>utvikling
+      <td rowspan=5 class=ne>Spill-<br>utvikling*
       <td style='border: none'>
       <td rowspan=5 class=ne><a href='/build-night'>Build<br>Night</a>
       <td style='border: none'>
@@ -135,10 +129,11 @@
     <tr>
       <th>21:00
       <td style='border:none'>
-      <td rowspan=4 class=ne>Pub
-    <tr>
+      <td rowspan=4 class=ne>Pub*
+      <tr>
       <th class=ne>22:00<br>&#8942;
   </table>
+  <p>* Bare når noen tar initiativ.  Spør folk på IRC om de vil være med.
 
   <h2>Priser, medlemskap</h2>
 
