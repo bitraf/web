@@ -18,6 +18,7 @@ RewriteRule ^bedriftspartner$ /wiki/Bedriftsmedlemskap [R]
 RewriteRule ^build-night$ /wiki/Byggekveld [R]
 RewriteRule ^prosjekter$ /wiki/Prosjekter [R]
 RewriteRule ^foreningen/styrevedtak$ /styrevedtak/ [R]
+RewriteRule ^wiki$ /wiki/ [R]
 
 RewriteRule ^referat-fra-konstituerende-generalforsamling$ /referat-fra-konstituerende-generalforsamling.php [L]
 RewriteRule ^styrevedtak/styrevedtak-([0-9]+)$ /styrevedtak/styrevedtak-$1.html [L]
