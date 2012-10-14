@@ -9,7 +9,7 @@ RewriteRule ^wiki/(.*)$ /mediawiki/index.php?title=$1 [L,QSA]
 
 # Moved links
 RewriteRule ^arrangementer$ http://www.meetup.com/bitraf/ [R]
-RewriteRule ^kontorplasser$ /wiki/Kontorplasser [R]
+RewriteRule ^kontorplasser$ /wiki/Bitraf_24/7 [R]
 RewriteRule ^foreningen$ /wiki/Foreningen [R]
 RewriteRule ^foreningen/vedtekter$ /wiki/Foreningen [R]
 RewriteRule ^foreningen/generalforsamling$ /wiki/Foreningen [R]

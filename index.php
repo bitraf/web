@@ -15,7 +15,7 @@
   <header>
     <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
     <div class='header-links'>
-      <a href='/wiki/'>Wiki</a> | <a href='/prosjekter'>Prosjekter</a> | <a href='/kontorplasser'>Kontorplasser</a> | <a href='/galleri'>Galleri</a> | <a href='/foreningen'>Foreningen</a> |
+      <a href='/wiki/'>Wiki</a> | <a href='/prosjekter'>Prosjekter</a> | <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a> | <a href='/galleri'>Galleri</a> | <a href='/foreningen'>Foreningen</a> |
       <a href='/bedriftspartner'>Bedriftspartner</a>
     </div>
     <div class="button twitter-button"><a href="https://twitter.com/Bitraffineriet" ><img src='/images/twitter-bird-white-on-blue.png' alt='Twitter'></a></div>
@@ -102,7 +102,7 @@
       <th>Søndag
     <tr>
       <th style='border-top: none'>&#8942;<br>12:00
-      <td colspan=5 rowspan=4>Arbeidstid.<br>Tilgang kun for personer med <a href='/kontorplasser'>kontorplasser</a>.
+      <td colspan=5 rowspan=4>Arbeidstid.<br>Tilgang kun for <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a> medlemer.
     <tr>
       <th>13:00
       <td rowspan=8 style='border-bottom: none'><a href='/build-night'>Build<br>Day</a>
@@ -141,8 +141,7 @@
 av foreningens medlemmer og vi oppfordrer besøkende til å melde seg inn.
 Medlemmer får benytte foreningens forbruksvarer &ndash; for eksempel elektronikkomponenter &ndash;
 samt egen nøkkel til lokalet slik at du kan komme inn når det ikke er noen
-andre til stede. Næringsdrivende har anledning til å leie
-kontorplass.
+andre til stede. 
 </p>
 
   <p>
@@ -152,19 +151,19 @@ kontorplass.
       <th style='width: 15ex'>Pris per måned
       <th>Detaljer
     <tr>
-      <th><a href='/kontorplasser'>Kontorplass</a>
-      <td class=n>Fra 1200 kr
-      <td>30 dagers oppsigelsestid
+      <th><a href='/Bitraf_24/7'>Bitraf 24/7</a>
+      <td class=n>1500 kr
+      <td>Tilgang pådagtid.
     <tr>
-      <th>Støttemedlem
+      <th>Bitraf Støtte
       <td class=n>300 kr
       <td>
     <tr>
-      <th>Vanlig medlem
+      <th>Bitraf Vanlig
       <td class=n>500 kr
       <td>
     <tr>
-      <th>Filantropmedlem
+      <th>Bitraf Filantrop
       <td class=n>1000 kr
       <td>
   </table>
