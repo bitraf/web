@@ -153,7 +153,7 @@ andre til stede.
     <tr>
       <th><a href='/Bitraf_24/7'>Bitraf 24/7</a>
       <td class=n>1500 kr
-      <td>Tilgang pådagtid.
+      <td>Tilgang på dagtid
     <tr>
       <th>Bitraf Støtte
       <td class=n>300 kr

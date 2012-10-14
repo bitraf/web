@@ -31,10 +31,20 @@ function uploadImage()
 
     $suffix = pathinfo($_FILES['imagefile']['name'], PATHINFO_EXTENSION);
 
-    if ($suffix != "jpg")
-	die("Only jpg supported\n");
+    if (strtoupper($suffix) != "JPG")
+	die("Only jpg supported.\n");
 
-    $photoname = tempnam(PHOTOS_PATH, "photo-") . ".jpg";
+    // Generate random photoname
+    do {
+	$photoname = PHOTOS_PATH . "image-" . rand();
+	$photoname .= '.'. str_replace(' ', '.', microtime());
+//	$photoname .= '.'. getmypid();
+	$photoname .= '.jpg';
+    } while(file_exists($photoname));
+
+    print "Using photo name " . $photoname . "\n";
+
+//    $photoname = tempnam(PHOTOS_PATH, "photo-") . ".jpg";
 
     $result = move_uploaded_file($_FILES['imagefile']['tmp_name'], $photoname);
 
