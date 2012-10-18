@@ -6,7 +6,16 @@
 <link href='/style/main.css' rel='stylesheet' type='text/css'>
 <style>
 .info {
-  margin: 10px 0;
+  margin: 10px 20px 10px 0;
+  width: 600px;
+}
+.checkins {
+  position: absolute;
+  top: 480px; right: 40px;
+  width:340px;
+  font-size: 0.8em;
+  color: #666;
+  text-align: right;
 }
 
 </style>
@@ -41,22 +50,21 @@
 
   </div>
 
-<!--
+  <div class=checkins>
+    <iframe src=https://p2k12.bitraf.no/chart.php width=340 height=150 style="border:0"></iframe>
+    <p>Registrert bruk siste dager</p>
+  </div>
+
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
     <tr>
-      <th><p>Torsdag 20. september, 18:00
+      <th><p>Fredag 19. oktober, 19:00<br>(til søndag 21. okt)
       <td style='width: 700px'>
-        <p><a href='http://www.meetup.com/bitraf/events/81174332/'>Byggekveld - Arduino workshop</a>
-	<p>Denne byggekvelden holder vi Arduino-workshop hvor vi går gjennm
-	   oppsett og bruk samt gir oppgaver som du kan løse med delene i startsettet til
-	   Arduino.
-
-	<p>Vi har arduino uno som selges gjennom p2k for kr 300. Vi har også
-	   andre komponenter som kan brukes. Flere kan for øvrig jobbe med samme sett
-	   hvis du vil spleise med noen.
+        <p><a href='http://www.meetup.com/bitraf/events/83415982/'>RandJAM 2012</a>
+	<p>The format is simple. We arm ourself with random word generators to
+	construct constraints for the games we will make.
+	<p>Deadline is 15:00 on sunday, game presentations at 16:00.
   </table>
--->
 
   <p>Du finner fler arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
 
