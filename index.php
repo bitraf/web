@@ -58,15 +58,27 @@
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
     <tr>
-      <th><p>Lørdag 01. desember, 11:00<br>(til søndag 02. okt)
+      <th><p>Lørdag 01. desember, 11:00<br>(til søndag 02. des)
       <td style='width: 700px'>
         <p><a href='http://www.meetup.com/bitraf/events/90089132/'>3D Printer weekend</a>
-       <p>Er du nysgjerrig på 3D-printing, så besøk Oslo's største Hackerspace denne helgen. 
-       I samarbeid med reprap.no arrangerer vi vårt andre 3DP-treff. Det kommer til å være 
-       flere forskjellige printere (som forrige gang), så stikk innom, se på printerne og prat 
+       <p>Er du nysgjerrig på 3D-printing, så besøk Oslo's største Hackerspace 
+       denne helgen.  I samarbeid med reprap.no arrangerer vi vårt andre 
+       3DP-treff. Det kommer til å være flere forskjellige printere (som 
+       forrige gang), så stikk innom, se på printerne og prat 
        med folk som har erfaring!
-       <p>Det store oppmøtet på forrige treff gjorde at det ble veldig hektisk. 
-       Denne gangen satser vi på å spre møtet litt utover i tid og å kombinere det med bygging av printere.
+       <p>Det store oppmøtet på forrige treff gjorde at det ble veldig hektisk.  
+       Denne gangen satser vi på å spre møtet litt utover i tid og å kombinere 
+       det med bygging av printere.
+   <tr>
+     <th><p>Lørdag 15. desember, 09:00<br>(til søndag 16. des)
+     <td style='width: 700px'>
+       <p><a href='http://www.meetup.com/bitraf/events/92721622/'>GAME JAM: Ludum Dare 25</a>
+      <p>Som ved Ludum Dare 23 og 24 er Bitraf åpent for alle som vil være med, 
+      og inngang er som vanlig gratis. De som er gira kan møtes på Bitraf, 
+      framfor å sitte hjemme alene og svette over kompilatoren. Her kan det 
+      brainstormes og syntax error forsvinner på null komma niks, og vi kan 
+      dele tips og triks og playteste spill i hytt og pine. Det er 
+      åpent for alle, og inngang er gratis.
   </table>
 
   <p>Du finner fler arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
