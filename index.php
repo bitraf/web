@@ -58,12 +58,15 @@
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
     <tr>
-      <th><p>Fredag 19. oktober, 19:00<br>(til søndag 21. okt)
+      <th><p>Lørdag 01. desember, 11:00<br>(til søndag 02. okt)
       <td style='width: 700px'>
-        <p><a href='http://www.meetup.com/bitraf/events/83415982/'>RandJAM 2012</a>
-	<p>The format is simple. We arm ourself with random word generators to
-	construct constraints for the games we will make.
-	<p>Deadline is 15:00 on sunday, game presentations at 16:00.
+        <p><a href='http://www.meetup.com/bitraf/events/90089132/'>3D Printer weekend</a>
+       <p>Er du nysgjerrig på 3D-printing, så besøk Oslo's største Hackerspace denne helgen. 
+       I samarbeid med reprap.no arrangerer vi vårt andre 3DP-treff. Det kommer til å være 
+       flere forskjellige printere (som forrige gang), så stikk innom, se på printerne og prat 
+       med folk som har erfaring!
+       <p>Det store oppmøtet på forrige treff gjorde at det ble veldig hektisk. 
+       Denne gangen satser vi på å spre møtet litt utover i tid og å kombinere det med bygging av printere.
   </table>
 
   <p>Du finner fler arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
