@@ -85,7 +85,7 @@
 
   <h2>Kontakt</h2>
 
-  <p><a href='mailto:post@bitraf.no'>post@bitraf.no</a> (går til fler personer) eller 90&nbsp;94&nbsp;35&nbsp;97.
+  <p><a href='mailto:post@bitraf.no'>post@bitraf.no</a> (går til fler personer) eller 45&nbsp;39&nbsp;32&nbsp;95.
 
   <h2 id=kart>Kart</h2>
 
