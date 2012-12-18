@@ -57,15 +57,11 @@
 
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
-    <th><p>Lørdag 15. desember, 09:00<br>(til søndag 16. des)
+    <th><p>Onsdag 18. desember, 17:00<br>
      <td style='width: 700px'>
-       <p><a href='http://www.meetup.com/bitraf/events/92721622/'>GAME JAM: Ludum Dare 25</a>
-      <p>Som ved Ludum Dare 23 og 24 er Bitraf åpent for alle som vil være med, 
-      og inngang er som vanlig gratis. De som er gira kan møtes på Bitraf, 
-      framfor å sitte hjemme alene og svette over kompilatoren. Her kan det 
-      brainstormes og syntax error forsvinner på null komma niks, og vi kan 
-      dele tips og triks og playteste spill i hytt og pine. Det er 
-      åpent for alle, og inngang er gratis.
+       <p><a href='http://www.meetup.com/bitraf/events/95789892/'>Juleavslutning</a>
+      <p>Slutten av året nærmer seg, og Bitraf kommer til å ha en juleavslutning. 
+        Vi serverer gløgg, pepperkaker. Kom gjerne rett fra jobb.
   </table>
 
   <p>Du finner fler arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
