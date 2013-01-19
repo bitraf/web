@@ -110,7 +110,7 @@
       <td colspan=5 rowspan=4>Arbeidstid.<br>Tilgang kun for <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a> medlemer.
     <tr>
       <th>13:00
-      <td rowspan=8 style='border-bottom: none'><a href='/build-night'>Build<br>Day</a>
+      <td rowspan=8 style='border-bottom: none'><a href='/build-night'>Build<br>Day*</a>
     <tr>
       <th>14:00
     <tr>
