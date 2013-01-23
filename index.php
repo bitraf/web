@@ -57,10 +57,11 @@
 
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
-    <th><p>Torsdag 17. desember, 18:00<br>
+    <th><p>Onsdag 30. januar, 18:00<br>
      <td style='width: 700px'>
-       <p><a href='http://www.meetup.com/bitraf/events/95274182/'>Lær å lodde (workshop)</a>
-      <p>Vi har etter hvert holdt en del Arduino-kurs på Bitraf. Hva gjør du når du vil gjøre prosjektet ditt litt mer permanent enn et breadboard? Du lodder det til et kretskort så klart. Kan du ikke lodde, eller ønsker tips til hvordan du gjøre det er dette byggekvelden for deg! Kurset er som vanlig gratis og åpent for alle som vil lære lodding.
+       <p><a href='http://www.meetup.com/bitraf/events/100979352/'>PCB design workshop</a>
+      <p>Lær å lage elektronikk!
+      <p>Lær hvordan du kan ta en hvilken som helst skjematikk og gjøre om til et ordentlig kretskort som du senere kan lodde opp og bruke.
   </table>
 
   <p>Du finner fler arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
