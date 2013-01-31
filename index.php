@@ -5,13 +5,8 @@
 <script src="//maps.google.com/maps/api/js?sensor=false"></script>
 <link href='/style/main.css' rel='stylesheet' type='text/css'>
 <style>
-.info {
-  margin: 10px 20px 10px 0;
-  width: 600px;
-}
 .checkins {
-  position: absolute;
-  top: 480px; right: 40px;
+  float: right;
   width:340px;
   font-size: 0.8em;
   color: #666;
@@ -34,6 +29,30 @@
 
   <div><img src='/images/bitraf-rom-960-350.jpg' alt='' title='Bitrafs lokale, August 2012'></div>
 
+  <div style='background: #def; padding: 10px; margin: 20px 0 20px'>
+    <div style='font-size: 2em; font-weight: bold'>Bitraf flytter til nytt lokale!</div>
+    <p>Darres gate 24 skal bygges om til boliger, og Bitraf må ha flyttet innen 
+    1. juni 2013.  Vi ønsker å bytte til et større og mer sentralt lokale, men da trenger vi fler medlemmer.  
+    Hvis vi får fem nye <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>-medlemmer vil vi ha råd til et nesten 
+    dobbelt så stort lokale ved Youngstorget.  Hvis du kjenner frilansere som 
+    driver med programmering, grafikk eller design, send dem til oss.  Prisen er 1500kr/mnd.
+    <p>Vi har også stor nytte av donasjoner.  Vi er en organisasjon som drives 
+    uten fortjeneste som formål, som vil si at alle pengene vi får inn går til drift, 
+    som i hovedsak er husleie.  Kostbart utstyr (skjermer, 3D-printere, projektor, 
+    surroundanlegg, ...) er hittil donert eller på utlån fra bedrifter og 
+    privatpersoner.  Ved bytte av lokale trenger vi ekstra kapital for å dekke 
+    depositum.  Alt du trenger å gjøre er å overføre penger til kontonummer 
+    1503.273.5581, og send en e-post til <a href='mailto:post@bitraf.no'>post@bitraf.no</a> 
+    med en beskjed om donasjonens størrelse, og hvem den er fra.
+  </div>
+
+  <div style='clear:both'></div>
+
+  <div class=checkins>
+    <iframe src=https://p2k12.bitraf.no/chart.php width=340 height=150 style="border:0"></iframe>
+    <p>Registrert bruk siste dager</p>
+  </div>
+
   <div class=info>
   <p class=start><strong>Bitraf er et <a href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace</a>
   i Oslo som er åpent for hvem som helst 7 dager i uka.</strong>  Kom innom om du er
@@ -48,11 +67,6 @@
 
   <p>Bitraf holder til i 128.5m² lokaler <a href=#kart>ved Alexander Kiellands plass</a>.
 
-  </div>
-
-  <div class=checkins>
-    <iframe src=https://p2k12.bitraf.no/chart.php width=340 height=150 style="border:0"></iframe>
-    <p>Registrert bruk siste dager</p>
   </div>
 
   <h2>Utvalgte arrangementer</h2>
@@ -178,7 +192,7 @@ andre til stede.
 
   <p>Kontonummer (for folk som ikke har fått faktura og for donasjoner): 1503.273.5581</p>
 
-  <p>Et par ting har vist seg å være vanskelig å kommunisere, og er verdt å 
+  <p>Et par ting er verdt å 
   gjenta: <em>Hvem som helst</em> kan komme hit mandag&ndash;fredag etter 
   16:00, og hele lørdag og søndag, <em>uten å betale</em>.  Hvem som helst kan holde et 
   arrangement, så lenge det ikke kolliderer med et annet.
