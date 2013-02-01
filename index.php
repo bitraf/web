@@ -33,8 +33,8 @@
     <div style='font-size: 2em; font-weight: bold'>Bitraf flytter til nytt lokale!</div>
     <p>Darres gate 24 skal bygges om til boliger, og Bitraf må ha flyttet innen 
     1. juni 2013.  Vi ønsker å bytte til et større og mer sentralt lokale, men da trenger vi fler medlemmer.  
-    Hvis vi får fem nye <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>-medlemmer vil vi ha råd til et nesten 
-    dobbelt så stort lokale ved Youngstorget.  Hvis du kjenner frilansere som 
+    Hvis vi får fem nye <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>-medlemmer vil vi ha råd til et
+    50% større lokale ved Youngstorget.  Hvis du kjenner frilansere som 
     driver med programmering, grafikk eller design, send dem til oss.  Prisen er 1500kr/mnd.
     <p>Vi har også stor nytte av donasjoner.  Vi er en organisasjon som drives 
     uten fortjeneste som formål, som vil si at alle pengene vi får inn går til drift, 
