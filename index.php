@@ -27,6 +27,10 @@
     <div class="button meetup-button"><a href='http://meetup.com/bitraf/'><img src='/images/meetup-28px.png' alt='Meetup'></a></div>
   </header>
 
+  <div style='background: #eee; padding: 10px; margin: 20px 0 20px; font-weight: bold'>
+    <p><em>Nye styrevedtak 2013-02-06:</em> <a href='//bitraf.no/styrevedtak/styrevedtak-5'>Styrevedtak #5</a> og <a href='//bitraf.no/styrevedtak/styrevedtak-6'>Styrevedtak #6</a>.
+  </div>
+
   <div><img src='/images/bitraf-rom-960-350.jpg' alt='' title='Bitrafs lokale, August 2012'></div>
 
   <div style='background: #def; padding: 10px; margin: 20px 0 20px'>
@@ -36,14 +40,7 @@
     Hvis vi får fem nye <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>-medlemmer vil vi ha råd til et
     50% større lokale ved Youngstorget.  Hvis du kjenner frilansere som 
     driver med programmering, grafikk eller design, send dem til oss.  Prisen er 1500kr/mnd.
-    <p>Vi har også stor nytte av donasjoner.  Vi er en organisasjon som drives 
-    uten fortjeneste som formål, som vil si at alle pengene vi får inn går til drift, 
-    som i hovedsak er husleie.  Kostbart utstyr (skjermer, 3D-printere, projektor, 
-    surroundanlegg, ...) er hittil donert eller på utlån fra bedrifter og 
-    privatpersoner.  Ved bytte av lokale trenger vi ekstra kapital for å dekke 
-    depositum.  Alt du trenger å gjøre er å overføre penger til kontonummer 
-    1503.273.5581, og send en e-post til <a href='mailto:post@bitraf.no'>post@bitraf.no</a> 
-    med en beskjed om donasjonens størrelse, og hvem den er fra.
+    <p>Du kan også støtte Bitraf ved å <a href='//p2k12.bitraf.no/my/'>bli medlem</a>.
   </div>
 
   <div style='clear:both'></div>
@@ -54,7 +51,7 @@
   </div>
 
   <div class=info>
-  <p class=start><strong>Bitraf er et <a href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace</a>
+  <p><strong>Bitraf er et <a href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace</a>
   i Oslo som er åpent for hvem som helst 7 dager i uka.</strong>  Kom innom om du er
   interessert i program&shy;mering, digital kunst, elektronikk,
   fri programvare, spillutvikling eller andre liknende aktiviteter.
