@@ -28,7 +28,7 @@
   </header>
 
   <div style='background: #eee; padding: 10px; margin: 20px 0 20px; font-weight: bold'>
-    <p><em>Nye styrevedtak 2013-02-06:</em> <a href='//bitraf.no/styrevedtak/styrevedtak-5'>Styrevedtak #5</a> og <a href='//bitraf.no/styrevedtak/styrevedtak-6'>Styrevedtak #6</a>.
+    <p><em>Nye styrevedtak 2013-02-06:</em> <a href='//bitraf.no/styrevedtak/styrevedtak-5'>Styrevedtak #5</a> og <a href='//bitraf.no/styrevedtak/styrevedtak-6'>Styrevedtak #6</a>. 2013-02-07: <a href='//bitraf.no/styrevedtak/styrevedtak-7'>Styrevedtak #7</a>.
   </div>
 
   <div><img src='/images/bitraf-rom-960-350.jpg' alt='' title='Bitrafs lokale, August 2012'></div>
