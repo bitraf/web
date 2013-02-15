@@ -76,7 +76,7 @@ $output = json_decode($meetup_json);
 $max = 5;
 $i = 0;
 
-date_default_timezone_set('Europe/Oslo');
+date_default_timezone_set('GMT');
 foreach ($output->results as $result)
 {
   $event_date = ucwords(strftime("%A %d. %B, %H:%M", ($result->time + $result->utc_offset)/1000));
