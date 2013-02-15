@@ -68,12 +68,29 @@
 
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
-    <th><p>Onsdag 30. januar, 18:00<br>
-     <td style='width: 700px'>
-       <p><a href='http://www.meetup.com/bitraf/events/100979352/'>PCB design workshop</a>
-      <p>Lær å lage elektronikk!
-      <p>Lær hvordan du kan ta en hvilken som helst skjematikk og gjøre om til et ordentlig kretskort som du senere kan lodde opp og bruke.
-  </table>
+<?php
+$meetup_url = "https://api.meetup.com/2/events?key=6328314761a711406f287670733343&sign=true&group_urlname=bitraf&page=20";
+$meetup_json = file_get_contents($meetup_url, 0, null, null);
+$output = json_decode($meetup_json);
+
+$max = 5;
+$i = 0;
+
+date_default_timezone_set('Europe/Oslo');
+foreach ($output->results as $result)
+{
+  $event_date = ucwords(strftime("%A %d. %B, %H:%M", ($result->time + $result->utc_offset)/1000));
+  $event_description = preg_replace("/<img[^>]+\>/i", '', $result->description);
+  $event_description = substr($event_description,0,strpos($event_description, "</p>")+4);
+
+  echo "<tr><th><p>{$event_date}";
+  echo "<td style='width: 700px'>";
+  echo "<p><a href='{$result->event_url}'>{$result->name}</a>";
+  echo $event_description;
+  if (++$i == $max) break;
+}
+?>
+ </table>
 
   <p>Du finner fler arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
 
