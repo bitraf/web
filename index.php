@@ -186,7 +186,7 @@ andre til stede.
       <th style='width: 15ex'>Pris per måned
       <th>Detaljer
     <tr>
-      <th><a href='/Bitraf_24/7'>Bitraf 24/7</a>
+      <th><a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>
       <td class=n>1500 kr
       <td>Tilgang på dagtid
     <tr>
