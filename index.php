@@ -77,6 +77,7 @@ $max = 5;
 $i = 0;
 
 date_default_timezone_set('GMT');
+setlocale(LC_TIME, "nb_NO.utf8");
 foreach ($output->results as $result)
 {
   $event_date = ucwords(strftime("%A %d. %B, %H:%M", ($result->time + $result->utc_offset)/1000));
