@@ -80,14 +80,17 @@ date_default_timezone_set('GMT');
 setlocale(LC_TIME, "nb_NO.utf8");
 foreach ($output->results as $result)
 {
-  $event_date = ucwords(strftime("%A %d. %B, %H:%M", ($result->time + $result->utc_offset)/1000));
-  $event_description = preg_replace("/<img[^>]+\>/i", '', $result->description);
-  $event_description = substr($event_description,0,strpos($event_description, "</p>")+4);
+  if ($result->visibility == "public")
+  {
+    $event_date = ucwords(strftime("%A %d. %B, %H:%M", ($result->time + $result->utc_offset)/1000));
+    $event_description = preg_replace("/<img[^>]+\>/i", '', $result->description);
+    $event_description = substr($event_description,0,strpos($event_description, "</p>")+4);
 
-  echo "<tr><th><p>{$event_date}";
-  echo "<td style='width: 700px'>";
-  echo "<p><a href='{$result->event_url}'>{$result->name}</a>";
-  echo $event_description;
+    echo "<tr><th><p>{$event_date}";
+    echo "<td style='width: 700px'>";
+    echo "<p><a href='{$result->event_url}'>{$result->name}</a>";
+    echo $event_description;
+  }
   if (++$i == $max) break;
 }
 ?>
