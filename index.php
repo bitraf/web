@@ -69,7 +69,7 @@
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
 <?php
-$meetup_url = "https://api.meetup.com/2/events?key=6328314761a711406f287670733343&sign=true&group_urlname=bitraf&page=20";
+$meetup_url = "https://api.meetup.com/2/events?key=6328314761a711406f287670733343&sign=true&group_urlname=bitraf&page=20&fields=featured";
 $meetup_json = file_get_contents($meetup_url, 0, null, null);
 $output = json_decode($meetup_json);
 
@@ -80,7 +80,7 @@ date_default_timezone_set('GMT');
 setlocale(LC_TIME, "nb_NO.utf8");
 foreach ($output->results as $result)
 {
-  if ($result->visibility == "public")
+  if ($result->visibility == "public" && $result->featured == true)
   {
     $event_date = ucwords(strftime("%A %d. %B, %H:%M", ($result->time + $result->utc_offset)/1000));
     $event_description = preg_replace("/<img[^>]+\>/i", '', $result->description);
