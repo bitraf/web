@@ -80,7 +80,7 @@ date_default_timezone_set('GMT');
 setlocale(LC_TIME, "nb_NO.utf8");
 foreach ($output->results as $result)
 {
-  if ($result->visibility == "public" && $result->featured == true)
+  if ($result->visibility == "public" && ($result->featured == true || $i == 0))
   {
     $event_date = ucwords(strftime("%A %d. %B, %H:%M", ($result->time + $result->utc_offset)/1000));
     $event_description = preg_replace("/<img[^>]+\>/i", '', $result->description);
