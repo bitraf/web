@@ -40,7 +40,7 @@
     Hvis vi får fem nye <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>-medlemmer vil vi ha råd til et
     50% større lokale ved Youngstorget.  Hvis du kjenner frilansere som 
     driver med programmering, grafikk eller design, send dem til oss.  Prisen er 1500kr/mnd.
-    <p>Du kan også støtte Bitraf ved å <a href='http//p2k12.bitraf.no/my/'>bli medlem</a>.
+    <p>Du kan også støtte Bitraf ved å <a href='http://p2k12.bitraf.no/my/'>bli medlem</a>.
   </div>
 
   <div style='clear:both'></div>
@@ -206,7 +206,7 @@ andre til stede.
       <td>
   </table>
 
-  <p>Du kan bruke <a href='http//p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien i vinduskarmen</a>.</p>
+  <p>Du kan bruke <a href='http://p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien i vinduskarmen</a>.</p>
 
   <p>Kontonummer (for folk som ikke har fått faktura og for donasjoner): 1503.273.5581</p>
 
