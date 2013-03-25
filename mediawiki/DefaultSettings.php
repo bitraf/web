@@ -2312,7 +2312,7 @@ $wgExportFromNamespaces = false;
  *
  * See http://en.wikipedia.org/wiki/Regular_expression
  */
-$wgSpamRegex = array();
+$wgSpamRegex = array('!(display\s*:none|overflow\s*:auto)!');
 
 /** Same as the above except for edit summaries */
 $wgSummarySpamRegex = array();
