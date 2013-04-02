@@ -68,30 +68,37 @@
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
 <?php
-$meetup_url = "https://api.meetup.com/2/events?key=6328314761a711406f287670733343&sign=true&group_urlname=bitraf&page=20&fields=featured";
-$meetup_json = file_get_contents($meetup_url, 0, null, null);
-$output = json_decode($meetup_json);
 
-$max = 5;
-$i = 0;
-
-date_default_timezone_set('GMT');
-setlocale(LC_TIME, "nb_NO.utf8");
-foreach ($output->results as $result)
+function addEventsFrom($meetup, $count)
 {
-  if ($result->visibility == "public" && ($result->featured == true || $i == 0))
-  {
-    $event_date = ucwords(strftime("%A %d. %B, %H:%M", ($result->time + $result->utc_offset)/1000));
-    $event_description = preg_replace("/<img[^>]+\>/i", '', $result->description);
-    $event_description = substr($event_description,0,strpos($event_description, "</p>")+4);
+  $meetup_url = "https://api.meetup.com/2/events?key=6328314761a711406f287670733343&sign=true&group_urlname=".$meetup."&page=20&fields=featured";
+  $meetup_json = file_get_contents($meetup_url, 0, null, null);
+  $output = json_decode($meetup_json);
 
-    echo "<tr><th><p>{$event_date}";
-    echo "<td style='width: 700px'>";
-    echo "<p><a href='{$result->event_url}'>{$result->name}</a>";
-    echo $event_description;
+  $max = $count;
+  $i = 0;
+
+  date_default_timezone_set('GMT');
+  setlocale(LC_TIME, "nb_NO.utf8");
+  foreach ($output->results as $result)
+  {
+    if ($result->visibility == "public" && ($result->featured == true || $i == 0))
+    {
+      $event_date = ucwords(strftime("%A %d. %B, %H:%M", ($result->time + $result->utc_offset)/1000));
+      $event_description = preg_replace("/<img[^>]+\>/i", '', $result->description);
+      $event_description = substr($event_description,0,strpos($event_description, "</p>")+4);
+
+      echo "<tr><th><p>{$event_date}";
+      echo "<td style='width: 700px'>";
+      echo "<p><a href='{$result->event_url}'>{$result->name}</a>";
+      echo $event_description;
+    }
+    if (++$i == $max) break;
   }
-  if (++$i == $max) break;
 }
+
+addEventsFrom("bitraf", 5);
+addEventsFrom("Robot-klubben", 5);
 ?>
  </table>
 
