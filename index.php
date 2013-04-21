@@ -136,7 +136,7 @@ addEventsFrom("Robot-klubben", 5);
       <th>Søndag
     <tr>
       <th style='border-top: none'>&#8942;<br>12:00
-      <td colspan=5 rowspan=4>Arbeidstid.<br>Tilgang kun for <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a> medlemer.
+      <td colspan=5 rowspan=4>Arbeidstid.<br>Tilgang kun for <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>-medlemmer.
     <tr>
       <th>13:00
       <td rowspan=8 style='border-bottom: none'><a href='/build-night'>Build<br>Day*</a>
