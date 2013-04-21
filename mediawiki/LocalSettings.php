@@ -132,7 +132,15 @@ if (is_file("/etc/mediawiki-extensions/extensions.php")) {
 # sure that cached pages are cleared.
 $wgCacheEpoch = max( $wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) );
 
+require_once('extensions/p2k12-auth.php');
+$wgAuth = new p2k12Auth();
+
+$wgGroupPermissions['*']['createaccount'] = false;
+
 $wgArticlePath = '/wiki/$1';
+
+$wgEnableSorbs = true;
+$wgEmailConfirmToEdit=true;
 
 ini_set( 'pcre.backtrack_limit', '8M' );
 require_once( "$IP/extensions/SpamBlacklist/SpamBlacklist.php" );
