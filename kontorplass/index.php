@@ -44,7 +44,7 @@
   </tr>
   <tr>
     <td><img src='midt1.jpg'></td>
-    <td><div id='map-canvas' style='width: 475px; height: 306px'></div></td>
+    <td><div id='map-canvas' style='width: 475px; height: 315px'></div></td>
     <script>
     function initialize()
     {
