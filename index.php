@@ -32,16 +32,6 @@
 
   <div><img src='/images/bitraf-rom-960-350.jpg' alt='' title='Bitrafs lokale, August 2012'></div>
 
-  <div style='background: #def; padding: 10px; margin: 20px 0 20px'>
-    <div style='font-size: 2em; font-weight: bold'>Bitraf flytter til nytt lokale!</div>
-    <p>Darres gate 24 skal bygges om til boliger, og Bitraf må ha flyttet innen 
-    1. juni 2013.  Vi ønsker å bytte til et større og mer sentralt lokale, men da trenger vi fler medlemmer.  
-    Hvis vi får fem nye <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>-medlemmer vil vi ha råd til et
-    50% større lokale ved Youngstorget.  Hvis du kjenner frilansere som 
-    driver med programmering, grafikk eller design, send dem til oss.  Prisen er 1500kr/mnd.
-    <p>Du kan også støtte Bitraf ved å <a href='http://p2k12.bitraf.no/my/'>bli medlem</a>.
-  </div>
-
   <div style='clear:both'></div>
 
   <div class=checkins>
