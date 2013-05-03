@@ -53,7 +53,7 @@
   bestemmer hva som foregår.  På dagtid sitter det typisk frilansere og 
   entrepenører og jobber her, og det kan du også.
 
-  <p>Bitraf holder til i 128.5m² lokaler <a href=#kart>ved Alexander Kiellands plass</a>.
+  <p>Bitraf holder til i store lokaler <a href=#kart>ved Youngstorget, (Youngs gate 6)</a>.
 
   </div>
 
@@ -102,7 +102,7 @@ addEventsFrom("Robot-klubben", 5);
 
   <h2 id=kart>Kart</h2>
 
-  <p><div id='map-canvas' style='width: 960px; height: 600px'></div>
+  <!--p><div id='map-canvas' style='width: 960px; height: 600px'></div>
   <script>
   function initialize()
   {
@@ -114,13 +114,10 @@ addEventsFrom("Robot-klubben", 5);
     var overlay = new google.maps.GroundOverlay("http://scripts.bitraf.no/images/map-overlay.png", overlayBounds);
     overlay.setMap(map);
   }
-  </script>
+  </script-->
 
-  <p>De hvite strekene viser sluttspurten når du kommer fra ulike retninger. Den gule prikken markerer inngangsdøren, som ligger i en bakgård hvor det finnes en 30 meter høy mursteinspipe og en barnehage. Over døren står teksten «24», og ved ringeklokken står det «Bitraf (1. etg)». Bygningsarbeidene som vises i Googles bilder er avsluttet, og er nå boligblokker.
-
-  <p>Reiser du kollektivt vil du ta buss til <em>Alexander Kiellands Plass</em> eller trikk til <em>Birkelunden</em>.
-
-  <p>For å komme inn, trykk på ringeklokken det står <em>Bitraf (1. etg)</em> ved siden av.
+  <p>Vi holder til i Youngs gate rett ved Youngstorget i Oslo sentrum.  Det står Nilz ved døra vår (de holder til i samme portrom).
+  <p>For å komme inn, trykk på ringeklokken det står <em>Bitraf</em> på.
 
   <h2>Faste arrangementer</h2>
 
