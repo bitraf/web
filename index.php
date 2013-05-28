@@ -49,11 +49,11 @@
 
   <p>Jobb med egne prosjekter i et sosialt miljø, hold eller
   delta på en workshop, et game jam, hackathon, bug squashing party eller
-  et godt gammeldags LAN-party.  Bitraf er fullstendig brukerstyrt, så du 
-  bestemmer hva som foregår.  På dagtid sitter det typisk frilansere og 
+  et godt gammeldags LAN-party.  Bitraf er fullstendig brukerstyrt, så du
+  bestemmer hva som foregår.  På dagtid sitter det typisk frilansere og
   entrepenører og jobber her, og det kan du også.
 
-  <p>Bitraf holder til i store lokaler <a href=#kart>ved Youngstorget, (Youngs gate 6)</a>.
+  <p>Bitraf holder til i store lokaler ved Youngstorget (Youngs gate 6).
 
   </div>
 
@@ -100,9 +100,9 @@ addEventsFrom("Robot-klubben", 5);
 
   <p><a href='mailto:post@bitraf.no'>post@bitraf.no</a> (går til fler personer) eller 40&nbsp;48&nbsp;45&nbsp;05.
 
-  <h2 id=kart>Kart</h2>
+  <!--h2 id=kart>Kart</h2>
 
-  <!--p><div id='map-canvas' style='width: 960px; height: 600px'></div>
+  <p><div id='map-canvas' style='width: 960px; height: 600px'></div>
   <script>
   function initialize()
   {
@@ -116,7 +116,7 @@ addEventsFrom("Robot-klubben", 5);
   }
   </script-->
 
-  <p>Vi holder til i Youngs gate rett ved Youngstorget i Oslo sentrum.  Det står Nilz ved døra vår (de holder til i samme portrom).
+  <p>Vi holder til i Youngs gate 6 rett ved Youngstorget i Oslo sentrum.  Det står Nilz ved døra vår (de holder til i samme portrom).
   <p>For å komme inn, trykk på ringeklokken det står <em>Bitraf</em> på.
 
   <h2>Faste arrangementer</h2>
