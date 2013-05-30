@@ -3,6 +3,7 @@
 <meta charset=utf-8>
 <title>Bitraf, Oslo</title>
 <script src="//maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="//apis.google.com/js/plusone.js"></script>
 <link href='/style/main.css' rel='stylesheet' type='text/css'>
 <style>
 .checkins {
@@ -12,7 +13,17 @@
   color: #666;
   text-align: right;
 }
-
+#pan-drivhus {
+  float: left;
+}
+#pan-labb {
+  float: right;
+}
+.panorama {
+  text-align: center;
+}
+.panorama span {
+}
 </style>
 <body onload="initialize()" onunload="GUnload()">
 <div id='globalWrapper'>
@@ -30,8 +41,6 @@
   <div style='background: #eee; padding: 10px; margin: 20px 0 20px; font-weight: bold'>
     <p><em>Nye styrevedtak:</em> <a href='http://bitraf.no/styrevedtak/styrevedtak-8'>Styrevedtak #8</a> og <a href='http://bitraf.no/styrevedtak/styrevedtak-9'>Styrevedtak #9</a>.</div>
 
-  <div><img src='/images/bitraf-rom-960-350.jpg' alt='' title='Bitrafs lokale, August 2012'></div>
-
   <div style='clear:both'></div>
 
 <!--
@@ -40,6 +49,10 @@
     <p>Registrert bruk siste dager</p>
   </div>
 -->
+
+  <div>
+    <img src="/images/IMG_2052_scaled.jpg" alt="Inngangsparti" title="Inngangsparti" height="550" width="960" />
+  </div>
 
   <div class=info>
   <p><strong>Bitraf er et <a href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace</a>
@@ -54,6 +67,23 @@
   entrepenører og jobber her, og det kan du også.
 
   <p>Bitraf holder til i store lokaler ved Youngstorget (Youngs gate 6).
+
+  <div>
+    <div id="pan-drivhus" class="panorama">
+      <g:panoembed imageurl="https://lh5.googleusercontent.com/-qJQHaqKCP9c/UaePhudDEgI/AAAAAAAAFig/EWvW9hj1AAY/w1044-h354-no/PANO_20130530_171545.jpg"
+        fullsize="4096,2048"
+        croppedsize="4096,1380"
+        offset="1600,220"
+        displaysize="470,350"/>
+    </div>
+    <div id="pan-labb" class="panorama">
+      <g:panoembed imageurl="https://lh4.googleusercontent.com/-VGLA17U14T0/UaePhg9JZHI/AAAAAAAAFiE/OedvxmzWinI/w1043-h356-no/PANO_20130530_172844.jpg"
+        fullsize="4096,2048"
+        croppedsize="4096,1380"
+        offset="2400,280"
+        displaysize="470,350"/>
+    </div>
+  </div>
 
   </div>
 
