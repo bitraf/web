@@ -38,8 +38,12 @@
     <div class="button meetup-button"><a href='http://meetup.com/bitraf/'><img src='/images/meetup-28px.png' alt='Meetup'></a></div>
   </header>
 
+  <!--
   <div style='background: #eee; padding: 10px; margin: 20px 0 20px; font-weight: bold'>
-    <p><em>Nye styrevedtak:</em> <a href='http://bitraf.no/styrevedtak/styrevedtak-8'>Styrevedtak #8</a> og <a href='http://bitraf.no/styrevedtak/styrevedtak-9'>Styrevedtak #9</a>.</div>
+    <p><em>Nye styrevedtak:</em> <a
+    href='http://bitraf.no/styrevedtak/styrevedtak-8'>Styrevedtak #8</a> og <a
+    href='http://bitraf.no/styrevedtak/styrevedtak-9'>Styrevedtak #9</a>.</div>
+  -->
 
   <div style='clear:both'></div>
 
@@ -51,7 +55,7 @@
 -->
 
   <div>
-    <img src="/images/IMG_2052_scaled.jpg" alt="Inngangsparti" title="Inngangsparti" height="550" width="960" />
+    <img src="/images/IMG_2052_scaled.jpg" alt="" title="Inngangsparti" height="550" width="960" />
   </div>
 
   <div class=info>
