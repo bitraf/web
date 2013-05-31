@@ -153,6 +153,49 @@ addEventsFrom("Robot-klubben", 5);
   <p>Vi holder til i Youngs gate 6 rett ved Youngstorget i Oslo sentrum.  Det står Nilz ved døra vår (de holder til i samme portrom).
   <p>For å komme inn, trykk på ringeklokken det står <em>Bitraf</em> på.
 
+  <h2>Priser, medlemskap</h2>
+
+  <p>Det er gratis å være på Bitraf. Lokalet er likevel betalt for
+av foreningens medlemmer og vi oppfordrer besøkende til å melde seg inn.
+Medlemmer får benytte foreningens forbruksvarer &ndash; for eksempel elektronikkomponenter &ndash;
+samt egen nøkkel til lokalet slik at du kan komme inn når det ikke er noen
+andre til stede.
+</p>
+
+  <p>
+  <table class='grid-table'>
+    <tr>
+      <td style='border: none; width: 15ex'>
+      <th style='width: 15ex'>Pris per måned
+      <th>Detaljer
+    <tr>
+      <th><a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>
+      <td class=n>1500 kr
+      <td>Tilgang på dagtid
+    <tr>
+      <th>Bitraf Støtte
+      <td class=n>300 kr
+      <td>
+    <tr>
+      <th>Bitraf Vanlig
+      <td class=n>500 kr
+      <td>
+    <tr>
+      <th>Bitraf Filantrop
+      <td class=n>1000 kr
+      <td>
+  </table>
+
+  <!-- <p>Du kan bruke <a href='http://p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien i vinduskarmen</a>.</p> -->
+  <p>Kjøleskapet vårt er ikke på nett etter flytting, så du må komme innom
+  lokalet for å registrere deg. De som er tilstede vil ofte vite hvordan.
+
+  <p>Kontonummer (for folk som ikke har fått faktura og for donasjoner): <tt>1503.273.5581</tt></p>
+
+  <p>Et par ting er verdt å 
+  gjenta: <em>Hvem som helst</em> kan komme hit mandag&ndash;fredag etter 
+  16:00, og hele lørdag og søndag, <em>uten å betale</em>.  Hvem som helst kan holde et 
+  arrangement, så lenge det ikke kolliderer med et annet.
   <h2>Faste arrangementer</h2>
 
   <p>Utenom arbeidstiden er det fullt mulig å være i lokalet selv om man ikke deltar på noe arrangement.</p>
@@ -202,47 +245,6 @@ addEventsFrom("Robot-klubben", 5);
   </table>
   <p>* Bare når noen tar initiativ.  Spør folk på IRC om de vil være med.
 
-  <h2>Priser, medlemskap</h2>
-
-  <p>Det er gratis å være på Bitraf. Lokalet er likevel betalt for
-av foreningens medlemmer og vi oppfordrer besøkende til å melde seg inn.
-Medlemmer får benytte foreningens forbruksvarer &ndash; for eksempel elektronikkomponenter &ndash;
-samt egen nøkkel til lokalet slik at du kan komme inn når det ikke er noen
-andre til stede. 
-</p>
-
-  <p>
-  <table class='grid-table'>
-    <tr>
-      <td style='border: none; width: 15ex'>
-      <th style='width: 15ex'>Pris per måned
-      <th>Detaljer
-    <tr>
-      <th><a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>
-      <td class=n>1500 kr
-      <td>Tilgang på dagtid
-    <tr>
-      <th>Bitraf Støtte
-      <td class=n>300 kr
-      <td>
-    <tr>
-      <th>Bitraf Vanlig
-      <td class=n>500 kr
-      <td>
-    <tr>
-      <th>Bitraf Filantrop
-      <td class=n>1000 kr
-      <td>
-  </table>
-
-  <p>Du kan bruke <a href='http://p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien i vinduskarmen</a>.</p>
-
-  <p>Kontonummer (for folk som ikke har fått faktura og for donasjoner): 1503.273.5581</p>
-
-  <p>Et par ting er verdt å 
-  gjenta: <em>Hvem som helst</em> kan komme hit mandag&ndash;fredag etter 
-  16:00, og hele lørdag og søndag, <em>uten å betale</em>.  Hvem som helst kan holde et 
-  arrangement, så lenge det ikke kolliderer med et annet.
 
   <h2>IRC</h2>
 
