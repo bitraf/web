@@ -13,16 +13,25 @@
   color: #666;
   text-align: right;
 }
+#pan-container {
+  position: relative;
+  width: 960px;
+  height: 400px;
+  margin-top: 1em;
+}
+.pan-box {
+  text-align: center;
+  color: #444;
+}
 #pan-drivhus {
-  float: left;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 #pan-labb {
-  float: right;
-}
-.panorama {
-  text-align: center;
-}
-.panorama span {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 </style>
 <body onload="initialize()" onunload="GUnload()">
@@ -72,20 +81,27 @@
 
   <p>Bitraf holder til i store lokaler ved Youngstorget (Youngs gate 6).
 
-  <div>
-    <div id="pan-drivhus" class="panorama">
-      <g:panoembed imageurl="https://lh5.googleusercontent.com/-qJQHaqKCP9c/UaePhudDEgI/AAAAAAAAFig/EWvW9hj1AAY/w1044-h354-no/PANO_20130530_171545.jpg"
-        fullsize="4096,2048"
-        croppedsize="4096,1380"
-        offset="1600,220"
-        displaysize="470,350"/>
+  <h2>Foreningslokale</h2>
+  <div id="pan-container">
+    <div id="pan-drivhus" class="pan-box">
+      <div>
+        <g:panoembed imageurl="https://lh5.googleusercontent.com/-qJQHaqKCP9c/UaePhudDEgI/AAAAAAAAFig/EWvW9hj1AAY/w1044-h354-no/PANO_20130530_171545.jpg"
+          fullsize="4096,2048"
+          croppedsize="4096,1380"
+          offset="1600,220"
+          displaysize="470,350"/>
+      </div>
+      <p>Fellesareale / inngangsparti</p>
     </div>
-    <div id="pan-labb" class="panorama">
-      <g:panoembed imageurl="https://lh4.googleusercontent.com/-VGLA17U14T0/UaePhg9JZHI/AAAAAAAAFiE/OedvxmzWinI/w1043-h356-no/PANO_20130530_172844.jpg"
-        fullsize="4096,2048"
-        croppedsize="4096,1380"
-        offset="2400,280"
-        displaysize="470,350"/>
+    <div id="pan-labb" class="pan-box">
+      <div>
+        <g:panoembed imageurl="https://lh4.googleusercontent.com/-VGLA17U14T0/UaePhg9JZHI/AAAAAAAAFiE/OedvxmzWinI/w1043-h356-no/PANO_20130530_172844.jpg"
+          fullsize="4096,2048"
+          croppedsize="4096,1380"
+          offset="2400,280"
+          displaysize="470,350"/>
+      </div>
+      <p>Elektronikklab</p>
     </div>
   </div>
 

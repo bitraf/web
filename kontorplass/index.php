@@ -9,6 +9,7 @@
     td.text {background: #eee; padding: 0px 48px; width: 364px; }
     td { width: 475px; }
     td img {display: block; width: 475px; }
+    .panorama { padding-top: 1em; }
 </style>
 <body onload="initialize()" onunload="GUnload()">
 <div id='globalWrapper'>
@@ -24,7 +25,7 @@
 </header>
 <h1 class='firstHeading'>Kontorplass</h1>
 <p>
-<div>
+  <div>
       <p>
       Bitraf er et <a href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace</a>
       i Oslo som er åpent for hvem som helst. Vi holder til i 
@@ -36,21 +37,24 @@
       før 16:00 på hverdager, og lov til å sette igjen eget utstyr.
       </p>
       <p>Ta kontakt med Alexander Alemayhu på <em>alexander@bitraf.no</em> for å avtale leie.</p>
-</div>
-<div>
-<g:panoembed imageurl="https://lh6.googleusercontent.com/-MyShaRK2T88/UaePhkRdhYI/AAAAAAAAFiE/1zp8FVKzp1U/w1044-h366-no/PANO_20130530_182100.jpg"
-    fullsize="4096,2048"
-    croppedsize="4096,1380"
-    offset="2300,200"
-    displaysize="900,600"/>
-</div>
-<div>
-<g:panoembed imageurl="https://lh4.googleusercontent.com/-Y7SRQCQb29M/UaePhm1UP8I/AAAAAAAAFiE/0brmKKQ6k3M/w1043-h379-no/PANO_20130530_175741.jpg"
-    fullsize="4096,2048"
-    croppedsize="4096,1380"
-    offset="500,230"
-    displaysize="900,600"/>
-</div>
+  </div>
+  <h2>Lokalene</h2>
+  <h3>Hovedrom, m/enkel kjøkkenkrok og toalett</h3>
+  <div class="panorama">
+    <g:panoembed imageurl="https://lh6.googleusercontent.com/-MyShaRK2T88/UaePhkRdhYI/AAAAAAAAFiE/1zp8FVKzp1U/w1044-h366-no/PANO_20130530_182100.jpg"
+        fullsize="4096,2048"
+        croppedsize="4096,1380"
+        offset="2300,200"
+        displaysize="960,600"/>
+  </div>
+  <h3>Tilliggende kontorrom</h3>
+  <div class="panorama">
+    <g:panoembed imageurl="https://lh4.googleusercontent.com/-Y7SRQCQb29M/UaePhm1UP8I/AAAAAAAAFiE/0brmKKQ6k3M/w1043-h379-no/PANO_20130530_175741.jpg"
+        fullsize="4096,2048"
+        croppedsize="4096,1380"
+        offset="500,230"
+        displaysize="960,600"/>
+  </div>
 </div>
 </body>
 
