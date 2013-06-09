@@ -25,3 +25,6 @@ RewriteRule ^styrevedtak/styrevedtak-([0-9]+)$ /styrevedtak/styrevedtak-$1.html 
 RewriteRule ^galleri$ /galleri.php [L]
 
 RewriteRule ^photos/([A-Za-z0-9.-]+)$ /image.php?name=$1 [L]
+
+Redirect 301 /referat-fra-konstituerende-generalforsamling.php /dokument/referat-fra-konstituerende-generalforsamling.php
+Redirect 301 /opprit-byteraffineriet-skiping.htm /dokument/opprit-byteraffineriet-skiping.htm
