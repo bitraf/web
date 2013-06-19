@@ -124,18 +124,23 @@ function addEventsFrom($meetup, $count)
   setlocale(LC_TIME, "nb_NO.utf8");
   foreach ($output->results as $result)
   {
-    if ($result->visibility == "public" && ($result->featured == true || $i == 0))
+//    if ($result->visibility == "public" && ($result->featured == true || $i == 0))
+    if (($result->visibility == "public" && $i++ < $max) || $result->featured == true)
     {
       $event_date = ucwords(strftime("%A %d. %B, %H:%M", ($result->time + $result->utc_offset)/1000));
       $event_description = preg_replace("/<img[^>]+\>/i", '', $result->description);
       $event_description = substr($event_description,0,strpos($event_description, "</p>")+4);
 
-      echo "<tr><th><p>{$event_date}";
-      echo "<td style='width: 700px'>";
+      echo "<tr><th>";
+
+      if ($result->featured == true)
+	echo "<p style='text-align: center; color: #ff6000'>Featured</p>";
+      echo "<p>{$event_date}";
+
+      echo "<td style='width: 700px;'>";
       echo "<p><a href='{$result->event_url}'>{$result->name}</a>";
       echo $event_description;
     }
-    if (++$i == $max) break;
   }
 }
 
