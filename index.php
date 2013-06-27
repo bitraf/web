@@ -187,23 +187,15 @@ andre til stede.
     <tr>
       <td style='border: none; width: 15ex'>
       <th style='width: 15ex'>Pris per måned
-      <th>Detaljer
-    <tr>
-      <th><a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>
-      <td class=n>1500 kr
-      <td>Tilgang på dagtid
     <tr>
       <th>Bitraf Støtte
       <td class=n>300 kr
-      <td>
     <tr>
       <th>Bitraf Vanlig
       <td class=n>500 kr
-      <td>
     <tr>
       <th>Bitraf Filantrop
       <td class=n>1000 kr
-      <td>
   </table>
 
   <!-- <p>Du kan bruke <a href='http://p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien i vinduskarmen</a>.</p> -->
@@ -213,9 +205,9 @@ andre til stede.
   <p>Kontonummer (for folk som ikke har fått faktura og for donasjoner): <tt>1503.273.5581</tt></p>
 
   <p>Et par ting er verdt å 
-  gjenta: <em>Hvem som helst</em> kan komme hit mandag&ndash;fredag etter 
-  16:00, og hele lørdag og søndag, <em>uten å betale</em>.  Hvem som helst kan holde et 
-  arrangement, så lenge det ikke kolliderer med et annet.
+  gjenta: <em>Hvem som helst</em> kan komme hit mandag&ndash;fredag,
+  og hele lørdag og søndag, <em>uten å betale</em>.  
+Hvem som helst kan holde et arrangement, så lenge det ikke kolliderer med et annet.
   <h2>Faste arrangementer</h2>
 
   <p>Utenom arbeidstiden er det fullt mulig å være i lokalet selv om man ikke deltar på noe arrangement.</p>
@@ -232,7 +224,7 @@ andre til stede.
       <th>Søndag
     <tr>
       <th style='border-top: none'>&#8942;<br>12:00
-      <td colspan=5 rowspan=4>Arbeidstid.<br>Tilgang kun for <a href='/wiki/Bitraf_24/7'>Bitraf 24/7</a>-medlemmer.
+      <td colspan=5 rowspan=4>Arbeidstid.
     <tr>
       <th>13:00
       <td rowspan=8 style='border-bottom: none'><a href='/build-night'>Build<br>Day*</a>
@@ -264,6 +256,7 @@ andre til stede.
       <th class=ne>22:00<br>&#8942;
   </table>
   <p>* Bare når noen tar initiativ.  Spør folk på IRC om de vil være med.
+  <p>. I arbeidstid så er det ikke tillatt med skjenerende støy.
 
 
   <h2>IRC</h2>
