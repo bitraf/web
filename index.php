@@ -257,7 +257,7 @@ Hvem som helst kan holde et arrangement, så lenge det ikke kolliderer med et an
       <th class=ne>22:00<br>&#8942;
   </table>
   <p>* Bare når noen tar initiativ.  Spør folk på IRC om de vil være med.
-  <p>. I arbeidstid så er det ikke tillatt med skjenerende støy.
+  <p>. I arbeidstid er det ikke tillatt med skjenerende støy.
 
 
   <h2>IRC</h2>
