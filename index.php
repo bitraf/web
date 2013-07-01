@@ -208,9 +208,10 @@ andre til stede.
   gjenta: <em>Hvem som helst</em> kan komme hit mandag&ndash;fredag,
   og hele lørdag og søndag, <em>uten å betale</em>.  
 Hvem som helst kan holde et arrangement, så lenge det ikke kolliderer med et annet.
-  <h2>Faste arrangementer</h2>
+<p>PS: Hvis du ønsker å støtte Bitraf med Grasrotandelen din, kan du sende denne SMS'en til 2020: GRASROTANDELEN 898124452</p>
+<h2>Faste arrangementer</h2>
 
-  <p>Utenom arbeidstiden er det fullt mulig å være i lokalet selv om man ikke deltar på noe arrangement.</p>
+<p>Utenom arbeidstiden er det fullt mulig å være i lokalet selv om man ikke deltar på noe arrangement.</p>
 
   <table class='grid-table calendar'>
     <tr>
