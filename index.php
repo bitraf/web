@@ -208,7 +208,7 @@ andre til stede.
   <p>Et par ting er verdt å 
   gjenta: <em>Hvem som helst</em> kan komme hit mandag&ndash;fredag,
   og hele lørdag og søndag, <em>uten å betale</em>.  
-Betalende medlemmer kan ogs� holde arrangementer, så lenge det ikke kolliderer med et annet.
+Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kolliderer med et annet.
 <p>PS: Hvis du ønsker å støtte Bitraf med Grasrotandelen din, kan du sende denne SMS'en til 2020: GRASROTANDELEN 898124452</p>
 <h2>Faste arrangementer</h2>
 
