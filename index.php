@@ -6,6 +6,8 @@
 <script type="text/javascript" src="//apis.google.com/js/plusone.js"></script>
 <link href='/style/main.css' rel='stylesheet' type='text/css'>
 <style>
+
+#annotation_event { font-weight: normal }
 .checkins {
   float: right;
   width:340px;
@@ -226,10 +228,10 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
       <th>Søndag
     <tr>
       <th style='border-top: none'>&#8942;<br>12:00
-      <td colspan=5 rowspan=4>Arbeidstid.
+      <td colspan=5 rowspan=4>Arbeidstid <i id="annotation_event">¹</i>
     <tr>
       <th>13:00
-      <td rowspan=8 style='border-bottom: none'><a href='/build-night'>Build<br>Day*</a>
+      <td rowspan=8 style='border-bottom: none'><a href='/build-night'>Build<br>Day<i id="annotation_event">²<i></a>
     <tr>
       <th>14:00
     <tr>
@@ -241,7 +243,7 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
     <tr>
       <th>18:00
       <td style='border: none' rowspan='5'>
-      <td rowspan=5 class=ne>Spill-<br>utvikling*
+      <td rowspan=5 class=ne>Spill-<br>utvikling
       <td style='border: none'>
       <td rowspan=5 class=ne><a href='/build-night'>Build<br>Night</a>
       <td style='border: none'>
@@ -253,12 +255,12 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
     <tr>
       <th>21:00
       <td style='border:none'>
-      <td rowspan=4 class=ne>Pub*
+      <td rowspan=4 class=ne>Pub<i id="annotation_event">²</i>
       <tr>
       <th class=ne>22:00<br>&#8942;
   </table>
-  <p>* Bare når noen tar initiativ.  Spør folk på IRC om de vil være med.
-  <p>. I arbeidstid er det ikke tillatt med skjenerende støy.
+  <p>¹ I arbeidstid er det ikke tillatt med skjenerende støy.
+  <p>² Bare når noen tar initiativ.  Spør folk på IRC om de vil være med.
 
 
   <h2>IRC</h2>
