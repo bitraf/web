@@ -58,15 +58,12 @@
 
   <div style='clear:both'></div>
 
-<!--
+  <div>
+    <img src="/images/IMG_2052_scaled.jpg" alt="" title="Inngangsparti" height="550" width="960" />
+  </div>
   <div class=checkins>
     <iframe src=http://p2k12.bitraf.no/chart.php width=340 height=150 style="border:0"></iframe>
     <p>Registrert bruk siste dager</p>
-  </div>
--->
-
-  <div>
-    <img src="/images/IMG_2052_scaled.jpg" alt="" title="Inngangsparti" height="550" width="960" />
   </div>
 
   <div class=info>
