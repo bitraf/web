@@ -33,7 +33,7 @@
       </p>
       <p>
       Vi leier i tillegg ut kontorplasser. Én plass koster <strong>1500 kroner i
-      måneden</strong>. 
+      måneden + mva</strong>. 
       </p>
       <p>Ta kontakt med Alexander Alemayhu på <em>alexander@bitraf.no</em> for å avtale leie.</p>
   </div>
