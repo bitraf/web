@@ -29,16 +29,16 @@
       <p>
       Bitraf er et <a href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace</a>
       i Oslo som er åpent for hvem som helst. Vi holder til i 
-      <a href='http://maps.google.no/maps?q=youngs+gate+6&ie=UTF8&hq=&hnear=Youngs+gate+6,+Sentrum,+0181+Oslo&gl=no&ll=59.914695,10.750763&spn=0.001029,0.002411&t=m&z=19&vpsrc=6'>Youngs gate 6</a> ved Youngstorget.
+      <a href='http://maps.google.no/maps?q=youngs+gate+6&amp;ie=UTF8&amp;hq=&amp;hnear=Youngs+gate+6,+Sentrum,+0181+Oslo&amp;gl=no&amp;ll=59.914695,10.750763&amp;spn=0.001029,0.002411&amp;t=m&amp;z=19&amp;vpsrc=6'>Youngs gate 6</a> ved Youngstorget.
       </p>
       <p>
-      Vi leier i tillegg ut kontorplasser. Én plass koster <strong>1500 kroner i
-      måneden + mva</strong>. 
+      Vi leier i tillegg ut kontorplasser. Én plass koster <strong>1500 kroner + MVA per
+      måned</strong>, og gir tilgang til lokalet 24/7, samt ubegrenset bruk av vår 100/100&nbsp;Mbps Internet-forbindelse.
       </p>
-      <p>Ta kontakt med Alexander Alemayhu på <em>alexander@bitraf.no</em> for å avtale leie.</p>
+      <p>Ta kontakt med Alexander Alemayhu på <a href='mailto:alexander@bitraf.no'>alexander@bitraf.no</a> for å avtale visning eller for spørsmål om leiekontrakt.</p>
   </div>
   <h2>Lokalene</h2>
-  <h3>Hovedrom, m/enkel kjøkkenkrok og toalett</h3>
+  <h3>Hovedrom, med enkel kjøkkenkrok og toalett</h3>
   <div class="panorama">
     <g:panoembed imageurl="https://lh6.googleusercontent.com/-MyShaRK2T88/UaePhkRdhYI/AAAAAAAAFiE/1zp8FVKzp1U/w1044-h366-no/PANO_20130530_182100.jpg"
         fullsize="4096,2048"
