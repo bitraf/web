@@ -197,9 +197,7 @@ andre til stede.
       <td class=n>1000 kr
   </table>
 
-  <!-- <p>Du kan bruke <a href='http://p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien i vinduskarmen</a>.</p> -->
-  <p>Kjøleskapet vårt er ikke på nett etter flytting, så du må komme innom
-  lokalet for å registrere deg. De som er tilstede vil ofte vite hvordan.
+  <p>Du kan bruke <a href='http://p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien i vinduskarmen</a>.</p>
 
   <p>Kontonummer (for folk som ikke har fått faktura og for donasjoner): <tt>1503.273.5581</tt></p>
 
