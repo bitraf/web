@@ -260,6 +260,8 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
   <h2>IRC</h2>
 
   <p>Chat med oss på <a href='http://webchat.freenode.net/?channels=bitraf'>#bitraf, irc.freenode.net</a>
+<h2>Epostliste</h2>
+<p>Meld deg på vår epostliste <a href='https://groups.google.com/forum/#!forum/bitraf'>Bitraf group</a></p>
 <script>
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-29715437-1']);
