@@ -67,9 +67,10 @@
   </div>
 
   <div class=info>
-  <p><strong>Bitraf er et <a href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace</a>
+  <p><strong>Bitraf er et <a href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace
+  / makerspace</a>
   i Oslo som er åpent for hvem som helst 7 dager i uka.</strong>  Kom innom om du er
-  interessert i program&shy;mering, digital kunst, elektronikk,
+  interessert i program&shy;mering, digital kunst, elektronikk, fresing og fabrikasjon,
   fri programvare, spillutvikling eller andre liknende aktiviteter.
 
   <p>Jobb med egne prosjekter i et sosialt miljø, hold eller
