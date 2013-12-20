@@ -80,7 +80,7 @@
   entrepenører og jobber her, og det kan du også.
 
   <p>Bitraf holder til i store lokaler ved Youngstorget (Youngs gate 6).
-
+<!-- This is broken.
   <h2>Foreningslokale</h2>
   <div id="pan-container">
     <div id="pan-drivhus" class="pan-box">
@@ -106,7 +106,7 @@
   </div>
 
   </div>
-
+-->
   <h2>Utvalgte arrangementer</h2>
   <table class='grid-table'>
 <?php

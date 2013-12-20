@@ -9,7 +9,7 @@
     td.text {background: #eee; padding: 0px 48px; width: 364px; }
     td { width: 475px; }
     td img {display: block; width: 475px; }
-    .panorama { padding-top: 1em; }
+    <!--.panorama { padding-top: 1em; } -->
 </style>
 <body onload="initialize()" onunload="GUnload()">
 <div id='globalWrapper'>
@@ -37,6 +37,7 @@
       </p>
       <p>Ta kontakt med Alexander Alemayhu på <a href='mailto:alexander@bitraf.no'>alexander@bitraf.no</a> for å avtale visning eller for spørsmål om leiekontrakt.</p>
   </div>
+<!-- This looks broken.
   <h2>Lokalene</h2>
   <h3>Hovedrom, med enkel kjøkkenkrok og toalett</h3>
   <div class="panorama">
@@ -54,6 +55,7 @@
         offset="500,230"
         displaysize="960,600"/>
   </div>
+-->
 </div>
 </body>
 
