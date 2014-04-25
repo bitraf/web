@@ -113,6 +113,7 @@
 
 function addEventsFrom($meetup, $count)
 {
+  return; // NOTE(mortehu): Don't add blocking calls to external services to our main page code.
   $meetup_url = "https://api.meetup.com/2/events?key=6328314761a711406f287670733343&sign=true&group_urlname=".$meetup."&page=20&fields=featured";
   $meetup_json = file_get_contents($meetup_url, 0, null, null);
   $output = json_decode($meetup_json);
@@ -152,7 +153,7 @@ addEventsFrom("Robot-klubben", 5);
 
   <h2>Kontakt</h2>
 
-  <p><a href='mailto:post@bitraf.no'>post@bitraf.no</a> (går til fler personer) eller 40&nbsp;48&nbsp;45&nbsp;05.
+  <p><a href='mailto:post@bitraf.no'>post@bitraf.no</a> (går til fler personer) eller 95&nbsp;09&nbsp;13&nbsp;00.
 
   <!--h2 id=kart>Kart</h2>
 
