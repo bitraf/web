@@ -153,7 +153,7 @@ addEventsFrom("Robot-klubben", 5);
 
   <h2>Kontakt</h2>
 
-  <p><a href='mailto:post@bitraf.no'>post@bitraf.no</a> (går til fler personer) eller 95&nbsp;09&nbsp;13&nbsp;00.
+  <p><a href='mailto:post@bitraf.no'>post@bitraf.no</a> (g<C3><A5>r til fler personer) eller 95&nbsp;09&nbsp;13&nbsp;00.
 
   <!--h2 id=kart>Kart</h2>
 
