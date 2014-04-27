@@ -107,7 +107,8 @@
 
   </div>
 -->
-  <h2>Utvalgte arrangementer</h2>
+  <h2>Arrangementer</h2>
+<!--
   <table class='grid-table'>
 <?php
 
@@ -148,8 +149,9 @@ addEventsFrom("bitraf", 5);
 addEventsFrom("Robot-klubben", 5);
 ?>
  </table>
+-->
 
-  <p>Du finner fler arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
+  <p>Du finner arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
 
   <h2>Kontakt</h2>
 
@@ -224,7 +226,7 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
       <th>Søndag
     <tr>
       <th style='border-top: none'>&#8942;<br>12:00
-      <td colspan=5 rowspan=4>Arbeidstid <i id="annotation_event">¹</i>
+      <td colspan=5 rowspan=4>Arbeidstid<i id="annotation_event">¹</i>
     <tr>
       <th>13:00
       <td rowspan=8 style='border-bottom: none'><a href='/build-night'>Build<br>Day<i id="annotation_event">²<i></a>
@@ -239,10 +241,11 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
     <tr>
       <th>18:00
       <td style='border: none' rowspan='5'>
-      <td rowspan=5 class=ne>Spill-<br>utvikling
+      <td style='border: none'>
       <td style='border: none'>
       <td rowspan=5 class=ne><a href='/build-night'>Build<br>Night</a>
       <td style='border: none'>
+      <td rowspan=5 class=ne>Spill-<br>utvikling
     <tr>
       <th>19:00
     <tr>
@@ -255,7 +258,7 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
       <tr>
       <th class=ne>22:00<br>&#8942;
   </table>
-  <p>¹ I arbeidstid er det ikke tillatt med skjenerende støy.
+  <p>¹ I arbeidstiden er det ikke tillatt med sjenerende støy.
   <p>² Bare når noen tar initiativ.  Spør folk på IRC om de vil være med.
 
 

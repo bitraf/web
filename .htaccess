@@ -19,10 +19,12 @@ RewriteRule ^build-night$ /wiki/Byggekveld [R]
 RewriteRule ^prosjekter$ /wiki/Prosjekter [R]
 RewriteRule ^foreningen/styrevedtak$ /styrevedtak/ [R]
 RewriteRule ^wiki$ /wiki/ [R]
+RewriteRule ^wp-content/uploads/..../../(.*)\.jpg$ /photos/$1.JPG [R]
 
 RewriteRule ^referat-fra-konstituerende-generalforsamling$ /referat-fra-konstituerende-generalforsamling.php [L]
 RewriteRule ^styrevedtak/styrevedtak-([0-9]+)$ /styrevedtak/styrevedtak-$1.html [L]
 RewriteRule ^galleri$ /galleri.php [L]
+RewriteRule ^wp-content/uploads/2012/03/highres_101293802.jpeg$ /spill.jpg [L]
 
 RewriteRule ^photos/([A-Za-z0-9.-]+)$ /image.php?name=$1 [L]
 
