@@ -65,10 +65,6 @@ class p2k12Auth extends AuthPlugin
     return true;
   }
 
-  function getUser() {
-    return "";
-  }
-
   function initUser(&$user, $autocreate=false) {
     $username = strtolower($username);
 
