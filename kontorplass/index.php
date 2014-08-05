@@ -5,9 +5,8 @@
 <script type="text/javascript" src="//apis.google.com/js/plusone.js"></script>
 <link href='https://bitraf.no/style/main.css' rel='stylesheet' type='text/css'>
 <style>
-    table { border-spacing: 10px; margin-left: -10px; margin-top: -10px; }
+    table { border-spacing: 10px; margin-left: -10px; margin-top: -10px; width:100%; }
     td.text {background: #eee; padding: 0px 48px; width: 364px; }
-    td { width: 475px; }
     td img {display: block; width: 475px; }
     <!--.panorama { padding-top: 1em; } -->
 </style>
@@ -80,6 +79,11 @@
       		<td scope="col">4190 7240</td>
       		<td scope="col">&nbsp;</td>
       		</tr>
+	<tr>
+                <td scope="col">Kyrre Hervik Larsen</td>
+                <td scope="col">4062 0439</td>
+                <td scope="col"><a href="http://www.kyrrelarsen.no/">Web</a></td>
+                </tr>
       	<tr>
       		<td scope="col">Bjørnar Lie, Elsys</td>
       		<td scope="col">9582 6274</td>
