@@ -6,8 +6,8 @@
 <link href='https://bitraf.no/style/main.css' rel='stylesheet' type='text/css'>
 <style>
     table { border-spacing: 10px; margin-left: -10px; margin-top: -10px; width:100%; }
-    td.text {background: #eee; padding: 0px 48px; width: 364px; }
-    td:nth-child(odd){background:#f8f8f8; }
+    td.text {background: #eee; padding: 3px; width: 364px; }
+    tr:nth-child(odd){background:#f8f8f8; }
     td img {display: block; width: 475px; }
     <!--.panorama { padding-top: 1em; } -->
 </style>
