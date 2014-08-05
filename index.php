@@ -200,7 +200,7 @@ De får egen hylleplass til prosjektene sine, egen nøkkel til lokalet, samt fle
       <td class=n>1000 kr
   </table>
 
-  <p>Du kan bruke <a href='http://p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien i vinduskarmen</a>.</p>
+  <p>Du kan bruke <a href='http://p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien nne i lab'en</a>.</p>
 
   <p>Kontonummer (for folk som ikke har fått faktura og for donasjoner): <tt>1503.273.5581</tt></p>
 
