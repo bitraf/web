@@ -150,7 +150,8 @@ addEventsFrom("Robot-klubben", 5);
  </table>
 -->
 
-  <p>Du finner arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
+  <p>Du finner arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>. 
+Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefaler folk å mruke tjenesten til å holde seg oppdatert.</p>
 
   <h2>Kontakt</h2>
 
@@ -179,9 +180,8 @@ addEventsFrom("Robot-klubben", 5);
 
   <p>Det er gratis å være på Bitraf. Lokalet er likevel betalt for
 av foreningens medlemmer og vi oppfordrer besøkende til å melde seg inn.
-Medlemmer får benytte foreningens forbruksvarer &ndash; for eksempel elektronikkomponenter &ndash;
-samt egen nøkkel til lokalet slik at du kan komme inn når det ikke er noen
-andre til stede.
+Medlemmer får benytte foreningens forbruksvare som elektronikkomponenter og plast til 3D printerne. 
+De får egen hylleplass til prosjektene sine, egen nøkkel til lokalet, samt flere andre fordeler.
 </p>
 
   <p>
