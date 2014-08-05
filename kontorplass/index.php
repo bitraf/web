@@ -39,7 +39,7 @@
   </div>
   <div>
   <p>Liste over kontorbrukere pr August 2014:</p>
-      <table style="fullWidths">
+      <table class="plainTable">
       	<tr>
       		<th scope="col">Navn, Firma</th>
       		<th scope="col">Telefon</th>

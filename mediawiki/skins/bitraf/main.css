@@ -15,7 +15,14 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	background: transparent;
 }
 table { border-collapse: collapse; border-spacing: 0; }/* tables still need 'cellspacing="0"' in the markup */
-
+.plainTable {
+  margin: 2px;
+  border: 0px;
+  text-align: center;
+}
+table.plainTable > tbody > tr:first-child > td:first-child {
+  text-align: left;
+}
 .header-links { color: #ddd; font-weight: bold; }
 .header-links a:visited { color: #fc6600 }
 .header-links a:hover { text-decoration: underline; }
