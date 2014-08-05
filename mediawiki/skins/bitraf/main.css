@@ -5,6 +5,17 @@ body { font-family: Helvetica, Arial, "Source Sans Pro", "Droid Sans", sans-seri
 a { color: #ff6000; text-decoration: underline; }
 a:visited { color: #a63e00; text-decoration: underline; }
 
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+table { border-collapse: collapse; border-spacing: 0; }/* tables still need 'cellspacing="0"' in the markup */
+
 .header-links { color: #ddd; font-weight: bold; }
 .header-links a:visited { color: #fc6600 }
 .header-links a:hover { text-decoration: underline; }
