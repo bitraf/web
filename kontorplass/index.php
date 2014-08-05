@@ -6,7 +6,7 @@
 <link href='https://bitraf.no/style/main.css' rel='stylesheet' type='text/css'>
 <style>
     table { border-spacing: 10px; margin-left: -10px; margin-top: -10px; width:100%; }
-    td.text {background: #eee; padding: 3px; width: 364px; }
+    td.text {padding: 3px; }
     tr:nth-child(odd){background:#f8f8f8; }
     td img {display: block; width: 475px; }
     <!--.panorama { padding-top: 1em; } -->
@@ -116,23 +116,6 @@
       		<td scope="col"><a href="http://thomaswinther.no">Web</a></td>
       		</tr>
       	</table>
-  </div>
-  <h2>Lokalene</h2>
-  <h3>Hovedrom, med enkel kjøkkenkrok og toalett</h3>
-  <div class="panorama">
-    <g:panoembed imageurl="https://lh6.googleusercontent.com/-MyShaRK2T88/UaePhkRdhYI/AAAAAAAAFiE/1zp8FVKzp1U/w1044-h366-no/PANO_20130530_182100.jpg"
-        fullsize="4096,2048"
-        croppedsize="4096,1380"
-        offset="2300,200"
-        displaysize="960,600"/>
-  </div>
-  <h3>Tilliggende kontorrom</h3>
-  <div class="panorama">
-    <g:panoembed imageurl="https://lh4.googleusercontent.com/-Y7SRQCQb29M/UaePhm1UP8I/AAAAAAAAFiE/0brmKKQ6k3M/w1043-h379-no/PANO_20130530_175741.jpg"
-        fullsize="4096,2048"
-        croppedsize="4096,1380"
-        offset="500,230"
-        displaysize="960,600"/>
   </div>
 </div>
 </body>
