@@ -6,7 +6,7 @@
 <link href='https://bitraf.no/style/main.css' rel='stylesheet' type='text/css'>
 <style>
     table { border-spacing: 10px; margin-left: -10px; margin-top: -10px; width:100%; }
-    td.text {padding: 3px; }
+    td {padding: 4px; }
     tr:nth-child(odd){background:#f8f8f8; }
     td img {display: block; width: 475px; }
     <!--.panorama { padding-top: 1em; } -->
