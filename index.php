@@ -280,4 +280,5 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
   <h2>Sponsorer</h2>
   <p>
   <a href="http://renholdsdrift.no"><img src="images/renhold.png" alt="Renholds Service Drift"></a>
+  <a href="http://profsys.no"><img src="images/profsys_logo.png" alt="Profsys AS"></a>
   </div>
