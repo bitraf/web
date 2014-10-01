@@ -81,9 +81,9 @@
       		<td scope="col">&nbsp;</td>
       		</tr>
 	<tr>
-                <td scope="col">Kyrre Hervik Larsen</td>
-                <td scope="col">4062 0439</td>
-                <td scope="col"><a href="http://www.kyrrelarsen.no/">Web</a></td>
+                <td scope="col">Aman Mender</td>
+                <td scope="col">4860 6716</td>
+                <td scope="col"><a href="http://www.tegningtil3d.no/">Web</a></td>
                 </tr>
       	<tr>
       		<td scope="col">Bjørnar Lie, Elsys</td>
