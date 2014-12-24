@@ -114,7 +114,7 @@
 function addEventsFrom($meetup, $count)
 {
   return; // NOTE(mortehu): Don't add blocking calls to external services to our main page code.
-  $meetup_url = "https://api.meetup.com/2/events?key=6328314761a711406f287670733343&sign=true&group_urlname=".$meetup."&page=20&fields=featured";
+  $meetup_url = "https://api.meetup.com/2/events?key=".$_ENV["MEETUP_API_KEY"]."&sign=true&group_urlname=".$meetup."&page=20&fields=featured";
   $meetup_json = file_get_contents($meetup_url, 0, null, null);
   $output = json_decode($meetup_json);
 
