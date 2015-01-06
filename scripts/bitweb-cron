@@ -1,0 +1,5 @@
+# bitweb-cron: crontab fragment for bitweb
+#
+# To install, run sudo crontab -u bitweb bitweb-cron
+
+0,15,30,45 * * * * /home/bitweb/web/scripts/meetup-fetch.sh bitraf

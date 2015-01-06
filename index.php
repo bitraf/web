@@ -1,4 +1,8 @@
-<? header('Content-Type: text/html; charset=UTF-8'); ?>
+<?
+header('Content-Type: text/html; charset=UTF-8');
+date_default_timezone_set('CET');
+setlocale(LC_TIME, "nb_NO.utf8");
+?>
 <!DOCTYPE html>
 <meta charset=utf-8>
 <title>Bitraf, Oslo</title>
@@ -107,48 +111,51 @@
   </div>
 -->
   <h2>Arrangementer</h2>
-<!--
+
   <table class='grid-table'>
 <?php
 
-function addEventsFrom($meetup, $count)
+function addEventsFrom($path, $count)
 {
-  return; // NOTE(mortehu): Don't add blocking calls to external services to our main page code.
-  $meetup_url = "https://api.meetup.com/2/events?key=6328314761a711406f287670733343&sign=true&group_urlname=".$meetup."&page=20&fields=featured";
-  $meetup_json = file_get_contents($meetup_url, 0, null, null);
-  $output = json_decode($meetup_json);
+  $meetup_json = @file_get_contents($path);
+  if (!$meetup_json) return;
+  $output = @json_decode($meetup_json);
+  if (!$output) return;
 
   $max = $count;
   $i = 0;
 
-  date_default_timezone_set('GMT');
-  setlocale(LC_TIME, "nb_NO.utf8");
-  foreach ($output->results as $result)
+  $now_ms = time() * 1000;
+
+  foreach ($output->results as $event)
   {
-    if (($result->visibility == "public" && $i++ < $max) || $result->featured == true)
-    {
-      $event_date = ucwords(strftime("%A %d. %B, %H:%M", ($result->time + $result->utc_offset)/1000));
-      $event_description = preg_replace("/<img[^>]+\>/i", '', $result->description);
-      $event_description = substr($event_description,0,strpos($event_description, "</p>")+4);
+    if ($event->visibility != "public" && !$event->featured) continue;
 
-      echo "<tr><th>";
+    // Since we fetch the meetup list asynchronously, it can get out of date.
+    if ($event->time + 7200000 < $now_ms) continue;
 
-      if ($result->featured == true)
-	echo "<p style='text-align: center; color: #ff6000'>Featured</p>";
-      echo "<p>{$event_date}";
+    $event_date = ucwords(strftime("%A %e. %B, %H:%M", $event->time / 1000));
+    $event_description = preg_replace("/<img[^>]+\>/i", '', $event->description);
+    $event_description = substr($event_description,0,strpos($event_description, "</p>")+4);
 
-      echo "<td style='width: 700px;'>";
-      echo "<p><a href='{$result->event_url}'>{$result->name}</a>";
-      echo $event_description;
-    }
+    echo "<tr><th>";
+
+    if ($event->featured == true)
+      echo "<p style='text-align: center; color: #ff6000'>Featured</p>";
+    echo "<p>{$event_date}";
+
+    echo "<td style='width: 700px;'>";
+    echo "<p><a href='{$event->event_url}'>{$event->name}</a>";
+    echo $event_description;
+
+    if (++$i == $max)
+      break;
   }
 }
 
-addEventsFrom("bitraf", 5);
-addEventsFrom("Robot-klubben", 5);
+addEventsFrom("/var/lib/bitweb/meetup.bitraf", 5);
 ?>
  </table>
--->
 
   <p>Du finner arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>. 
 Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefaler folk å mruke tjenesten til å holde seg oppdatert.</p>
