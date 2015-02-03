@@ -86,9 +86,9 @@
       		<td scope="col">&nbsp;</td>
       		</tr>
 	<tr>
-                <td scope="col">Aman Mender</td>
-                <td scope="col">4860 6716</td>
-                <td scope="col"><a href="http://www.tegningtil3d.no/">Web</a></td>
+                <td scope="col">Victoria Jordal</td>
+                <td scope="col">&nbsp;</td>
+                <td scope="col"><a href="http://instagram.com/vickysfx">Web</a></td>
                 </tr>
 	<tr>
                 <td scope="col">Christian Karlsen, SIC as</td>
@@ -100,6 +100,16 @@
       		<td scope="col">9582 6274</td>
       		<td scope="col">&nbsp;</td>
       		</tr>
+	<tr>
+                <td scope="col">Aman Mender</td>
+                <td scope="col">4860 6716</td>
+                <td scope="col"><a href="http://www.tegningtil3d.no/">Web</a></td>
+                </tr>
+	<tr>
+                <td scope="col">Kaja Thorsen</td>
+                <td scope="col">&nbsp;</td>
+                <td scope="col"><a href="https://www.facebook.com/kajathorsenfx">Web</a></td>
+                </tr>
       	<tr>
       		<td scope="col">Erik Wester</td>
       		<td scope="col">9772 4216</td>
