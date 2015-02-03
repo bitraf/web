@@ -50,26 +50,31 @@
       		<td scope="col">9936 0205</td>
       		<td scope="col"><a href="http://tormodberge.tumblr.com">Web</a></td>
       		</tr>
-      	<tr>
-      		<td scope="col">Jens Chr Brynildsen (Jensa), Intopublish</td>
+	<tr>
+      		<td scope="col">Jens Chr Brynildsen (Jensa), Intopublish as</td>
       		<td scope="col">9069 1786</td>
       		<td scope="col"><a href="http://flashgamer.com">Web</a>, <a href="http://twitter.com/jenschr">Twitter</a></td>
       		</tr>
+	<tr>
+                <td scope="col">Ib Christiansen, SIC as</td>
+                <td scope="col">9172 3263</td>
+                <td scope="col">&nbsp;</td>
+                </tr>
       	<tr>
       		<td scope="col">Jens Dyvik, Dyvik Design</td>
       		<td scope="col">9766 9704</td>
       		<td scope="col"><a href="http://www.dyvikdesign.com">Web</a></td>
       		</tr>
       	<tr>
-      		<td scope="col">Lars Jansøn Engvik, Mienko</td>
-      		<td scope="col">4120 3295</td>
-      		<td scope="col"><a href="http://twitter.com/mienkono">Twitter</a>, <a href="http://mienko.no">Web</a></td>
-      		</tr>
-      	<tr>
       		<td scope="col">Henrik Falla</td>
       		<td scope="col">9752 5995</td>
       		<td scope="col"><a href="http://henrikfalla.com">Web</a></td>
       		</tr>
+	<tr>
+                <td scope="col">Anna-Marie Fox</td>
+                <td scope="col"></td>
+                <td scope="col"><a href="http://designerfox.no">Web</a></td>
+                </tr>
       	<tr>
       		<td scope="col">Kristoffer Follestad, Cantus Studio</td>
       		<td scope="col">9715 6620</td>
@@ -85,24 +90,14 @@
                 <td scope="col">4860 6716</td>
                 <td scope="col"><a href="http://www.tegningtil3d.no/">Web</a></td>
                 </tr>
+	<tr>
+                <td scope="col">Christian Karlsen, SIC as</td>
+                <td scope="col">4566 2454</td>
+                <td scope="col">&nbsp;</td>
+                </tr>
       	<tr>
       		<td scope="col">Bjørnar Lie, Elsys</td>
       		<td scope="col">9582 6274</td>
-      		<td scope="col">&nbsp;</td>
-      		</tr>
-      	<tr>
-      		<td scope="col">Wajid Malik</td>
-      		<td scope="col">9887 3083</td>
-      		<td scope="col">&nbsp;</td>
-      		</tr>
-      	<tr>
-      		<td scope="col">Just Thomas Misund, Mienko</td>
-      		<td scope="col">4668 1747</td>
-      		<td scope="col"><a href="http://twitter.com/mienkono">Twitter</a>, <a href="http://mienko.no">Web</a></td>
-      		</tr>
-      	<tr>
-      		<td scope="col">Helene Roberts</td>
-      		<td scope="col">4826 2300</td>
       		<td scope="col">&nbsp;</td>
       		</tr>
       	<tr>
