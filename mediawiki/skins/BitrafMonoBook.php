@@ -115,7 +115,7 @@ class BitrafMonoBookTemplate extends QuickTemplate {
     <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
     <div class='header-links'>
       <a href='/wiki/'>Wiki</a> | <a href='/prosjekter'>Prosjekter</a> | <a href='/kontorplass/'>Kontorplass</a> | <a href='/galleri'>Galleri</a> | <a href='/foreningen'>Foreningen</a> |
-      <a href='/bedriftspartner'>Bedriftsmedlemskap</a>
+      <a href='/bedriftspartner'>Sponsorer</a>
     </div>
     <div class="button twitter-button"><a href="https://twitter.com/Bitraffineriet" ><img src='/images/twitter-bird-white-on-blue.png' alt='Twitter'></a></div>
     <div class="button facebook-button"><a href='https://www.facebook.com/groups/359953377375502/'><img src='/images/f_logo.png' alt='Facebook'></a></div>
