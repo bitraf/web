@@ -286,7 +286,7 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
 
   <h2>Endre medlemskap</h2>
 
-  <p>På<a href='https://p2k12.bitraf.no/getmylink.php'>min side</a> kan du endre medlemskapet ditt og sette opp kredittkortbetaling</p>
+  <p>P&aring;  <a href='https://p2k12.bitraf.no/getmylink.php'>min side</a> kan du endre medlemskapet ditt og sette opp kredittkortbetaling.</p>
   
 
   <h2>Sponsorer</h2>
