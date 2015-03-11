@@ -19,12 +19,13 @@ if [ -z "$MEETUP_KEY" ]; then
   exit 1
 fi
 
-curl -s "https://api.meetup.com/2/events?key=$MEETUP_KEY&sign=true&group_urlname=$GROUP&page=20&fields=featured" > "$TMPFILE" || exit 1
+curl --retry 3 -s "https://api.meetup.com/2/events?key=$MEETUP_KEY&sign=true&group_urlname=$GROUP&page=20&fields=featured" > "$TMPFILE" || exit 1
 
 LINES=$(json_xs < "$TMPFILE" | wc -l)
 
 if [ $LINES -lt 50 ]; then
   echo >&2 "Response from api.meetup.com was less than 50 lines after formatting"
+  cat "$TMPFILE"
   exit 1
 fi
 
