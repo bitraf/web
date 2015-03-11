@@ -45,7 +45,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
   <header>
     <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
     <div class='header-links'>
-      <a href='/join/'>Bli medlem'</a> | 
+      <a href='/join/'>Bli medlem</a> | 
       <a href='/wiki/'>Wiki</a> | <a href='/prosjekter'>Prosjekter</a> | <a href='/kontorplass/'>Kontorplass</a> | <a href='/galleri'>Galleri</a> | <a href='/foreningen'>Foreningen</a> |
       <a href='/sponsorer'>Sponsorer</a>
     </div>
