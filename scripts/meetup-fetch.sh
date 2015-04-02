@@ -21,6 +21,9 @@ fi
 
 curl --retry 3 -s "https://api.meetup.com/2/events?key=$MEETUP_KEY&sign=true&group_urlname=$GROUP&page=20&fields=featured" > "$TMPFILE" || exit 1
 
+# Ignore CloudFlare error reports.
+grep -q -F '<html>' "$TMPFILE" && exit 0
+
 LINES=$(json_xs < "$TMPFILE" | wc -l)
 
 if [ $LINES -lt 50 ]; then
