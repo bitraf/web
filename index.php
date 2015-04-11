@@ -1,5 +1,6 @@
 <?
 header('Content-Type: text/html; charset=UTF-8');
+header('Strict-Transport-Security: max-age=604800');
 date_default_timezone_set('CET');
 setlocale(LC_TIME, "nb_NO.utf8");
 ?>
