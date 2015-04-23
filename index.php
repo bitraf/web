@@ -55,12 +55,6 @@ setlocale(LC_TIME, "nb_NO.utf8");
     <div class="button meetup-button"><a href='http://meetup.com/bitraf/'><img src='/images/meetup-28px.png' alt='Meetup'></a></div>
   </header>
 
-  <div style='background: #eee; padding: 10px; margin: 20px 0 20px; font-weight: bold'>
-    <p><em>Fra generalforsamling 2014:</em> <a
-    href='dokument/bitraf-regnskap-2013.pdf'>Regnskap</a>, <a
-    href='dokument/Bitraf_generalforsamling_2014_signert.pdf'>Referat</a> og <a
-    href='dokument/bitraf-aarsmelding-2013.htm'>Årsmelding</a>.</div>
-
   <div style='clear:both'></div>
 
   <div>
