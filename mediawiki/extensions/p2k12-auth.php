@@ -54,7 +54,7 @@ class p2k12Auth extends AuthPlugin
     $pwent = $this->data[$username];
     $provided_hash = crypt($password, $pwent[1]);
 
-    return ($provided_hash == $pwent[1]);
+    return ($provided_hash === $pwent[1]);
   }
 
   function autoCreate() {
