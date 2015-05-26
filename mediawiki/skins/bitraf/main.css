@@ -505,4 +505,27 @@ table.collapsed tr.collapsable {
     a {
         padding: 0 0.5em;
     }
+
+    header img:first-child {
+        padding-bottom: 20px;
+    }
+
+    #content {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    #column-content {
+        margin: 0;
+        float: none;
+    }
+
+    .header-links {
+        color: #FFF !important;
+    }
+
+    .header-links a {
+        color:  #fc6600;
+    }
 }
