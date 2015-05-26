@@ -5,43 +5,45 @@ date_default_timezone_set('CET');
 setlocale(LC_TIME, "nb_NO.utf8");
 ?>
 <!DOCTYPE html>
-<meta charset=utf-8>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bitraf, Oslo</title>
-<script src="//maps.google.com/maps/api/js?sensor=false"></script>
-<script type="text/javascript" src="//apis.google.com/js/plusone.js"></script>
-<link href='/style/main.css' rel='stylesheet' type='text/css'>
-<style>
-
-#annotation_event { font-weight: normal }
-.checkins {
-  float: right;
-  width:340px;
-  font-size: 0.8em;
-  color: #666;
-  text-align: right;
-}
-#pan-container {
-  position: relative;
-  width: 960px;
-  height: 400px;
-  margin-top: 1em;
-}
-.pan-box {
-  text-align: center;
-  color: #444;
-}
-#pan-drivhus {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-#pan-labb {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-</style>
+<head>
+  <meta charset=utf-8>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bitraf, Oslo</title>
+  <script src="//maps.google.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript" src="//apis.google.com/js/plusone.js"></script>
+  <link href='/style/main.css' rel='stylesheet' type='text/css'>
+  <style>
+  
+  #annotation_event { font-weight: normal }
+  .checkins {
+    float: right;
+    width:340px;
+    font-size: 0.8em;
+    color: #666;
+    text-align: right;
+  }
+  #pan-container {
+    position: relative;
+    width: 960px;
+    height: 400px;
+    margin-top: 1em;
+  }
+  .pan-box {
+    text-align: center;
+    color: #444;
+  }
+  #pan-drivhus {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  #pan-labb {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  </style>
+</head>
 <body onload="initialize()" onunload="GUnload()">
 <div id='globalWrapper'>
   <header>
