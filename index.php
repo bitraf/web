@@ -6,6 +6,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
 ?>
 <!DOCTYPE html>
 <meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bitraf, Oslo</title>
 <script src="//maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="//apis.google.com/js/plusone.js"></script>
