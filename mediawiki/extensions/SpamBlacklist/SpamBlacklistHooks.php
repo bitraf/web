@@ -5,40 +5,78 @@
  */
 class SpamBlacklistHooks {
 
-	/**
-	 * Hook function for EditFilterMerged
-	 *
-	 * @param $editPage EditPage
-	 * @param $text string
-	 * @param $hookErr string
-	 * @param $editSummary string
-	 * @return bool
-	 */
-	static function filterMerged( $editPage, $text, &$hookErr, $editSummary ) {
-		global $wgTitle;
-		if( is_null( $wgTitle ) ) {
-			# API mode
-			# wfSpamBlacklistFilterAPIEditBeforeSave already checked the blacklist
-			return true;
-		}
+    /**
+     * T99257: Extension registration does not properly support 2d arrays so set it as a global for now
+     */
+	public static function registerExtension() {
+		global $wgSpamBlacklistFiles, $wgBlacklistSettings, $wgSpamBlacklistSettings;
 
-		$spamObj = BaseBlacklist::getInstance( 'spam' );
-		$title = $editPage->mArticle->getTitle();
-		$ret = $spamObj->filter( $title, $text, '', $editSummary, $editPage );
-		if ( $ret !== false ) {
-			// spamPageWithContent() method was added in MW 1.17
-			if ( method_exists( $editPage, 'spamPageWithContent' ) ) {
-				$editPage->spamPageWithContent( $ret );
-			} else {
-				$editPage->spamPage( $ret );
-			}
-		}
-		// Return convention for hooks is the inverse of $wgFilterCallback
-		return ( $ret === false );
+		$wgBlacklistSettings = array(
+			'spam' => array(
+				'files' => array( "https://meta.wikimedia.org/w/index.php?title=Spam_blacklist&action=raw&sb_ver=1" )
+			)
+		);
+
+		/**
+		 * @deprecated
+		 */
+		$wgSpamBlacklistFiles =& $wgBlacklistSettings['spam']['files'];
+
+		/**
+		 * @deprecated
+		 */
+		$wgSpamBlacklistSettings =& $wgBlacklistSettings['spam'];
 	}
 
 	/**
-	 * Hook function for APIEditBeforeSave
+	 * Hook function for EditFilterMergedContent
+	 *
+	 * @param IContextSource $context
+	 * @param Content        $content
+	 * @param Status         $status
+	 * @param string         $summary
+	 * @param User           $user
+	 * @param bool           $minoredit
+	 *
+	 * @return bool
+	 */
+	static function filterMergedContent( IContextSource $context, Content $content, Status $status, $summary, User $user, $minoredit ) {
+		$title = $context->getTitle();
+
+		if ( isset( $title->spamBlackListFiltered ) && $title->spamBlackListFiltered ) {
+			// already filtered
+			return true;
+		}
+
+		// get the link from the not-yet-saved page content.
+		$editInfo = $context->getWikiPage()->prepareContentForEdit( $content );
+		$pout = $editInfo->output;
+		$links = array_keys( $pout->getExternalLinks() );
+
+		// HACK: treat the edit summary as a link
+		if ( $summary !== '' ) {
+			$links[] = $summary;
+		}
+
+		$spamObj = BaseBlacklist::getInstance( 'spam' );
+		$matches = $spamObj->filter( $links, $title );
+
+		if ( $matches !== false ) {
+			$status->fatal( 'spamprotectiontext' );
+
+			foreach ( $matches as $match ) {
+				$status->fatal( 'spamprotectionmatch', $match );
+			}
+		}
+
+		// Always return true, EditPage will look at $status->isOk().
+		return true;
+	}
+
+	/**
+	 * Hook function for APIEditBeforeSave.
+	 * This allows blacklist matches to be reported directly in the result structure
+	 * of the API call.
 	 *
 	 * @param $editPage EditPage
 	 * @param $text string
@@ -46,14 +84,37 @@ class SpamBlacklistHooks {
 	 * @return bool
 	 */
 	static function filterAPIEditBeforeSave( $editPage, $text, &$resultArr ) {
-		$spamObj = BaseBlacklist::getInstance( 'spam' );
 		$title = $editPage->mArticle->getTitle();
-		$ret = $spamObj->filter( $title, $text, '', '', $editPage );
-		if ( $ret!==false ) {
-			$resultArr['spamblacklist'] = $ret;
+
+		// get the links from the not-yet-saved page content.
+		$content = ContentHandler::makeContent(
+			$text,
+			$editPage->getTitle(),
+			$editPage->contentModel,
+			$editPage->contentFormat
+		);
+		$editInfo = $editPage->mArticle->prepareContentForEdit( $content, null, null, $editPage->contentFormat );
+		$pout = $editInfo->output;
+		$links = array_keys( $pout->getExternalLinks() );
+
+		// HACK: treat the edit summary as a link
+		$summary = $editPage->summary;
+		if ( $summary !== '' ) {
+			$links[] = $summary;
 		}
-		// Return convention for hooks is the inverse of $wgFilterCallback
-		return ( $ret === false );
+
+		$spamObj = BaseBlacklist::getInstance( 'spam' );
+		$matches = $spamObj->filter( $links, $title );
+
+		if ( $matches !== false ) {
+			$resultArr['spamblacklist'] = implode( '|', $matches );
+		}
+
+		// mark the title, so filterMergedContent can skip it.
+		$title->spamBlackListFiltered = true;
+
+		// return convention for hooks is the inverse of $wgFilterCallback
+		return ( $matches === false );
 	}
 
 	/**
@@ -76,7 +137,7 @@ class SpamBlacklistHooks {
 	}
 
 	/**
-	 * Processes new accounts for valid e-mail addresses
+	 * Processes new accounts for valid email addresses
 	 *
 	 * @param $user User
 	 * @param $abortError
@@ -124,13 +185,13 @@ class SpamBlacklistHooks {
 			wfDebugLog( 'SpamBlacklist', "Spam blacklist validator: [[$thisPageName]] given invalid input lines: " .
 				implode( ', ', $badLines ) . "\n" );
 
-			$badList = "*<tt>" .
-				implode( "</tt>\n*<tt>",
+			$badList = "*<code>" .
+				implode( "</code>\n*<code>",
 					array_map( 'wfEscapeWikiText', $badLines ) ) .
-				"</tt>\n";
+				"</code>\n";
 			$hookError =
 				"<div class='errorbox'>" .
-					wfMsgExt( 'spam-invalid-lines', array( 'parsemag' ), count( $badLines ) ) . "<br />" .
+					wfMessage( 'spam-invalid-lines' )->numParams( $badLines )->text() . "<br />" .
 					$badList .
 					"</div>\n" .
 					"<br clear='all' />\n";
@@ -142,20 +203,37 @@ class SpamBlacklistHooks {
 	}
 
 	/**
-	 * Hook function for ArticleSaveComplete
+	 * Hook function for PageContentSaveComplete
 	 * Clear local spam blacklist caches on page save.
 	 *
-	 * @param $article Article
-	 * @param $user User
-	 * @param $text string
-	 * @param $summary string
-	 * @param $isminor
-	 * @param $iswatch
-	 * @param $section
+	 * @param Page $wikiPage
+	 * @param User     $user
+	 * @param Content  $content
+	 * @param string   $summary
+	 * @param bool     $isMinor
+	 * @param bool     $isWatch
+	 * @param string   $section
+	 * @param int      $flags
+	 * @param int      $revision
+	 * @param Status   $status
+	 * @param int      $baseRevId
+	 *
 	 * @return bool
 	 */
-	static function articleSave( &$article, &$user, $text, $summary, $isminor, $iswatch, $section ) {
-		if( !BaseBlacklist::isLocalSource( $article->getTitle() ) ) {
+	static function pageSaveContent(
+		Page $wikiPage,
+		User $user,
+		Content $content,
+		$summary,
+		$isMinor,
+		$isWatch,
+		$section,
+		$flags,
+		$revision,
+		Status $status,
+		$baseRevId
+	) {
+		if( !BaseBlacklist::isLocalSource( $wikiPage->getTitle() ) ) {
 			return true;
 		}
 		global $wgMemc, $wgDBname;

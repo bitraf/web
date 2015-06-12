@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño",
+			"Xosé"
+		]
+	},
+	"skinname-bitraf": "Bitraf",
+	"bitraf-desc": "A aparencia clásica de MediaWiki desde 2004; recibe o seu nome pola foto en branco e negro dun libro que aparece no fondo das páxinas",
+	"bitraf.css": "/* O CSS que se coloque aquí afectará a quen use a aparencia Bitraf */",
+	"bitraf.js": "/* Calquera JavaScript que haxa aquí será cargado para os usuarios que usen a aparencia Bitraf */"
+}

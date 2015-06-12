@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Teak"
+		]
+	},
+	"skinname-bitraf": "ՄիաԳիրք",
+	"bitraf.css": "/* Այստեղ տեղադրված CSS կոդը կկիրառվի Bitraf տեսքի վրա*/",
+	"bitraf.js": "/* Հնացած է. օգտագործեք [[MediaWiki:common.js]] */"
+}

@@ -1,11 +1,11 @@
 <?php
 
-/*
- * Created on Sep 2, 2008
- *
+/**
  * API for MediaWiki 1.14+
  *
- * Copyright (C) 2008 Chad Horohoe
+ * Created on Sep 2, 2008
+ *
+ * Copyright © 2008 Chad Horohoe
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,97 +19,143 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
-
-if (!defined('MEDIAWIKI')) {
-	require_once ('ApiBase.php');
-}
 
 /**
  * API interface for page purging
  * @ingroup API
  */
 class ApiPurge extends ApiBase {
-
-	public function __construct($main, $action) {
-		parent :: __construct($main, $action);
-	}
+	private $mPageSet;
 
 	/**
 	 * Purges the cache of a page
 	 */
 	public function execute() {
-		global $wgUser;
 		$params = $this->extractRequestParams();
-		if(!$wgUser->isAllowed('purge'))
-			$this->dieUsageMsg(array('cantpurge'));
-		if(!isset($params['titles']))
-			$this->dieUsageMsg(array('missingparam', 'titles'));
-		$result = array();
-		foreach($params['titles'] as $t) {
+
+		$continuationManager = new ApiContinuationManager( $this, array(), array() );
+		$this->setContinuationManager( $continuationManager );
+
+		$forceLinkUpdate = $params['forcelinkupdate'];
+		$forceRecursiveLinkUpdate = $params['forcerecursivelinkupdate'];
+		$pageSet = $this->getPageSet();
+		$pageSet->execute();
+
+		$result = $pageSet->getInvalidTitlesAndRevisions();
+
+		foreach ( $pageSet->getGoodTitles() as $title ) {
 			$r = array();
-			$title = Title::newFromText($t);
-			if(!$title instanceof Title)
-			{
-				$r['title'] = $t;
-				$r['invalid'] = '';
-				$result[] = $r;
-				continue;
+			ApiQueryBase::addTitleInfo( $r, $title );
+			$page = WikiPage::factory( $title );
+			$page->doPurge(); // Directly purge and skip the UI part of purge().
+			$r['purged'] = true;
+
+			if ( $forceLinkUpdate || $forceRecursiveLinkUpdate ) {
+				if ( !$this->getUser()->pingLimiter( 'linkpurge' ) ) {
+					$popts = $page->makeParserOptions( 'canonical' );
+
+					# Parse content; note that HTML generation is only needed if we want to cache the result.
+					$content = $page->getContent( Revision::RAW );
+					$enableParserCache = $this->getConfig()->get( 'EnableParserCache' );
+					$p_result = $content->getParserOutput(
+						$title,
+						$page->getLatest(),
+						$popts,
+						$enableParserCache
+					);
+
+					# Update the links tables
+					$updates = $content->getSecondaryDataUpdates(
+						$title, null, $forceRecursiveLinkUpdate, $p_result );
+					DataUpdate::runUpdates( $updates );
+
+					$r['linkupdate'] = true;
+
+					if ( $enableParserCache ) {
+						$pcache = ParserCache::singleton();
+						$pcache->save( $p_result, $page, $popts );
+					}
+				} else {
+					$error = $this->parseMsg( array( 'actionthrottledtext' ) );
+					$this->setWarning( $error['info'] );
+					$forceLinkUpdate = false;
+				}
 			}
-			ApiQueryBase::addTitleInfo($r, $title);
-			if(!$title->exists())
-			{
-				$r['missing'] = '';
-				$result[] = $r;
-				continue;
-			}
-			$article = new Article($title);
-			$article->doPurge(); // Directly purge and skip the UI part of purge().
-			$r['purged'] = '';
+
 			$result[] = $r;
 		}
-		$this->getResult()->setIndexedTagName($result, 'page');
-		$this->getResult()->addValue(null, $this->getModuleName(), $result);
+		$apiResult = $this->getResult();
+		ApiResult::setIndexedTagName( $result, 'page' );
+		$apiResult->addValue( null, $this->getModuleName(), $result );
+
+		$values = $pageSet->getNormalizedTitlesAsResult( $apiResult );
+		if ( $values ) {
+			$apiResult->addValue( null, 'normalized', $values );
+		}
+		$values = $pageSet->getConvertedTitlesAsResult( $apiResult );
+		if ( $values ) {
+			$apiResult->addValue( null, 'converted', $values );
+		}
+		$values = $pageSet->getRedirectTitlesAsResult( $apiResult );
+		if ( $values ) {
+			$apiResult->addValue( null, 'redirects', $values );
+		}
+
+		$this->setContinuationManager( null );
+		$continuationManager->setContinuationIntoResult( $apiResult );
 	}
 
-	public function mustBePosted() {
-		global $wgUser;
-		return $wgUser->isAnon();
+	/**
+	 * Get a cached instance of an ApiPageSet object
+	 * @return ApiPageSet
+	 */
+	private function getPageSet() {
+		if ( !isset( $this->mPageSet ) ) {
+			$this->mPageSet = new ApiPageSet( $this );
+		}
+
+		return $this->mPageSet;
 	}
 
 	public function isWriteMode() {
 		return true;
 	}
 
-	public function getAllowedParams() {
-		return array (
-			'titles' => array(
-				ApiBase :: PARAM_ISMULTI => true
-			)
-		);
+	public function mustBePosted() {
+		// Anonymous users are not allowed a non-POST request
+		return !$this->getUser()->isAllowed( 'purge' );
 	}
 
-	public function getParamDescription() {
-		return array (
-			'titles' => 'A list of titles',
+	public function getAllowedParams( $flags = 0 ) {
+		$result = array(
+			'forcelinkupdate' => false,
+			'forcerecursivelinkupdate' => false,
+			'continue' => array(
+				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
+			),
 		);
+		if ( $flags ) {
+			$result += $this->getPageSet()->getFinalParams( $flags );
+		}
+
+		return $result;
 	}
 
-	public function getDescription() {
-		return array (
-			'Purge the cache for the given titles.'
-		);
-	}
-
-	protected function getExamples() {
+	protected function getExamplesMessages() {
 		return array(
-			'api.php?action=purge&titles=Main_Page|API'
+			'action=purge&titles=Main_Page|API'
+				=> 'apihelp-purge-example-simple',
+			'action=purge&generator=allpages&gapnamespace=0&gaplimit=10'
+				=> 'apihelp-purge-example-generator',
 		);
 	}
 
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiPurge.php 69579 2010-07-20 02:49:55Z tstarling $';
+	public function getHelpUrls() {
+		return 'https://www.mediawiki.org/wiki/API:Purge';
 	}
 }

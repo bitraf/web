@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"skinname-bitraf": "Bitraf",
+	"bitraf-desc": "The classic MediaWiki skin since 2004, named after the black-and-white photo of a book in the page background",
+	"bitraf.css": "/* CSS placed here will affect users of the Bitraf skin */",
+	"bitraf.js": "/* Any JavaScript here will be loaded for users using the Bitraf skin */"
+}

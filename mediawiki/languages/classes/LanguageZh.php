@@ -1,120 +1,107 @@
 <?php
+/**
+ * Chinese specific code.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup Language
+ */
 
-require_once( dirname(__FILE__).'/../LanguageConverter.php' );
-require_once( dirname(__FILE__).'/LanguageZh_hans.php' );
+require_once __DIR__ . '/../LanguageConverter.php';
+require_once __DIR__ . '/LanguageZh_hans.php';
 
 /**
  * @ingroup Language
  */
 class ZhConverter extends LanguageConverter {
-
-	function __construct($langobj, $maincode,
-								$variants=array(),
-								$variantfallbacks=array(),
-								$markup=array(),
+	/**
+	 * @param Language $langobj
+	 * @param string $maincode
+	 * @param array $variants
+	 * @param array $variantfallbacks
+	 * @param array $flags
+	 * @param array $manualLevel
+	 */
+	function __construct( $langobj, $maincode,
+								$variants = array(),
+								$variantfallbacks = array(),
 								$flags = array(),
 								$manualLevel = array() ) {
 		$this->mDescCodeSep = '：';
 		$this->mDescVarSep = '；';
-		parent::__construct($langobj, $maincode,
+		parent::__construct( $langobj, $maincode,
 									$variants,
 									$variantfallbacks,
-									$markup,
 									$flags,
-									$manualLevel);
+									$manualLevel );
 		$names = array(
-			'zh'      => '原文',
+			'zh' => '原文',
 			'zh-hans' => '简体',
 			'zh-hant' => '繁體',
-			'zh-cn'   => '大陆',
-			'zh-tw'   => '台灣',
-			'zh-hk'   => '香港',
-			'zh-mo'   => '澳門',
-			'zh-sg'   => '新加坡',
-			'zh-my'   => '大马',
+			'zh-cn' => '大陆',
+			'zh-tw' => '台灣',
+			'zh-hk' => '香港',
+			'zh-mo' => '澳門',
+			'zh-sg' => '新加坡',
+			'zh-my' => '大马',
 		);
-		$this->mVariantNames = array_merge($this->mVariantNames,$names);
-		$this->loadNamespaceTables();
-	}
-	
-	function loadNamespaceTables() {
-		global $wgMetaNamespace;
-		$nsproject     = $wgMetaNamespace;
-		$projecttable  = array(
-			'Wikipedia'       => '维基百科',
-			'Wikisource'      => '维基文库',
-			'Wikinews'        => '维基新闻',
-			'Wiktionary'      => '维基词典',
-			'Wikibooks'       => '维基教科书',
-			'Wikiquote'       => '维基语录',
-		);
-		$this->mNamespaceTables['zh-hans'] = array(
-			'Media'          => '媒体',
-			'Special'        => '特殊',
-			'Talk'           => '讨论',
-			'User'           => '用户',
-			'User talk'      => '用户讨论',
-			$nsproject
-					=> isset($projecttable[$nsproject]) ? 
-						$projecttable[$nsproject] : $nsproject,
-			$nsproject . ' talk'
-					=> isset($projecttable[$nsproject]) ?
-						$projecttable[$nsproject] . '讨论' : $nsproject . '讨论',
-			'File'           => '文件',
-			'File talk'      => '文件讨论',
-			'MediaWiki'      => 'MediaWiki',
-			'MediaWiki talk' => 'MediaWiki讨论',
-			'Template'       => '模板',
-			'Template talk'  => '模板讨论',
-			'Help'           => '帮助',
-			'Help talk'      => '帮助讨论',
-			'Category'       => '分类',
-			'Category talk'  => '分类讨论',
-		);
-		$this->mNamespaceTables['zh-hant'] = array_merge($this->mNamespaceTables['zh-hans']);
-		$this->mNamespaceTables['zh-hant']['File'] = '檔案';
-		$this->mNamespaceTables['zh-hant']['File talk'] = '檔案討論';
-		$this->mNamespaceTables['zh'] = array_merge($this->mNamespaceTables['zh-hans']);
-		$this->mNamespaceTables['zh-cn'] = array_merge($this->mNamespaceTables['zh-hans']);
-		$this->mNamespaceTables['zh-hk'] = array_merge($this->mNamespaceTables['zh-hant']);
-		$this->mNamespaceTables['zh-mo'] = array_merge($this->mNamespaceTables['zh-hant']);
-		$this->mNamespaceTables['zh-my'] = array_merge($this->mNamespaceTables['zh-hans']);
-		$this->mNamespaceTables['zh-sg'] = array_merge($this->mNamespaceTables['zh-hans']);
-		$this->mNamespaceTables['zh-tw'] = array_merge($this->mNamespaceTables['zh-hant']);
+		$this->mVariantNames = array_merge( $this->mVariantNames, $names );
 	}
 
 	function loadDefaultTables() {
-		require( dirname(__FILE__)."/../../includes/ZhConversion.php" );
+		require __DIR__ . "/../../includes/ZhConversion.php";
 		$this->mTables = array(
 			'zh-hans' => new ReplacementArray( $zh2Hans ),
 			'zh-hant' => new ReplacementArray( $zh2Hant ),
-			'zh-cn'   => new ReplacementArray( array_merge($zh2Hans, $zh2CN) ),
-			'zh-hk'   => new ReplacementArray( array_merge($zh2Hant, $zh2HK) ),
-			'zh-mo'   => new ReplacementArray( array_merge($zh2Hant, $zh2HK) ),
-			'zh-my'   => new ReplacementArray( array_merge($zh2Hans, $zh2SG) ),
-			'zh-sg'   => new ReplacementArray( array_merge($zh2Hans, $zh2SG) ),
-			'zh-tw'   => new ReplacementArray( array_merge($zh2Hant, $zh2TW) ),
-			'zh'      => new ReplacementArray
+			'zh-cn' => new ReplacementArray( $zh2CN ),
+			'zh-hk' => new ReplacementArray( $zh2HK ),
+			'zh-mo' => new ReplacementArray( $zh2HK ),
+			'zh-my' => new ReplacementArray( $zh2CN ),
+			'zh-sg' => new ReplacementArray( $zh2CN ),
+			'zh-tw' => new ReplacementArray( $zh2TW ),
+			'zh' => new ReplacementArray
 		);
 	}
 
 	function postLoadTables() {
-		$this->mTables['zh-cn']->merge( $this->mTables['zh-hans'] );
-		$this->mTables['zh-hk']->merge( $this->mTables['zh-hant'] );
-		$this->mTables['zh-mo']->merge( $this->mTables['zh-hant'] );
-		$this->mTables['zh-my']->merge( $this->mTables['zh-hans'] );
-		$this->mTables['zh-sg']->merge( $this->mTables['zh-hans'] );
-		$this->mTables['zh-tw']->merge( $this->mTables['zh-hant'] );
+		$this->mTables['zh-cn']->setArray(
+			$this->mTables['zh-cn']->getArray() + $this->mTables['zh-hans']->getArray()
+		);
+		$this->mTables['zh-hk']->setArray(
+			$this->mTables['zh-hk']->getArray() + $this->mTables['zh-hant']->getArray()
+		);
+		$this->mTables['zh-mo']->setArray(
+			$this->mTables['zh-mo']->getArray() + $this->mTables['zh-hant']->getArray()
+		);
+		$this->mTables['zh-my']->setArray(
+			$this->mTables['zh-my']->getArray() + $this->mTables['zh-hans']->getArray()
+		);
+		$this->mTables['zh-sg']->setArray(
+			$this->mTables['zh-sg']->getArray() + $this->mTables['zh-hans']->getArray()
+		);
+		$this->mTables['zh-tw']->setArray(
+			$this->mTables['zh-tw']->getArray() + $this->mTables['zh-hant']->getArray()
+		);
 	}
 
-	/* there shouldn't be any latin text in Chinese conversion, so no need
-	   to mark anything.
-	   $noParse is there for compatibility with LanguageConvert::markNoConversion
+	/**
+	 * @param string $key
+	 * @return string
 	 */
-	function markNoConversion($text, $noParse = false) {
-		return $text;
-	}
-
 	function convertCategoryKey( $key ) {
 		return $this->autoConvert( $key, 'zh' );
 	}
@@ -127,78 +114,95 @@ class ZhConverter extends LanguageConverter {
  * @ingroup Language
  */
 class LanguageZh extends LanguageZh_hans {
-
 	function __construct() {
 		global $wgHooks;
+
 		parent::__construct();
 
-		$variants = array('zh','zh-hans','zh-hant','zh-cn','zh-hk','zh-mo','zh-my','zh-sg','zh-tw');
-		$variantfallbacks = array(
-			'zh'      => array('zh-hans','zh-hant','zh-cn','zh-tw','zh-hk','zh-sg','zh-mo','zh-my'),
-			'zh-hans' => array('zh-cn','zh-sg','zh-my'),
-			'zh-hant' => array('zh-tw','zh-hk','zh-mo'),
-			'zh-cn'   => array('zh-hans','zh-sg','zh-my'),
-			'zh-sg'   => array('zh-hans','zh-cn','zh-my'),
-			'zh-my'   => array('zh-hans','zh-sg','zh-cn'),
-			'zh-tw'   => array('zh-hant','zh-hk','zh-mo'),
-			'zh-hk'   => array('zh-hant','zh-mo','zh-tw'),
-			'zh-mo'   => array('zh-hant','zh-hk','zh-tw'),
+		$variants = array(
+			'zh',
+			'zh-hans',
+			'zh-hant',
+			'zh-cn',
+			'zh-hk',
+			'zh-mo',
+			'zh-my',
+			'zh-sg',
+			'zh-tw'
 		);
-		$ml=array(
-			'zh'      => 'disable',
+
+		$variantfallbacks = array(
+			'zh' => array( 'zh-hans', 'zh-hant', 'zh-cn', 'zh-tw', 'zh-hk', 'zh-sg', 'zh-mo', 'zh-my' ),
+			'zh-hans' => array( 'zh-cn', 'zh-sg', 'zh-my' ),
+			'zh-hant' => array( 'zh-tw', 'zh-hk', 'zh-mo' ),
+			'zh-cn' => array( 'zh-hans', 'zh-sg', 'zh-my' ),
+			'zh-sg' => array( 'zh-hans', 'zh-cn', 'zh-my' ),
+			'zh-my' => array( 'zh-hans', 'zh-sg', 'zh-cn' ),
+			'zh-tw' => array( 'zh-hant', 'zh-hk', 'zh-mo' ),
+			'zh-hk' => array( 'zh-hant', 'zh-mo', 'zh-tw' ),
+			'zh-mo' => array( 'zh-hant', 'zh-hk', 'zh-tw' ),
+		);
+		$ml = array(
+			'zh' => 'disable',
 			'zh-hans' => 'unidirectional',
 			'zh-hant' => 'unidirectional',
 		);
 
 		$this->mConverter = new ZhConverter( $this, 'zh',
 								$variants, $variantfallbacks,
-								array(),array(),
-								$ml);
+								array(),
+								$ml );
 
-		$wgHooks['ArticleSaveComplete'][] = $this->mConverter;
+		$wgHooks['PageContentSaveComplete'][] = $this->mConverter;
 	}
 
-	# this should give much better diff info
+	/**
+	 * this should give much better diff info
+	 *
+	 * @param string $text
+	 * @return string
+	 */
 	function segmentForDiff( $text ) {
-		return preg_replace(
-			"/([\\xc0-\\xff][\\x80-\\xbf]*)/e",
-			"' ' .\"$1\"", $text);
+		return preg_replace( '/[\xc0-\xff][\x80-\xbf]*/', ' $0', $text );
 	}
 
+	/**
+	 * @param string $text
+	 * @return string
+	 */
 	function unsegmentForDiff( $text ) {
-		return preg_replace(
-			"/ ([\\xc0-\\xff][\\x80-\\xbf]*)/e",
-			"\"$1\"", $text);
+		return preg_replace( '/ ([\xc0-\xff][\x80-\xbf]*)/', '$1', $text );
 	}
 
-	// word segmentation
-	function stripForSearch( $string ) {
-		wfProfileIn( __METHOD__ );
+	/**
+	 * auto convert to zh-hans and normalize special characters.
+	 *
+	 * @param string $string
+	 * @param string $autoVariant Defaults to 'zh-hans'
+	 * @return string
+	 */
+	function normalizeForSearch( $string, $autoVariant = 'zh-hans' ) {
 
-		// eventually this should be a word segmentation
-		// for now just treat each character as a word
-		// @fixme only do this for Han characters...
-		$t = preg_replace(
-				"/([\\xc0-\\xff][\\x80-\\xbf]*)/",
-				" $1", $string);
-
-        //always convert to zh-hans before indexing. it should be
-		//better to use zh-hans for search, since conversion from
-		//Traditional to Simplified is less ambiguous than the
-		//other way around
-
-		$t = $this->mConverter->autoConvert($t, 'zh-hans');
-		$t = parent::stripForSearch( $t );
-		wfProfileOut( __METHOD__ );
-		return $t;
+		// always convert to zh-hans before indexing. it should be
+		// better to use zh-hans for search, since conversion from
+		// Traditional to Simplified is less ambiguous than the
+		// other way around
+		$s = $this->mConverter->autoConvert( $string, $autoVariant );
+		// LanguageZh_hans::normalizeForSearch
+		$s = parent::normalizeForSearch( $s );
+		return $s;
 
 	}
 
+	/**
+	 * @param array $termsArray
+	 * @return array
+	 */
 	function convertForSearchResult( $termsArray ) {
 		$terms = implode( '|', $termsArray );
+		$terms = self::convertDoubleWidth( $terms );
 		$terms = implode( '|', $this->mConverter->autoConvertToAllVariants( $terms ) );
-		$ret = array_unique( explode('|', $terms) );
+		$ret = array_unique( explode( '|', $terms ) );
 		return $ret;
 	}
 }
-

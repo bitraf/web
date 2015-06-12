@@ -1,10 +1,11 @@
 <?php
-/** Tatar (Tatarça/Татарча)
+/** Tatar (татарча/tatarça)
+ *
+ * To improve a translation please visit https://translatewiki.net
  *
  * @ingroup Language
  * @file
  *
- * @comment Placeholder for Tatar. Falls back to Tatar in Latin script.
  */
 
-$fallback = 'tt-latn';
+$fallback = 'tt-cyrl, ru';

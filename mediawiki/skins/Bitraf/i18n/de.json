@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Geitost",
+			"Metalhead64",
+			"Kghbln"
+		]
+	},
+	"skinname-bitraf": "Bitraf",
+	"bitraf-desc": "Stellt eine klassische Benutzeroberfläche bereit",
+	"bitraf.css": "/* Das folgende CSS wird für Benutzer der Benutzeroberfläche Bitraf geladen */",
+	"bitraf.js": "/* Das folgende JavaScript wird für Benutzer der Benutzeroberfläche Bitraf geladen. */"
+}

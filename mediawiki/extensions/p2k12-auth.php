@@ -1,5 +1,6 @@
 <?php
-require_once('AuthPlugin.php');
+
+require_once dirname( __FILE__ ) . '/../includes/AuthPlugin.php';
 
 class p2k12Auth extends AuthPlugin
 {

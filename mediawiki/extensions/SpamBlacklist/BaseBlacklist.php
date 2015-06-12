@@ -4,7 +4,6 @@
  * Base class for different kinds of blacklists
  */
 abstract class BaseBlacklist {
-
 	/**
 	 * Array of blacklist sources
 	 *
@@ -88,11 +87,11 @@ abstract class BaseBlacklist {
 	 *
 	 * @param $type string Code for the blacklist
 	 * @return BaseBlacklist
-	 * @throws MWException
+	 * @throws Exception
 	 */
 	public static function getInstance( $type ) {
 		if ( !isset( self::$blacklistTypes[$type] ) ) {
-			throw new MWException( "Invalid blacklist type '$type' passed to " . __METHOD__ );
+			throw new Exception( "Invalid blacklist type '$type' passed to " . __METHOD__ );
 		}
 
 		if ( !isset( self::$instances[$type] ) ) {
@@ -224,15 +223,12 @@ abstract class BaseBlacklist {
 	function getSharedBlacklists() {
 		global $wgMemc, $wgDBname;
 		$listType = $this->getBlacklistType();
-		$fname = 'SpamBlacklist::getRegex';
-		wfProfileIn( $fname );
 
 		wfDebugLog( 'SpamBlacklist', "Loading $listType regex..." );
 
 		if ( count( $this->files ) == 0 ){
 			# No lists
 			wfDebugLog( 'SpamBlacklist', "no files specified\n" );
-			wfProfileOut( $fname );
 			return array();
 		}
 
@@ -241,7 +237,6 @@ abstract class BaseBlacklist {
 		$cachedRegexes = $wgMemc->get( "$wgDBname:{$listType}_blacklist_regexes" );
 		if( is_array( $cachedRegexes ) ) {
 			wfDebugLog( 'SpamBlacklist', "Got shared spam regexes from cache\n" );
-			wfProfileOut( $fname );
 			return $cachedRegexes;
 		}
 
@@ -369,5 +364,4 @@ abstract class BaseBlacklist {
 	public function getRegexEnd( $batchSize ) {
 		return ($batchSize > 0 ) ? '/Sim' : '/im';
 	}
-
 }

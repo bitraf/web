@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rancher"
+		]
+	},
+	"skinname-bitraf": "Monobuk",
+	"bitraf.css": "/* CSS postavljen ovde će uticati na sve korisnike teme „Monobuk“ */",
+	"bitraf.js": "/* Javaskript postavljen ovde će se učitati za sve one koji koriste temu „Monobuk“ */"
+}

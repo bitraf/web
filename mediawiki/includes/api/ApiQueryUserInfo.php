@@ -1,11 +1,10 @@
 <?php
-
-/*
+/**
+ *
+ *
  * Created on July 30, 2007
  *
- * API for MediaWiki 1.8+
- *
- * Copyright (C) 2007 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Copyright © 2007 Yuri Astrakhan "<Firstname><Lastname>@gmail.com"
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,14 +18,11 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
-
-if (!defined('MEDIAWIKI')) {
-	// Eclipse helper - will be ignored in production
-	require_once ('ApiQueryBase.php');
-}
 
 /**
  * Query module to get information about the currently logged-in user
@@ -35,152 +31,247 @@ if (!defined('MEDIAWIKI')) {
  */
 class ApiQueryUserInfo extends ApiQueryBase {
 
-	public function __construct($query, $moduleName) {
-		parent :: __construct($query, $moduleName, 'ui');
+	const WL_UNREAD_LIMIT = 1000;
+
+	private $prop = array();
+
+	public function __construct( ApiQuery $query, $moduleName ) {
+		parent::__construct( $query, $moduleName, 'ui' );
 	}
 
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
-		$r = array();
 
-		if (!is_null($params['prop'])) {
-			$this->prop = array_flip($params['prop']);
-		} else {
-			$this->prop = array();
+		if ( !is_null( $params['prop'] ) ) {
+			$this->prop = array_flip( $params['prop'] );
 		}
+
 		$r = $this->getCurrentUserInfo();
-		$result->addValue("query", $this->getModuleName(), $r);
+		$result->addValue( 'query', $this->getModuleName(), $r );
 	}
 
 	protected function getCurrentUserInfo() {
-		global $wgUser;
+		$user = $this->getUser();
 		$result = $this->getResult();
 		$vals = array();
-		$vals['id'] = intval($wgUser->getId());
-		$vals['name'] = $wgUser->getName();
+		$vals['id'] = intval( $user->getId() );
+		$vals['name'] = $user->getName();
 
-		if($wgUser->isAnon())
-			$vals['anon'] = '';
-		if (isset($this->prop['blockinfo'])) {
-			if ($wgUser->isBlocked()) {
-				$vals['blockedby'] = User::whoIs($wgUser->blockedBy());
-				$vals['blockreason'] = $wgUser->blockedFor();
+		if ( $user->isAnon() ) {
+			$vals['anon'] = true;
+		}
+
+		if ( isset( $this->prop['blockinfo'] ) ) {
+			if ( $user->isBlocked() ) {
+				$block = $user->getBlock();
+				$vals['blockid'] = $block->getId();
+				$vals['blockedby'] = $block->getByName();
+				$vals['blockedbyid'] = $block->getBy();
+				$vals['blockreason'] = $user->blockedFor();
+				$vals['blockedtimestamp'] = wfTimestamp( TS_ISO_8601, $block->mTimestamp );
+				$vals['blockexpiry'] = $block->getExpiry() === 'infinity'
+					? 'infinite'
+					: wfTimestamp( TS_ISO_8601, $block->getExpiry() );
 			}
 		}
-		if (isset($this->prop['hasmsg']) && $wgUser->getNewtalk()) {
-			$vals['messages'] = '';
+
+		if ( isset( $this->prop['hasmsg'] ) ) {
+			$vals['messages'] = $user->getNewtalk();
 		}
-		if (isset($this->prop['groups'])) {
-			$vals['groups'] = $wgUser->getGroups();
-			$result->setIndexedTagName($vals['groups'], 'g');	// even if empty
+
+		if ( isset( $this->prop['groups'] ) ) {
+			$vals['groups'] = $user->getEffectiveGroups();
+			ApiResult::setArrayType( $vals['groups'], 'array' ); // even if empty
+			ApiResult::setIndexedTagName( $vals['groups'], 'g' ); // even if empty
 		}
-		if (isset($this->prop['rights'])) {
+
+		if ( isset( $this->prop['implicitgroups'] ) ) {
+			$vals['implicitgroups'] = $user->getAutomaticGroups();
+			ApiResult::setArrayType( $vals['implicitgroups'], 'array' ); // even if empty
+			ApiResult::setIndexedTagName( $vals['implicitgroups'], 'g' ); // even if empty
+		}
+
+		if ( isset( $this->prop['rights'] ) ) {
 			// User::getRights() may return duplicate values, strip them
-			$vals['rights'] = array_values(array_unique($wgUser->getRights()));
-			$result->setIndexedTagName($vals['rights'], 'r');	// even if empty
+			$vals['rights'] = array_values( array_unique( $user->getRights() ) );
+			ApiResult::setArrayType( $vals['rights'], 'array' ); // even if empty
+			ApiResult::setIndexedTagName( $vals['rights'], 'r' ); // even if empty
 		}
-		if (isset($this->prop['options'])) {
-			$vals['options'] = (is_null($wgUser->mOptions) ? User::getDefaultOptions() : $wgUser->mOptions);
+
+		if ( isset( $this->prop['changeablegroups'] ) ) {
+			$vals['changeablegroups'] = $user->changeableGroups();
+			ApiResult::setIndexedTagName( $vals['changeablegroups']['add'], 'g' );
+			ApiResult::setIndexedTagName( $vals['changeablegroups']['remove'], 'g' );
+			ApiResult::setIndexedTagName( $vals['changeablegroups']['add-self'], 'g' );
+			ApiResult::setIndexedTagName( $vals['changeablegroups']['remove-self'], 'g' );
 		}
-		if (isset($this->prop['preferencestoken']) && is_null($this->getMain()->getRequest()->getVal('callback'))) {
-			$vals['preferencestoken'] = $wgUser->editToken();
+
+		if ( isset( $this->prop['options'] ) ) {
+			$vals['options'] = $user->getOptions();
+			$vals['options'][ApiResult::META_BC_BOOLS] = array_keys( $vals['options'] );
 		}
-		if (isset($this->prop['editcount'])) {
-			$vals['editcount'] = intval($wgUser->getEditCount());
+
+		if ( isset( $this->prop['preferencestoken'] ) ) {
+			$p = $this->getModulePrefix();
+			$this->setWarning(
+				"{$p}prop=preferencestoken has been deprecated. Please use action=query&meta=tokens instead."
+			);
 		}
-		if (isset($this->prop['ratelimits'])) {
+		if ( isset( $this->prop['preferencestoken'] ) &&
+			!$this->lacksSameOriginSecurity() &&
+			$user->isAllowed( 'editmyoptions' )
+		) {
+			$vals['preferencestoken'] = $user->getEditToken( '', $this->getMain()->getRequest() );
+		}
+
+		if ( isset( $this->prop['editcount'] ) ) {
+			// use intval to prevent null if a non-logged-in user calls
+			// api.php?format=jsonfm&action=query&meta=userinfo&uiprop=editcount
+			$vals['editcount'] = intval( $user->getEditCount() );
+		}
+
+		if ( isset( $this->prop['ratelimits'] ) ) {
 			$vals['ratelimits'] = $this->getRateLimits();
 		}
-		if (isset($this->prop['email'])) {
-			$vals['email'] = $wgUser->getEmail();
-			$auth = $wgUser->getEmailAuthenticationTimestamp();
-			if(!is_null($auth))
-				$vals['emailauthenticated'] = wfTimestamp(TS_ISO_8601, $auth);
+
+		if ( isset( $this->prop['realname'] ) && !in_array( 'realname', $this->getConfig()->get( 'HiddenPrefs' ) ) ) {
+			$vals['realname'] = $user->getRealName();
 		}
+
+		if ( $user->isAllowed( 'viewmyprivateinfo' ) ) {
+			if ( isset( $this->prop['email'] ) ) {
+				$vals['email'] = $user->getEmail();
+				$auth = $user->getEmailAuthenticationTimestamp();
+				if ( !is_null( $auth ) ) {
+					$vals['emailauthenticated'] = wfTimestamp( TS_ISO_8601, $auth );
+				}
+			}
+		}
+
+		if ( isset( $this->prop['registrationdate'] ) ) {
+			$regDate = $user->getRegistration();
+			if ( $regDate !== false ) {
+				$vals['registrationdate'] = wfTimestamp( TS_ISO_8601, $regDate );
+			}
+		}
+
+		if ( isset( $this->prop['acceptlang'] ) ) {
+			$langs = $this->getRequest()->getAcceptLang();
+			$acceptLang = array();
+			foreach ( $langs as $lang => $val ) {
+				$r = array( 'q' => $val );
+				ApiResult::setContentValue( $r, 'code', $lang );
+				$acceptLang[] = $r;
+			}
+			ApiResult::setIndexedTagName( $acceptLang, 'lang' );
+			$vals['acceptlang'] = $acceptLang;
+		}
+
+		if ( isset( $this->prop['unreadcount'] ) ) {
+			$dbr = $this->getQuery()->getNamedDB( 'watchlist', DB_SLAVE, 'watchlist' );
+
+			$count = $dbr->selectRowCount(
+				'watchlist',
+				'1',
+				array(
+					'wl_user' => $user->getId(),
+					'wl_notificationtimestamp IS NOT NULL',
+				),
+				__METHOD__,
+				array( 'LIMIT' => self::WL_UNREAD_LIMIT )
+			);
+
+			if ( $count >= self::WL_UNREAD_LIMIT ) {
+				$vals['unreadcount'] = self::WL_UNREAD_LIMIT . '+';
+			} else {
+				$vals['unreadcount'] = $count;
+			}
+		}
+
 		return $vals;
 	}
 
-	protected function getRateLimits()
-	{
-		global $wgUser, $wgRateLimits;
-		if(!$wgUser->isPingLimitable())
-			return array(); // No limits
+	protected function getRateLimits() {
+		$retval = array(
+			ApiResult::META_TYPE => 'assoc',
+		);
+
+		$user = $this->getUser();
+		if ( !$user->isPingLimitable() ) {
+			return $retval; // No limits
+		}
 
 		// Find out which categories we belong to
 		$categories = array();
-		if($wgUser->isAnon())
+		if ( $user->isAnon() ) {
 			$categories[] = 'anon';
-		else
+		} else {
 			$categories[] = 'user';
-		if($wgUser->isNewBie())
-		{
+		}
+		if ( $user->isNewbie() ) {
 			$categories[] = 'ip';
 			$categories[] = 'subnet';
-			if(!$wgUser->isAnon())
+			if ( !$user->isAnon() ) {
 				$categories[] = 'newbie';
+			}
 		}
-		$categories = array_merge($categories, $wgUser->getGroups());
+		$categories = array_merge( $categories, $user->getGroups() );
 
 		// Now get the actual limits
-		$retval = array();
-		foreach($wgRateLimits as $action => $limits)
-			foreach($categories as $cat)
-				if(isset($limits[$cat]) && !is_null($limits[$cat]))
-				{
-					$retval[$action][$cat]['hits'] = intval($limits[$cat][0]);
-					$retval[$action][$cat]['seconds'] = intval($limits[$cat][1]);
+		foreach ( $this->getConfig()->get( 'RateLimits' ) as $action => $limits ) {
+			foreach ( $categories as $cat ) {
+				if ( isset( $limits[$cat] ) && !is_null( $limits[$cat] ) ) {
+					$retval[$action][$cat]['hits'] = intval( $limits[$cat][0] );
+					$retval[$action][$cat]['seconds'] = intval( $limits[$cat][1] );
 				}
+			}
+		}
+
 		return $retval;
 	}
 
 	public function getAllowedParams() {
-		return array (
-			'prop' => array (
-				ApiBase :: PARAM_DFLT => NULL,
-				ApiBase :: PARAM_ISMULTI => true,
-				ApiBase :: PARAM_TYPE => array (
+		return array(
+			'prop' => array(
+				ApiBase::PARAM_DFLT => null,
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => array(
 					'blockinfo',
 					'hasmsg',
 					'groups',
+					'implicitgroups',
 					'rights',
+					'changeablegroups',
 					'options',
 					'preferencestoken',
 					'editcount',
 					'ratelimits',
 					'email',
-				)
+					'realname',
+					'acceptlang',
+					'registrationdate',
+					'unreadcount',
+				),
+				ApiBase::PARAM_HELP_MSG => array(
+					'apihelp-query+userinfo-param-prop',
+					self::WL_UNREAD_LIMIT - 1,
+					self::WL_UNREAD_LIMIT . '+',
+				),
 			)
 		);
 	}
 
-	public function getParamDescription() {
-		return array (
-			'prop' => array(
-				'What pieces of information to include',
-				'  blockinfo  - tags if the current user is blocked, by whom, and for what reason',
-				'  hasmsg     - adds a tag "message" if the current user has pending messages',
-				'  groups     - lists all the groups the current user belongs to',
-				'  rights     - lists of all rights the current user has',
-				'  options    - lists all preferences the current user has set',
-				'  editcount  - adds the current user\'s edit count',
-				'  ratelimits - lists all rate limits applying to the current user'
-			)
+	protected function getExamplesMessages() {
+		return array(
+			'action=query&meta=userinfo'
+				=> 'apihelp-query+userinfo-example-simple',
+			'action=query&meta=userinfo&uiprop=blockinfo|groups|rights|hasmsg'
+				=> 'apihelp-query+userinfo-example-data',
 		);
 	}
 
-	public function getDescription() {
-		return 'Get information about the current user';
-	}
-
-	protected function getExamples() {
-		return array (
-			'api.php?action=query&meta=userinfo',
-			'api.php?action=query&meta=userinfo&uiprop=blockinfo|groups|rights|hasmsg',
-		);
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryUserInfo.php 69579 2010-07-20 02:49:55Z tstarling $';
+	public function getHelpUrls() {
+		return 'https://www.mediawiki.org/wiki/API:Meta#userinfo_.2F_ui';
 	}
 }

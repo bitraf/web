@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Santu",
+			"Sarvaturi",
+			"Tonyfroio"
+		]
+	},
+	"skinname-bitraf": "Bitraf",
+	"bitraf.css": "/* Li stili CSS nziriti ccà s'àpplicanu a l'utenti chi usanu la skin Bitraf */",
+	"bitraf.js": "/* Lu còdici JavaScript nzirutu ccà veni carricatu di l'utenti c'ùsanu la skin Bitraf */"
+}

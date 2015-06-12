@@ -1,11 +1,10 @@
 <?php
-
-/*
+/**
+ *
+ *
  * Created on July 7, 2007
  *
- * API for MediaWiki 1.8+
- *
- * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Copyright © 2006 Yuri Astrakhan "<Firstname><Lastname>@gmail.com"
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,14 +18,11 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
-
-if (!defined('MEDIAWIKI')) {
-	// Eclipse helper - will be ignored in production
-	require_once ('ApiQueryBase.php');
-}
 
 /**
  * Query module to enumerate links from all pages together.
@@ -35,8 +31,54 @@ if (!defined('MEDIAWIKI')) {
  */
 class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 
-	public function __construct($query, $moduleName) {
-		parent :: __construct($query, $moduleName, 'al');
+	private $table, $tablePrefix, $indexTag;
+	private $fieldTitle = 'title';
+	private $dfltNamespace = NS_MAIN;
+	private $hasNamespace = true;
+	private $useIndex = null;
+	private $props = array();
+
+	public function __construct( ApiQuery $query, $moduleName ) {
+		switch ( $moduleName ) {
+			case 'alllinks':
+				$prefix = 'al';
+				$this->table = 'pagelinks';
+				$this->tablePrefix = 'pl_';
+				$this->useIndex = 'pl_namespace';
+				$this->indexTag = 'l';
+				break;
+			case 'alltransclusions':
+				$prefix = 'at';
+				$this->table = 'templatelinks';
+				$this->tablePrefix = 'tl_';
+				$this->dfltNamespace = NS_TEMPLATE;
+				$this->useIndex = 'tl_namespace';
+				$this->indexTag = 't';
+				break;
+			case 'allfileusages':
+				$prefix = 'af';
+				$this->table = 'imagelinks';
+				$this->tablePrefix = 'il_';
+				$this->fieldTitle = 'to';
+				$this->dfltNamespace = NS_FILE;
+				$this->hasNamespace = false;
+				$this->indexTag = 'f';
+				break;
+			case 'allredirects':
+				$prefix = 'ar';
+				$this->table = 'redirect';
+				$this->tablePrefix = 'rd_';
+				$this->indexTag = 'r';
+				$this->props = array(
+					'fragment' => 'rd_fragment',
+					'interwiki' => 'rd_interwiki',
+				);
+				break;
+			default:
+				ApiBase::dieDebug( __METHOD__, 'Unknown module name' );
+		}
+
+		parent::__construct( $query, $moduleName, $prefix );
 	}
 
 	public function execute() {
@@ -47,159 +89,219 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 		return 'public';
 	}
 
-	public function executeGenerator($resultPageSet) {
-		$this->run($resultPageSet);
+	public function executeGenerator( $resultPageSet ) {
+		$this->run( $resultPageSet );
 	}
 
-	private function run($resultPageSet = null) {
-
+	/**
+	 * @param ApiPageSet $resultPageSet
+	 * @return void
+	 */
+	private function run( $resultPageSet = null ) {
 		$db = $this->getDB();
 		$params = $this->extractRequestParams();
 
-		$prop = array_flip($params['prop']);
-		$fld_ids = isset($prop['ids']);
-		$fld_title = isset($prop['title']);
-
-		if ($params['unique']) {
-			if (!is_null($resultPageSet))
-				$this->dieUsage($this->getModuleName() . ' cannot be used as a generator in unique links mode', 'params');
-			if ($fld_ids)
-				$this->dieUsage($this->getModuleName() . ' cannot return corresponding page ids in unique links mode', 'params');
-			$this->addOption('DISTINCT');
+		$pfx = $this->tablePrefix;
+		$fieldTitle = $this->fieldTitle;
+		$prop = array_flip( $params['prop'] );
+		$fld_ids = isset( $prop['ids'] );
+		$fld_title = isset( $prop['title'] );
+		if ( $this->hasNamespace ) {
+			$namespace = $params['namespace'];
+		} else {
+			$namespace = $this->dfltNamespace;
 		}
 
-		$this->addTables('pagelinks');
-		$this->addWhereFld('pl_namespace', $params['namespace']);
-		
-		if (!is_null($params['from']) && !is_null($params['continue']))
-			$this->dieUsage('alcontinue and alfrom cannot be used together', 'params');
-		if (!is_null($params['continue']))
-		{
-			$arr = explode('|', $params['continue']);
-			if(count($arr) != 2)
-				$this->dieUsage("Invalid continue parameter", 'badcontinue');
-			$from = $this->getDB()->strencode($this->titleToKey($arr[0]));
-			$id = intval($arr[1]);
-			$this->addWhere("pl_title > '$from' OR " .
-					"(pl_title = '$from' AND " .
-					"pl_from > $id)");
-		}		
+		if ( $params['unique'] ) {
+			$matches = array_intersect_key( $prop, $this->props + array( 'ids' => 1 ) );
+			if ( $matches ) {
+				$p = $this->getModulePrefix();
+				$this->dieUsage(
+					"Cannot use {$p}prop=" . join( '|', array_keys( $matches ) ) . " with {$p}unique",
+					'params'
+				);
+			}
+			$this->addOption( 'DISTINCT' );
+		}
 
-		if (!is_null($params['from']))
-			$this->addWhere('pl_title>=' . $db->addQuotes($this->titlePartToKey($params['from'])));
-		if (isset ($params['prefix']))
-			$this->addWhere("pl_title LIKE '" . $db->escapeLike($this->titlePartToKey($params['prefix'])) . "%'");
+		$this->addTables( $this->table );
+		if ( $this->hasNamespace ) {
+			$this->addWhereFld( $pfx . 'namespace', $namespace );
+		}
 
-		$this->addFields(array (
-			'pl_title',
-		));
-		$this->addFieldsIf('pl_from', !$params['unique']);
+		$continue = !is_null( $params['continue'] );
+		if ( $continue ) {
+			$continueArr = explode( '|', $params['continue'] );
+			$op = $params['dir'] == 'descending' ? '<' : '>';
+			if ( $params['unique'] ) {
+				$this->dieContinueUsageIf( count( $continueArr ) != 1 );
+				$continueTitle = $db->addQuotes( $continueArr[0] );
+				$this->addWhere( "{$pfx}{$fieldTitle} $op= $continueTitle" );
+			} else {
+				$this->dieContinueUsageIf( count( $continueArr ) != 2 );
+				$continueTitle = $db->addQuotes( $continueArr[0] );
+				$continueFrom = intval( $continueArr[1] );
+				$this->addWhere(
+					"{$pfx}{$fieldTitle} $op $continueTitle OR " .
+					"({$pfx}{$fieldTitle} = $continueTitle AND " .
+					"{$pfx}from $op= $continueFrom)"
+				);
+			}
+		}
 
-		$this->addOption('USE INDEX', 'pl_namespace');
+		// 'continue' always overrides 'from'
+		$from = ( $continue || $params['from'] === null ? null :
+			$this->titlePartToKey( $params['from'], $namespace ) );
+		$to = ( $params['to'] === null ? null :
+			$this->titlePartToKey( $params['to'], $namespace ) );
+		$this->addWhereRange( $pfx . $fieldTitle, 'newer', $from, $to );
+
+		if ( isset( $params['prefix'] ) ) {
+			$this->addWhere( $pfx . $fieldTitle . $db->buildLike( $this->titlePartToKey(
+				$params['prefix'], $namespace ), $db->anyString() ) );
+		}
+
+		$this->addFields( array( 'pl_title' => $pfx . $fieldTitle ) );
+		$this->addFieldsIf( array( 'pl_from' => $pfx . 'from' ), !$params['unique'] );
+		foreach ( $this->props as $name => $field ) {
+			$this->addFieldsIf( $field, isset( $prop[$name] ) );
+		}
+
+		if ( $this->useIndex ) {
+			$this->addOption( 'USE INDEX', $this->useIndex );
+		}
 		$limit = $params['limit'];
-		$this->addOption('LIMIT', $limit+1);
-		if($params['unique'])
-			$this->addOption('ORDER BY', 'pl_title');
-		else
-			$this->addOption('ORDER BY', 'pl_title, pl_from');
+		$this->addOption( 'LIMIT', $limit + 1 );
 
-		$res = $this->select(__METHOD__);
+		$sort = ( $params['dir'] == 'descending' ? ' DESC' : '' );
+		$orderBy = array();
+		$orderBy[] = $pfx . $fieldTitle . $sort;
+		if ( !$params['unique'] ) {
+			$orderBy[] = $pfx . 'from' . $sort;
+		}
+		$this->addOption( 'ORDER BY', $orderBy );
 
-		$pageids = array ();
+		$res = $this->select( __METHOD__ );
+
+		$pageids = array();
+		$titles = array();
 		$count = 0;
 		$result = $this->getResult();
-		while ($row = $db->fetchObject($res)) {
-			if (++ $count > $limit) {
-				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				// TODO: Security issue - if the user has no right to view next title, it will still be shown
-				if($params['unique'])
-					$this->setContinueEnumParameter('from', $this->keyToTitle($row->pl_title));
-				else
-					$this->setContinueEnumParameter('continue', $this->keyToTitle($row->pl_title) . "|" . $row->pl_from);
+		foreach ( $res as $row ) {
+			if ( ++$count > $limit ) {
+				// We've reached the one extra which shows that there are
+				// additional pages to be had. Stop here...
+				if ( $params['unique'] ) {
+					$this->setContinueEnumParameter( 'continue', $row->pl_title );
+				} else {
+					$this->setContinueEnumParameter( 'continue', $row->pl_title . '|' . $row->pl_from );
+				}
 				break;
 			}
 
-			if (is_null($resultPageSet)) {
-				$vals = array();
-				if ($fld_ids)
-					$vals['fromid'] = intval($row->pl_from);
-				if ($fld_title) {
-					$title = Title :: makeTitle($params['namespace'], $row->pl_title);
-					ApiQueryBase::addTitleInfo($vals, $title);
+			if ( is_null( $resultPageSet ) ) {
+				$vals = array(
+					ApiResult::META_TYPE => 'assoc',
+				);
+				if ( $fld_ids ) {
+					$vals['fromid'] = intval( $row->pl_from );
 				}
-				$fit = $result->addValue(array('query', $this->getModuleName()), null, $vals);
-				if(!$fit)
-				{
-					if($params['unique'])
-						$this->setContinueEnumParameter('from', $this->keyToTitle($row->pl_title));
-					else
-						$this->setContinueEnumParameter('continue', $this->keyToTitle($row->pl_title) . "|" . $row->pl_from);
+				if ( $fld_title ) {
+					$title = Title::makeTitle( $namespace, $row->pl_title );
+					ApiQueryBase::addTitleInfo( $vals, $title );
+				}
+				foreach ( $this->props as $name => $field ) {
+					if ( isset( $prop[$name] ) && $row->$field !== null && $row->$field !== '' ) {
+						$vals[$name] = $row->$field;
+					}
+				}
+				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $vals );
+				if ( !$fit ) {
+					if ( $params['unique'] ) {
+						$this->setContinueEnumParameter( 'continue', $row->pl_title );
+					} else {
+						$this->setContinueEnumParameter( 'continue', $row->pl_title . '|' . $row->pl_from );
+					}
 					break;
 				}
+			} elseif ( $params['unique'] ) {
+				$titles[] = Title::makeTitle( $namespace, $row->pl_title );
 			} else {
 				$pageids[] = $row->pl_from;
 			}
 		}
-		$db->freeResult($res);
 
-		if (is_null($resultPageSet)) {
-			$result->setIndexedTagName_internal(array('query', $this->getModuleName()), 'l');
+		if ( is_null( $resultPageSet ) ) {
+			$result->addIndexedTagName( array( 'query', $this->getModuleName() ), $this->indexTag );
+		} elseif ( $params['unique'] ) {
+			$resultPageSet->populateFromTitles( $titles );
 		} else {
-			$resultPageSet->populateFromPageIDs($pageids);
+			$resultPageSet->populateFromPageIDs( $pageids );
 		}
 	}
 
 	public function getAllowedParams() {
-		return array (
-			'continue' => null,
+		$allowedParams = array(
+			'continue' => array(
+				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
+			),
 			'from' => null,
+			'to' => null,
 			'prefix' => null,
 			'unique' => false,
-			'prop' => array (
-				ApiBase :: PARAM_ISMULTI => true,
-				ApiBase :: PARAM_DFLT => 'title',
-				ApiBase :: PARAM_TYPE => array (
-					'ids',
-					'title'
+			'prop' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_DFLT => 'title',
+				ApiBase::PARAM_TYPE => array_merge(
+					array( 'ids', 'title' ), array_keys( $this->props )
+				),
+			),
+			'namespace' => array(
+				ApiBase::PARAM_DFLT => $this->dfltNamespace,
+				ApiBase::PARAM_TYPE => 'namespace'
+			),
+			'limit' => array(
+				ApiBase::PARAM_DFLT => 10,
+				ApiBase::PARAM_TYPE => 'limit',
+				ApiBase::PARAM_MIN => 1,
+				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
+				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
+			),
+			'dir' => array(
+				ApiBase::PARAM_DFLT => 'ascending',
+				ApiBase::PARAM_TYPE => array(
+					'ascending',
+					'descending'
 				)
 			),
-			'namespace' => array (
-				ApiBase :: PARAM_DFLT => 0,
-				ApiBase :: PARAM_TYPE => 'namespace'
-			),
-			'limit' => array (
-				ApiBase :: PARAM_DFLT => 10,
-				ApiBase :: PARAM_TYPE => 'limit',
-				ApiBase :: PARAM_MIN => 1,
-				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
-				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
-			)
+		);
+		if ( !$this->hasNamespace ) {
+			unset( $allowedParams['namespace'] );
+		}
+
+		return $allowedParams;
+	}
+
+	protected function getExamplesMessages() {
+		$p = $this->getModulePrefix();
+		$name = $this->getModuleName();
+		$path = $this->getModulePath();
+
+		return array(
+			"action=query&list={$name}&{$p}from=B&{$p}prop=ids|title"
+				=> "apihelp-$path-example-B",
+			"action=query&list={$name}&{$p}unique=&{$p}from=B"
+				=> "apihelp-$path-example-unique",
+			"action=query&generator={$name}&g{$p}unique=&g{$p}from=B"
+				=> "apihelp-$path-example-unique-generator",
+			"action=query&generator={$name}&g{$p}from=B"
+				=> "apihelp-$path-example-generator",
 		);
 	}
 
-	public function getParamDescription() {
-		return array (
-			'from' => 'The page title to start enumerating from.',
-			'prefix' => 'Search for all page titles that begin with this value.',
-			'unique' => 'Only show unique links. Cannot be used with generator or prop=ids',
-			'prop' => 'What pieces of information to include',
-			'namespace' => 'The namespace to enumerate.',
-			'limit' => 'How many total links to return.',
-			'continue' => 'When more results are available, use this to continue.',
-		);
-	}
+	public function getHelpUrls() {
+		$name = ucfirst( $this->getModuleName() );
 
-	public function getDescription() {
-		return 'Enumerate all links that point to a given namespace';
-	}
-
-	protected function getExamples() {
-		return array (
-			'api.php?action=query&list=alllinks&alunique&alfrom=B',
-		);
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiQueryAllLinks.php 69986 2010-07-27 03:57:39Z tstarling $';
+		return "https://www.mediawiki.org/wiki/API:{$name}";
 	}
 }

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dani",
+			"Tacsipacsi"
+		]
+	},
+	"skinname-bitraf": "Bitraf",
+	"bitraf-desc": "A klasszikus MediaWiki-felület 2004 óta; egy könyv fekete-fehér fotója alapján kapta a nevét",
+	"bitraf.css": "/* Az ide elhelyezett CSS hatással lesz a Bitraf felület használóira */",
+	"bitraf.js": "/* A Bitraf felületet használó szerkesztők számára betöltendő JavaScriptek */"
+}

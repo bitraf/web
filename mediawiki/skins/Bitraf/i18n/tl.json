@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"AnakngAraw",
+			"Sky Harbor"
+		]
+	},
+	"skinname-bitraf": "Bitraf",
+	"bitraf.css": "/* Ang CSS na inilagay dito ay makakaapekto sa mga tagagamit ng pabalat na Bitraf */",
+	"bitraf.js": "/* Ang anumang JavaScript dito ay ikakarga para sa mga tagagamit na gumagamit ng pabalat na Bitraf */"
+}

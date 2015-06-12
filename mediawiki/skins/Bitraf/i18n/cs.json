@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Danny B.",
+			"Li-sung",
+			"Mormegil"
+		]
+	},
+	"skinname-bitraf": "Bitraf",
+	"bitraf-desc": "Klasický vzhled MediaWiki od roku 2004, pojmenovaný po černobílé fotografii knihy v pozadí stránky",
+	"bitraf.css": "/* Zde uvedené CSS bude ovlivňovat pouze styl „Bitraf“ */",
+	"bitraf.js": "/* JavaScript pro uživatele používající vzhled Bitraf */"
+}

@@ -1,11 +1,10 @@
 <?php
-
-/*
+/**
+ *
+ *
  * Created on Sep 19, 2006
  *
- * API for MediaWiki 1.8+
- *
- * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Copyright © 2006 Yuri Astrakhan "<Firstname><Lastname>@gmail.com"
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,76 +18,127 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
-if (!defined('MEDIAWIKI')) {
-	// Eclipse helper - will be ignored in production
-	require_once ('ApiFormatBase.php');
-}
-
 /**
+ * API JSON output formatter
  * @ingroup API
  */
 class ApiFormatJson extends ApiFormatBase {
 
-	private $mIsRaw;
+	private $isRaw;
 
-	public function __construct($main, $format) {
-		parent :: __construct($main, $format);
-		$this->mIsRaw = ($format === 'rawfm');
+	public function __construct( ApiMain $main, $format ) {
+		parent::__construct( $main, $format );
+		$this->isRaw = ( $format === 'rawfm' );
 	}
 
 	public function getMimeType() {
+		$params = $this->extractRequestParams();
+		// callback:
+		if ( isset( $params['callback'] ) ) {
+			return 'text/javascript';
+		}
+
 		return 'application/json';
 	}
 
+	/**
+	 * @deprecated since 1.25
+	 */
 	public function getNeedsRawData() {
-		return $this->mIsRaw;
+		return $this->isRaw;
+	}
+
+	/**
+	 * @deprecated since 1.25
+	 */
+	public function getWantsHelp() {
+		wfDeprecated( __METHOD__, '1.25' );
+		// Help is always ugly in JSON
+		return false;
 	}
 
 	public function execute() {
-		$prefix = $suffix = "";
-
 		$params = $this->extractRequestParams();
-		$callback = $params['callback'];
-		if(!is_null($callback)) {
-			$prefix = preg_replace("/[^][.\\'\\\"_A-Za-z0-9]/", "", $callback ) . "(";
-			$suffix = ")";
+
+		$opt = 0;
+		if ( $this->isRaw ) {
+			$opt |= FormatJson::ALL_OK;
+			$transform = array();
+		} else {
+			switch ( $params['formatversion'] ) {
+				case 1:
+					$opt |= $params['utf8'] ? FormatJson::ALL_OK : FormatJson::XMLMETA_OK;
+					$transform = array(
+						'BC' => array(),
+						'Types' => array( 'AssocAsObject' => true ),
+						'Strip' => 'all',
+					);
+					break;
+
+				case 2:
+				case 'latest':
+					$opt |= $params['ascii'] ? FormatJson::XMLMETA_OK : FormatJson::ALL_OK;
+					$transform = array(
+						'Types' => array( 'AssocAsObject' => true ),
+						'Strip' => 'all',
+					);
+					break;
+
+				default:
+					$this->dieUsage( __METHOD__ . ': Unknown value for \'formatversion\'', 'unknownformatversion' );
+			}
+		}
+		$data = $this->getResult()->getResultData( null, $transform );
+		$json = FormatJson::encode( $data, $this->getIsHtml(), $opt );
+
+		// Bug 66776: wfMangleFlashPolicy() is needed to avoid a nasty bug in
+		// Flash, but what it does isn't friendly for the API, so we need to
+		// work around it.
+		if ( preg_match( '/\<\s*cross-domain-policy\s*\>/i', $json ) ) {
+			$json = preg_replace(
+				'/\<(\s*cross-domain-policy\s*)\>/i', '\\u003C$1\\u003E', $json
+			);
 		}
 
-		// Some versions of PHP have a broken json_encode, see PHP bug 
-		// 46944. Test encoding an affected character (U+20000) to 
-		// avoid this.
-		if (!function_exists('json_encode') || $this->getIsHtml() || strtolower(json_encode("\xf0\xa0\x80\x80")) != '"\ud840\udc00"') {
-			$json = new Services_JSON();
-			$this->printText($prefix . $json->encode($this->getResultData(), $this->getIsHtml()) . $suffix);
+		if ( isset( $params['callback'] ) ) {
+			$callback = preg_replace( "/[^][.\\'\\\"_A-Za-z0-9]/", '', $params['callback'] );
+			# Prepend a comment to try to avoid attacks against content
+			# sniffers, such as bug 68187.
+			$this->printText( "/**/$callback($json)" );
 		} else {
-			$this->printText($prefix . json_encode($this->getResultData()) . $suffix);
+			$this->printText( $json );
 		}
 	}
 
 	public function getAllowedParams() {
-		return array (
-			'callback' => null
+		if ( $this->isRaw ) {
+			return array();
+		}
+
+		$ret = array(
+			'callback' => array(
+				ApiBase::PARAM_HELP_MSG => 'apihelp-json-param-callback',
+			),
+			'utf8' => array(
+				ApiBase::PARAM_DFLT => false,
+				ApiBase::PARAM_HELP_MSG => 'apihelp-json-param-utf8',
+			),
+			'ascii' => array(
+				ApiBase::PARAM_DFLT => false,
+				ApiBase::PARAM_HELP_MSG => 'apihelp-json-param-ascii',
+			),
+			'formatversion' => array(
+				ApiBase::PARAM_TYPE => array( 1, 2, 'latest' ),
+				ApiBase::PARAM_DFLT => 1,
+				ApiBase::PARAM_HELP_MSG => 'apihelp-json-param-formatversion',
+			),
 		);
-	}
-
-	public function getParamDescription() {
-		return array (
-			'callback' => 'If specified, wraps the output into a given function call. For safety, all user-specific data will be restricted.',
-		);
-	}
-
-	public function getDescription() {
-		if ($this->mIsRaw)
-			return 'Output data with the debuging elements in JSON format' . parent :: getDescription();
-		else
-			return 'Output data in JSON format' . parent :: getDescription();
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiFormatJson.php 48713 2009-03-23 19:58:07Z catrope $';
+		return $ret;
 	}
 }

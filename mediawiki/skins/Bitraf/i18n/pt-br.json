@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fabsouza1"
+		]
+	},
+	"skinname-bitraf": "Bitraf",
+	"bitraf-desc": "A skin clássica do MediaWiki desde 2004, assim chamada depois de uma foto preto-e-branco de um livro colocada plano de fundo da página",
+	"bitraf.css": "/* o código CSS colocado aqui terá efeito nos usuários do tema Bitraf */",
+	"bitraf.js": "/* Qualquer JavaScript aqui colocado afetará os usuários do skin Bitraf */"
+}

@@ -1,0 +1,37 @@
+{
+	"name": "Bitraf",
+	"author": [
+		"Gabriel Wicke",
+		"..."
+	],
+	"url": "https://www.mediawiki.org/wiki/Skin:Bitraf",
+	"descriptionmsg": "bitraf-desc",
+	"namemsg": "skinname-bitraf",
+	"license-name": "GPL-2.0+",
+	"type": "skin",
+	"ValidSkinNames": {
+		"bitraf": "Bitraf"
+	},
+	"MessagesDirs": {
+		"Bitraf": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"skins.bitraf.styles": {
+			"styles": {
+				"main.css": {
+					"media": "screen"
+				}
+			}
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteSkinPath": "Bitraf"
+	},
+	"AutoloadClasses": {
+		"SkinBitraf": "SkinBitraf.php",
+		"BitrafTemplate": "BitrafTemplate.php"
+	}
+}

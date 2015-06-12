@@ -1,106 +1,88 @@
 <?php
 /**
+ * Implements Special:Unlockdb
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
  * @file
  * @ingroup SpecialPage
  */
 
 /**
+ * Implements Special:Unlockdb
  *
- */
-function wfSpecialUnlockdb() {
-	global $wgUser, $wgOut, $wgRequest;
-
-	if( !$wgUser->isAllowed( 'siteadmin' ) ) {
-		$wgOut->permissionRequired( 'siteadmin' );
-		return;
-	}
-
-	$action = $wgRequest->getVal( 'action' );
-	$f = new DBUnlockForm();
-
-	if ( "success" == $action ) {
-		$f->showSuccess();
-	} else if ( "submit" == $action && $wgRequest->wasPosted() &&
-		$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
-		$f->doSubmit();
-	} else {
-		$f->showForm( "" );
-	}
-}
-
-/**
  * @ingroup SpecialPage
  */
-class DBUnlockForm {
-	function showForm( $err )
-	{
-		global $wgOut, $wgUser;
+class SpecialUnlockdb extends FormSpecialPage {
 
-		global $wgReadOnlyFile;
-		if( !file_exists( $wgReadOnlyFile ) ) {
-			$wgOut->addWikiMsg( 'databasenotlocked' );
-			return;
-		}
-
-		$wgOut->setPagetitle( wfMsg( "unlockdb" ) );
-		$wgOut->addWikiMsg( "unlockdbtext" );
-
-		if ( "" != $err ) {
-			$wgOut->setSubtitle( wfMsg( "formerror" ) );
-			$wgOut->addHTML( '<p class="error">' . htmlspecialchars( $err ) . "</p>\n" );
-		}
-		$lc = htmlspecialchars( wfMsg( "unlockconfirm" ) );
-		$lb = htmlspecialchars( wfMsg( "unlockbtn" ) );
-		$titleObj = SpecialPage::getTitleFor( "Unlockdb" );
-		$action = $titleObj->escapeLocalURL( "action=submit" );
-		$token = htmlspecialchars( $wgUser->editToken() );
-
-		$wgOut->addHTML( <<<END
-
-<form id="unlockdb" method="post" action="{$action}">
-<table border="0">
-	<tr>
-		<td align="right">
-			<input type="checkbox" name="wpLockConfirm" />
-		</td>
-		<td align="left">{$lc}</td>
-	</tr>
-	<tr>
-		<td>&nbsp;</td>
-		<td align="left">
-			<input type="submit" name="wpLock" value="{$lb}" />
-		</td>
-	</tr>
-</table>
-<input type="hidden" name="wpEditToken" value="{$token}" />
-</form>
-END
-);
-
+	public function __construct() {
+		parent::__construct( 'Unlockdb', 'siteadmin' );
 	}
 
-	function doSubmit() {
-		global $wgOut, $wgRequest, $wgReadOnlyFile;
-
-		$wpLockConfirm = $wgRequest->getCheck( 'wpLockConfirm' );
-		if ( ! $wpLockConfirm ) {
-			$this->showForm( wfMsg( "locknoconfirm" ) );
-			return;
-		}
-		if ( @! unlink( $wgReadOnlyFile ) ) {
-			$wgOut->showFileDeleteError( $wgReadOnlyFile );
-			return;
-		}
-		$titleObj = SpecialPage::getTitleFor( "Unlockdb" );
-		$success = $titleObj->getFullURL( "action=success" );
-		$wgOut->redirect( $success );
+	public function requiresWrite() {
+		return false;
 	}
 
-	function showSuccess() {
-		global $wgOut;
+	public function checkExecutePermissions( User $user ) {
+		parent::checkExecutePermissions( $user );
+		# If the lock file isn't writable, we can do sweet bugger all
+		if ( !file_exists( $this->getConfig()->get( 'ReadOnlyFile' ) ) ) {
+			throw new ErrorPageError( 'lockdb', 'databasenotlocked' );
+		}
+	}
 
-		$wgOut->setPagetitle( wfMsg( "unlockdb" ) );
-		$wgOut->setSubtitle( wfMsg( "unlockdbsuccesssub" ) );
-		$wgOut->addWikiMsg( "unlockdbsuccesstext" );
+	protected function getFormFields() {
+		return array(
+			'Confirm' => array(
+				'type' => 'toggle',
+				'label-message' => 'unlockconfirm',
+			),
+		);
+	}
+
+	protected function alterForm( HTMLForm $form ) {
+		$form->setWrapperLegend( false );
+		$form->setHeaderText( $this->msg( 'unlockdbtext' )->parseAsBlock() );
+		$form->setSubmitTextMsg( 'unlockbtn' );
+	}
+
+	public function onSubmit( array $data ) {
+		if ( !$data['Confirm'] ) {
+			return Status::newFatal( 'locknoconfirm' );
+		}
+
+		$readOnlyFile = $this->getConfig()->get( 'ReadOnlyFile' );
+		wfSuppressWarnings();
+		$res = unlink( $readOnlyFile );
+		wfRestoreWarnings();
+
+		if ( $res ) {
+			return Status::newGood();
+		} else {
+			return Status::newFatal( 'filedeleteerror', $readOnlyFile );
+		}
+	}
+
+	public function onSuccess() {
+		$out = $this->getOutput();
+		$out->addSubtitle( $this->msg( 'unlockdbsuccesssub' ) );
+		$out->addWikiMsg( 'unlockdbsuccesstext' );
+	}
+
+	protected function getGroupName() {
+		return 'wiki';
 	}
 }

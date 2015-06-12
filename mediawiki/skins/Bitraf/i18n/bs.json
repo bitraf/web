@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"CERminator",
+			"Kal-El"
+		]
+	},
+	"skinname-bitraf": "MonoKnjiga",
+	"bitraf.css": "/* CSS umetnut ovdje uticat će na korisnike koji koriste Bitraf skin */",
+	"bitraf.js": "/* Bilo koja JavaScript će biti učitana za sve korisnike koji koriste Bitraf skin */"
+}

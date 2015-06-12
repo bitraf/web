@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yury Tarasievich",
+			"Mikalai Udodau"
+		]
+	},
+	"skinname-bitraf": "Манабук",
+	"bitraf-desc": "Класічная вокладка MediaWiki з 2004 года, названая ў гонар чорна-белай фатаграфіі кнігі ў фоне старонкі",
+	"bitraf.css": "/* CSS, упісаны сюды, будзе дзейнічаць на браўзер кожнага чытача з актыўнай світай Bitraf */",
+	"bitraf.js": "/* Any JavaScript here will be loaded for users using the Bitraf skin */"
+}

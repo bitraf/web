@@ -1,18 +1,44 @@
 <?php
+/**
+ * Finnish (Suomi) specific code.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @author Niklas Laxström
+ * @ingroup Language
+ */
 
-/** Finnish (Suomi)
+/**
+ * Finnish (Suomi)
  *
  * @ingroup Language
- *
- * @author Niklas Laxström
  */
 class LanguageFi extends Language {
-
-	# Convert from the nominative form of a noun to some other case
-	# Invoked with {{GRAMMAR:case|word}}
+	/**
+	 * Convert from the nominative form of a noun to some other case
+	 * Invoked with {{grammar:case|word}}
+	 *
+	 * @param string $word
+	 * @param string $case
+	 * @return string
+	 */
 	function convertGrammar( $word, $case ) {
 		global $wgGrammarForms;
-		if ( isset($wgGrammarForms['fi'][$case][$word]) ) {
+		if ( isset( $wgGrammarForms['fi'][$case][$word] ) ) {
 			return $wgGrammarForms['fi'][$case][$word];
 		}
 
@@ -26,51 +52,61 @@ class LanguageFi extends Language {
 		# The general case cannot be handled without a dictionary, but there's at least one notable
 		# special case we should check for:
 
-		if ( preg_match( '/wiki$/i', $word ) )
+		if ( preg_match( '/wiki$/i', $word ) ) {
 			$aou = false;
+		}
 
 		# append i after final consonant
-		if ( preg_match( '/[bcdfghjklmnpqrstvwxz]$/i', $word ) )
+		if ( preg_match( '/[bcdfghjklmnpqrstvwxz]$/i', $word ) ) {
 			$word .= 'i';
+		}
 
 		switch ( $case ) {
 			case 'genitive':
 				$word .= 'n';
 				break;
 			case 'elative':
-				$word .= ($aou ? 'sta' : 'stä');
+				$word .= ( $aou ? 'sta' : 'stä' );
 				break;
 			case 'partitive':
-				$word .= ($aou ? 'a' : 'ä');
+				$word .= ( $aou ? 'a' : 'ä' );
 				break;
 			case 'illative':
 				# Double the last letter and add 'n'
 				# mb_substr has a compatibility function in GlobalFunctions.php
-				$word = $word . mb_substr($word, -1) . 'n';
+				$word = $word . mb_substr( $word, -1 ) . 'n';
 				break;
 			case 'inessive':
-				$word .= ($aou ? 'ssa' : 'ssä');
+				$word .= ( $aou ? 'ssa' : 'ssä' );
 				break;
 		}
 		return $word;
 	}
 
+	/**
+	 * @param string $str
+	 * @param bool $forContent
+	 * @return string
+	 */
 	function translateBlockExpiry( $str, $forContent = false ) {
 		/*
 			'ago', 'now', 'today', 'this', 'next',
-			'first', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth',
+			'first', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth',
+				'tenth', 'eleventh', 'twelfth',
 			'tomorrow', 'yesterday'
 
-			$months = 'january:tammikuu,february:helmikuu,march:maaliskuu,april:huhtikuu,may:toukokuu,june:kesäkuu,' .
-				'july:heinäkuu,august:elokuu,september:syyskuu,october:lokakuu,november:marraskuu,december:joulukuu,' .
-				'jan:tammikuu,feb:helmikuu,mar:maaliskuu,apr:huhtikuu,jun:kesäkuu,jul:heinäkuu,aug:elokuu,sep:syyskuu,'.
-				'oct:lokakuu,nov:marraskuu,dec:joulukuu,sept:syyskuu';
+			$months = 'january:tammikuu,february:helmikuu,march:maaliskuu,april:huhtikuu,' .
+				'may:toukokuu,june:kesäkuu,july:heinäkuu,august:elokuu,september:syyskuu,' .
+				'october:lokakuu,november:marraskuu,december:joulukuu,' .
+				'jan:tammikuu,feb:helmikuu,mar:maaliskuu,apr:huhtikuu,jun:kesäkuu,' .
+				'jul:heinäkuu,aug:elokuu,sep:syyskuu,oct:lokakuu,nov:marraskuu,' .
+				dec:joulukuu,sept:syyskuu';
 		*/
 		$weekds = array(
 			'monday' => 'maanantai',
 			'tuesday' => 'tiistai',
 			'wednesday' => 'keskiviikko',
-			'thursay' => 'torstai',
+			'thursday' => 'torstai',
 			'friday' => 'perjantai',
 			'saturday' => 'lauantai',
 			'sunday' => 'sunnuntai',
@@ -113,15 +149,15 @@ class LanguageFi extends Language {
 		);
 
 		$final = '';
-		$tokens = explode ( ' ', $str);
-		foreach( $tokens as $item ) {
-			if ( !is_numeric($item) ) {
-				if ( count ( explode( '-', $item ) ) == 3 && strlen($item) == 10 ) {
+		$tokens = explode ( ' ', $str );
+		foreach ( $tokens as $item ) {
+			if ( !is_numeric( $item ) ) {
+				if ( count ( explode( '-', $item ) ) == 3 && strlen( $item ) == 10 ) {
 					list( $yyyy, $mm, $dd ) = explode( '-', $item );
-					$final .= ' ' . $this->date( "{$yyyy}{$mm}{$dd}00000000");
+					$final .= ' ' . $this->date( "{$yyyy}{$mm}{$dd}000000" );
 					continue;
 				}
-				if( isset( $weekds[$item] ) ) {
+				if ( isset( $weekds[$item] ) ) {
 					$final .= ' ' . $weekds[$item];
 					continue;
 				}

@@ -1,11 +1,10 @@
 <?php
-
-/*
+/**
+ *
+ *
  * Created on Dec 01, 2007
  *
- * API for MediaWiki 1.8+
- *
- * Copyright (C) 2008 Roan Kattouw <Firstname>.<Lastname>@home.nl
+ * Copyright © 2008 Roan Kattouw "<Firstname>.<Lastname>@gmail.com"
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,138 +18,340 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
-
-if (!defined('MEDIAWIKI')) {
-	// Eclipse helper - will be ignored in production
-	require_once ("ApiBase.php");
-}
 
 /**
  * @ingroup API
  */
 class ApiParamInfo extends ApiBase {
 
-	public function __construct($main, $action) {
-		parent :: __construct($main, $action);
+	private $helpFormat;
+	private $context;
+
+	public function __construct( ApiMain $main, $action ) {
+		parent::__construct( $main, $action );
 	}
 
 	public function execute() {
 		// Get parameters
 		$params = $this->extractRequestParams();
-		$result = $this->getResult();
-		$queryObj = new ApiQuery($this->getMain(), 'query');
-		$r = array();
-		if(is_array($params['modules']))
-		{
-			$modArr = $this->getMain()->getModules();
-			foreach($params['modules'] as $m)
-			{
-				if(!isset($modArr[$m]))
-				{
-					$r['modules'][] = array('name' => $m, 'missing' => '');
-					continue;
-				}
-				$obj = new $modArr[$m]($this->getMain(), $m);
-				$a = $this->getClassInfo($obj);
-				$a['name'] = $m;
-				$r['modules'][] = $a;
-			}
-			$result->setIndexedTagName($r['modules'], 'module');
-		}
-		if(is_array($params['querymodules']))
-		{
-			$qmodArr = $queryObj->getModules();
-			foreach($params['querymodules'] as $qm)
-			{
-				if(!isset($qmodArr[$qm]))
-				{
-					$r['querymodules'][] = array('name' => $qm, 'missing' => '');
-					continue;
-				}
-				$obj = new $qmodArr[$qm]($this, $qm);
-				$a = $this->getClassInfo($obj);
-				$a['name'] = $qm;
-				$r['querymodules'][] = $a;
-			}
-			$result->setIndexedTagName($r['querymodules'], 'module');
-		}
-		if($params['mainmodule'])
-			$r['mainmodule'] = $this->getClassInfo($this->getMain());
-		if($params['pagesetmodule'])
-		{
-			$pageSet = new ApiPageSet($queryObj);
-			$r['pagesetmodule'] = $this->getClassInfo($pageSet);
-		}
-		$result->addValue(null, $this->getModuleName(), $r);
-	}
 
-	function getClassInfo($obj)
-	{
-		$result = $this->getResult();
-		$retval['classname'] = get_class($obj);
-		$retval['description'] = (is_array($obj->getDescription()) ? implode("\n", $obj->getDescription()) : $obj->getDescription());
-		$retval['prefix'] = $obj->getModulePrefix();
-		if($obj->isReadMode())
-			$retval['readrights'] = '';
-		if($obj->isWriteMode())
-			$retval['writerights'] = '';
-		if($obj->mustBePosted())
-			$retval['mustbeposted'] = '';
-		$allowedParams = $obj->getFinalParams();
-		if(!is_array($allowedParams))
-			return $retval;
-		$retval['parameters'] = array();
-		$paramDesc = $obj->getFinalParamDescription();
-		foreach($allowedParams as $n => $p)
-		{
-			$a = array('name' => $n);
-			if(!is_array($p))
-			{
-				if(is_bool($p))
-				{
-					$a['type'] = 'bool';
-					$a['default'] = ($p ? 'true' : 'false');
-				}
-				if(is_string($p))
-					$a['default'] = $p;
-				$retval['parameters'][] = $a;
+		$this->helpFormat = $params['helpformat'];
+		$this->context = new RequestContext;
+		$this->context->setUser( new User ); // anon to avoid caching issues
+		$this->context->setLanguage( $this->getMain()->getLanguage() );
+
+		if ( is_array( $params['modules'] ) ) {
+			$modules = $params['modules'];
+		} else {
+			$modules = array();
+		}
+
+		if ( is_array( $params['querymodules'] ) ) {
+			$this->logFeatureUsage( 'action=paraminfo&querymodules' );
+			$queryModules = $params['querymodules'];
+			foreach ( $queryModules as $m ) {
+				$modules[] = 'query+' . $m;
+			}
+		} else {
+			$queryModules = array();
+		}
+
+		if ( is_array( $params['formatmodules'] ) ) {
+			$this->logFeatureUsage( 'action=paraminfo&formatmodules' );
+			$formatModules = $params['formatmodules'];
+			foreach ( $formatModules as $m ) {
+				$modules[] = $m;
+			}
+		} else {
+			$formatModules = array();
+		}
+
+		$res = array();
+
+		foreach ( $modules as $m ) {
+			try {
+				$module = $this->getModuleFromPath( $m );
+			} catch ( UsageException $ex ) {
+				$this->setWarning( $ex->getMessage() );
 				continue;
 			}
+			$key = 'modules';
 
-			if(isset($p[ApiBase::PARAM_DFLT]))
-				$a['default'] = $p[ApiBase::PARAM_DFLT];
-			if(isset($p[ApiBase::PARAM_ISMULTI]))
-				if($p[ApiBase::PARAM_ISMULTI])
-				{
-					$a['multi'] = '';
-					$a['limit'] = $this->getMain()->canApiHighLimits() ?
-							ApiBase::LIMIT_SML2 :
-							ApiBase::LIMIT_SML1;
-				}
-			if(isset($p[ApiBase::PARAM_ALLOW_DUPLICATES]))
-				if($p[ApiBase::PARAM_ALLOW_DUPLICATES])
-					$a['allowsduplicates'] = '';
-			if(isset($p[ApiBase::PARAM_TYPE]))
-			{
-				$a['type'] = $p[ApiBase::PARAM_TYPE];
-				if(is_array($a['type']))
-					$result->setIndexedTagName($a['type'], 't');
+			// Back compat
+			$isBCQuery = false;
+			if ( $module->getParent() && $module->getParent()->getModuleName() == 'query' &&
+				in_array( $module->getModuleName(), $queryModules )
+			) {
+				$isBCQuery = true;
+				$key = 'querymodules';
 			}
-			if(isset($p[ApiBase::PARAM_MAX]))
-				$a['max'] = $p[ApiBase::PARAM_MAX];
-			if(isset($p[ApiBase::PARAM_MAX2]))
-				$a['highmax'] = $p[ApiBase::PARAM_MAX2];
-			if(isset($p[ApiBase::PARAM_MIN]))
-				$a['min'] = $p[ApiBase::PARAM_MIN];
-			if(isset($paramDesc[$n]))
-				$a['description'] = (is_array($paramDesc[$n]) ? implode("\n", $paramDesc[$n]) : $paramDesc[$n]);
-			$retval['parameters'][] = $a;
+			if ( in_array( $module->getModuleName(), $formatModules ) ) {
+				$key = 'formatmodules';
+			}
+
+			$item = $this->getModuleInfo( $module );
+			if ( $isBCQuery ) {
+				$item['querytype'] = $item['group'];
+			}
+			$res[$key][] = $item;
 		}
-		$result->setIndexedTagName($retval['parameters'], 'param');
-		return $retval;
+
+		$result = $this->getResult();
+		$result->addValue( array( $this->getModuleName() ), 'helpformat', $this->helpFormat );
+
+		foreach ( $res as $key => $stuff ) {
+			ApiResult::setIndexedTagName( $res[$key], 'module' );
+		}
+
+		if ( $params['mainmodule'] ) {
+			$this->logFeatureUsage( 'action=paraminfo&mainmodule' );
+			$res['mainmodule'] = $this->getModuleInfo( $this->getMain() );
+		}
+
+		if ( $params['pagesetmodule'] ) {
+			$this->logFeatureUsage( 'action=paraminfo&pagesetmodule' );
+			$pageSet = new ApiPageSet( $this->getMain()->getModuleManager()->getModule( 'query' ) );
+			$res['pagesetmodule'] = $this->getModuleInfo( $pageSet );
+			unset( $res['pagesetmodule']['name'] );
+			unset( $res['pagesetmodule']['path'] );
+			unset( $res['pagesetmodule']['group'] );
+		}
+
+		$result->addValue( null, $this->getModuleName(), $res );
+	}
+
+	/**
+	 * @param array $res Result array
+	 * @param string $key Result key
+	 * @param Message[] $msgs
+	 * @param bool $joinLists
+	 */
+	protected function formatHelpMessages( array &$res, $key, array $msgs, $joinLists = false ) {
+		switch ( $this->helpFormat ) {
+			case 'none':
+				break;
+
+			case 'wikitext':
+				$ret = array();
+				foreach ( $msgs as $m ) {
+					$ret[] = $m->setContext( $this->context )->text();
+				}
+				$res[$key] = join( "\n\n", $ret );
+				if ( $joinLists ) {
+					$res[$key] = preg_replace( '!^(([*#:;])[^\n]*)\n\n(?=\2)!m', "$1\n", $res[$key] );
+				}
+				break;
+
+			case 'html':
+				$ret = array();
+				foreach ( $msgs as $m ) {
+					$ret[] = $m->setContext( $this->context )->parseAsBlock();
+				}
+				$ret = join( "\n", $ret );
+				if ( $joinLists ) {
+					$ret = preg_replace( '!\s*</([oud]l)>\s*<\1>\s*!', "\n", $ret );
+				}
+				$res[$key] = Parser::stripOuterParagraph( $ret );
+				break;
+
+			case 'raw':
+				$res[$key] = array();
+				foreach ( $msgs as $m ) {
+					$a = array(
+						'key' => $m->getKey(),
+						'params' => $m->getParams(),
+					);
+					if ( $m instanceof ApiHelpParamValueMessage ) {
+						$a['forvalue'] = $m->getParamValue();
+					}
+					$res[$key][] = $a;
+				}
+				ApiResult::setIndexedTagName( $res[$key], 'msg' );
+				break;
+		}
+	}
+
+	/**
+	 * @param ApiBase $module
+	 * @return ApiResult
+	 */
+	private function getModuleInfo( $module ) {
+		$result = $this->getResult();
+		$ret = array();
+		$path = $module->getModulePath();
+
+		$ret['name'] = $module->getModuleName();
+		$ret['classname'] = get_class( $module );
+		$ret['path'] = $path;
+		if ( !$module->isMain() ) {
+			$ret['group'] = $module->getParent()->getModuleManager()->getModuleGroup(
+				$module->getModuleName()
+			);
+		}
+		$ret['prefix'] = $module->getModulePrefix();
+
+		$this->formatHelpMessages( $ret, 'description', $module->getFinalDescription() );
+
+		foreach ( $module->getHelpFlags() as $flag ) {
+			$ret[$flag] = true;
+		}
+
+		$ret['helpurls'] = (array)$module->getHelpUrls();
+		if ( isset( $ret['helpurls'][0] ) && $ret['helpurls'][0] === false ) {
+			$ret['helpurls'] = array();
+		}
+		ApiResult::setIndexedTagName( $ret['helpurls'], 'helpurl' );
+
+		if ( $this->helpFormat !== 'none' ) {
+			$ret['examples'] = array();
+			$examples = $module->getExamplesMessages();
+			foreach ( $examples as $qs => $msg ) {
+				$item = array(
+					'query' => $qs
+				);
+				$msg = ApiBase::makeMessage( $msg, $this->context, array(
+					$module->getModulePrefix(),
+					$module->getModuleName(),
+					$module->getModulePath()
+				) );
+				$this->formatHelpMessages( $item, 'description', array( $msg ) );
+				if ( isset( $item['description'] ) ) {
+					if ( is_array( $item['description'] ) ) {
+						$item['description'] = $item['description'][0];
+					} else {
+						ApiResult::setSubelementsList( $item, 'description' );
+					}
+				}
+				$ret['examples'][] = $item;
+			}
+			ApiResult::setIndexedTagName( $ret['examples'], 'example' );
+		}
+
+		$ret['parameters'] = array();
+		$params = $module->getFinalParams( ApiBase::GET_VALUES_FOR_HELP );
+		$paramDesc = $module->getFinalParamDescription();
+		foreach ( $params as $name => $settings ) {
+			if ( !is_array( $settings ) ) {
+				$settings = array( ApiBase::PARAM_DFLT => $settings );
+			}
+
+			$item = array(
+				'name' => $name
+			);
+			if ( isset( $paramDesc[$name] ) ) {
+				$this->formatHelpMessages( $item, 'description', $paramDesc[$name], true );
+			}
+
+			$item['required'] = !empty( $settings[ApiBase::PARAM_REQUIRED] );
+
+			if ( !empty( $settings[ApiBase::PARAM_DEPRECATED] ) ) {
+				$item['deprecated'] = true;
+			}
+
+			if ( $name === 'token' && $module->needsToken() ) {
+				$item['tokentype'] = $module->needsToken();
+			}
+
+			if ( !isset( $settings[ApiBase::PARAM_TYPE] ) ) {
+				$dflt = isset( $settings[ApiBase::PARAM_DFLT] )
+					? $settings[ApiBase::PARAM_DFLT]
+					: null;
+				if ( is_bool( $dflt ) ) {
+					$settings[ApiBase::PARAM_TYPE] = 'boolean';
+				} elseif ( is_string( $dflt ) || is_null( $dflt ) ) {
+					$settings[ApiBase::PARAM_TYPE] = 'string';
+				} elseif ( is_int( $dflt ) ) {
+					$settings[ApiBase::PARAM_TYPE] = 'integer';
+				}
+			}
+
+			if ( isset( $settings[ApiBase::PARAM_DFLT] ) ) {
+				switch ( $settings[ApiBase::PARAM_TYPE] ) {
+					case 'boolean':
+						$item['default'] = ( $settings[ApiBase::PARAM_DFLT] ? 'true' : 'false' );
+						break;
+					case 'string':
+						$item['default'] = strval( $settings[ApiBase::PARAM_DFLT] );
+						break;
+					case 'integer':
+						$item['default'] = intval( $settings[ApiBase::PARAM_DFLT] );
+						break;
+					default:
+						$item['default'] = $settings[ApiBase::PARAM_DFLT];
+						break;
+				}
+			}
+
+			$item['multi'] = !empty( $settings[ApiBase::PARAM_ISMULTI] );
+			if ( $item['multi'] ) {
+				$item['limit'] = $this->getMain()->canApiHighLimits() ?
+					ApiBase::LIMIT_SML2 :
+					ApiBase::LIMIT_SML1;
+				$item['lowlimit'] = ApiBase::LIMIT_SML1;
+				$item['highlimit'] = ApiBase::LIMIT_SML2;
+			}
+
+			if ( !empty( $settings[ApiBase::PARAM_ALLOW_DUPLICATES] ) ) {
+				$item['allowsduplicates'] = true;
+			}
+
+			if ( isset( $settings[ApiBase::PARAM_TYPE] ) ) {
+				if ( $settings[ApiBase::PARAM_TYPE] === 'submodule' ) {
+					$item['type'] = $module->getModuleManager()->getNames( $name );
+					sort( $item['type'] );
+					$item['submodules'] = true;
+				} else {
+					$item['type'] = $settings[ApiBase::PARAM_TYPE];
+				}
+				if ( is_array( $item['type'] ) ) {
+					// To prevent sparse arrays from being serialized to JSON as objects
+					$item['type'] = array_values( $item['type'] );
+					ApiResult::setIndexedTagName( $item['type'], 't' );
+				}
+			}
+			if ( isset( $settings[ApiBase::PARAM_MAX] ) ) {
+				$item['max'] = $settings[ApiBase::PARAM_MAX];
+			}
+			if ( isset( $settings[ApiBase::PARAM_MAX2] ) ) {
+				$item['highmax'] = $settings[ApiBase::PARAM_MAX2];
+			}
+			if ( isset( $settings[ApiBase::PARAM_MIN] ) ) {
+				$item['min'] = $settings[ApiBase::PARAM_MIN];
+			}
+
+			if ( !empty( $settings[ApiBase::PARAM_HELP_MSG_INFO] ) ) {
+				$item['info'] = array();
+				foreach ( $settings[ApiBase::PARAM_HELP_MSG_INFO] as $i ) {
+					$tag = array_shift( $i );
+					$info = array(
+						'name' => $tag,
+					);
+					if ( count( $i ) ) {
+						$info['values'] = $i;
+						ApiResult::setIndexedTagName( $info['values'], 'v' );
+					}
+					$this->formatHelpMessages( $info, 'text', array(
+						$this->context->msg( "apihelp-{$path}-paraminfo-{$tag}" )
+							->numParams( count( $i ) )
+							->params( $this->context->getLanguage()->commaList( $i ) )
+							->params( $module->getModulePrefix() )
+					) );
+					ApiResult::setSubelementsList( $info, 'text' );
+					$item['info'][] = $info;
+				}
+				ApiResult::setIndexedTagName( $item['info'], 'i' );
+			}
+
+			$ret['parameters'][] = $item;
+		}
+		ApiResult::setIndexedTagName( $ret['parameters'], 'param' );
+
+		return $ret;
 	}
 
 	public function isReadMode() {
@@ -158,38 +359,49 @@ class ApiParamInfo extends ApiBase {
 	}
 
 	public function getAllowedParams() {
-		return array (
+		// back compat
+		$querymodules = $this->getMain()->getModuleManager()
+			->getModule( 'query' )->getModuleManager()->getNames();
+		sort( $querymodules );
+		$formatmodules = $this->getMain()->getModuleManager()->getNames( 'format' );
+		sort( $formatmodules );
+
+		return array(
 			'modules' => array(
-				ApiBase :: PARAM_ISMULTI => true
+				ApiBase::PARAM_ISMULTI => true,
 			),
+			'helpformat' => array(
+				ApiBase::PARAM_DFLT => 'none',
+				ApiBase::PARAM_TYPE => array( 'html', 'wikitext', 'raw', 'none' ),
+			),
+
 			'querymodules' => array(
-				ApiBase :: PARAM_ISMULTI => true
+				ApiBase::PARAM_DEPRECATED => true,
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => $querymodules,
 			),
-			'mainmodule' => false,
-			'pagesetmodule' => false,
+			'mainmodule' => array(
+				ApiBase::PARAM_DEPRECATED => true,
+			),
+			'pagesetmodule' => array(
+				ApiBase::PARAM_DEPRECATED => true,
+			),
+			'formatmodules' => array(
+				ApiBase::PARAM_DEPRECATED => true,
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => $formatmodules,
+			)
 		);
 	}
 
-	public function getParamDescription() {
-		return array (
-			'modules' => 'List of module names (value of the action= parameter)',
-			'querymodules' => 'List of query module names (value of prop=, meta= or list= parameter)',
-			'mainmodule' => 'Get information about the main (top-level) module as well',
-			'pagesetmodule' => 'Get information about the pageset module (providing titles= and friends) as well',
+	protected function getExamplesMessages() {
+		return array(
+			'action=paraminfo&modules=parse|phpfm|query+allpages|query+siteinfo'
+				=> 'apihelp-paraminfo-example-1',
 		);
 	}
 
-	public function getDescription() {
-		return 'Obtain information about certain API parameters';
-	}
-
-	protected function getExamples() {
-		return array (
-			'api.php?action=paraminfo&modules=parse&querymodules=allpages|siteinfo'
-		);
-	}
-
-	public function getVersion() {
-		return __CLASS__ . ': $Id: ApiParamInfo.php 48091 2009-03-06 13:49:44Z catrope $';
+	public function getHelpUrls() {
+		return 'https://www.mediawiki.org/wiki/API:Parameter_information';
 	}
 }

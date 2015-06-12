@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Objectivesea"
+		]
+	},
+	"skinname-bitraf": "Librejo",
+	"bitraf.css": "/* La jena CSS influos la paĝaspekton por uzantoj de la Libreja temo. */",
+	"bitraf.js": "/* La jena Ĝavaskripto ŝargiĝos por uzantoj de la Libreja temo. */"
+}

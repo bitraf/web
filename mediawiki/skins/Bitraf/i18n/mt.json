@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Giangian15"
+		]
+	},
+	"skinname-bitraf": "Bitraf",
+	"bitraf.css": "/* CSS li tpoġġa hawnhekk se jaffetwa dawk l-utenti li jagħmlu użu mill-iskin ''Bitraf'' */",
+	"bitraf.js": "/* Kull ''JavaScript'' hawnhekk jiġi mniżżel għal dawk l-utenti li qegħdin jagħmlu użu mill-iskin ''Bitraf'' */"
+}
