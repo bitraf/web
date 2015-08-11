@@ -1,3 +1,5 @@
+# NO LONGER IN USE AS NGINX IS USED NOW
+
 RewriteEngine on
 AddDefaultCharset UTF-8
 
