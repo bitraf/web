@@ -161,7 +161,7 @@ Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefa
 
   <h2>Kontakt</h2>
 
-  <p><a href='mailto:post@bitraf.no'>post@bitraf.no</a> (går til fler personer).
+  <p><a href='mailto:post@bitraf.no'>post@bitraf.no</a> (går til flere personer).
 
   <!--h2 id=kart>Kart</h2>
 
@@ -184,11 +184,12 @@ Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefa
 
   <h2>Priser, medlemskap</h2>
 
-  <p>Det er gratis å være på Bitraf. Lokalet er likevel betalt for
-av foreningens medlemmer og vi oppfordrer besøkende til å melde seg inn.
-Medlemmer får benytte foreningens forbruksvare som elektronikkomponenter og plast til 3D printerne. 
-De får egen hylleplass til prosjektene sine, egen nøkkel til lokalet, samt flere andre fordeler.
-</p>
+  <p>Det er gratis å være på Bitraf.
+  <p>Lokalet er likevel betalt for av foreningens medlemmer og vi oppfordrer
+  besøkende til å melde seg inn.  Medlemmer får benytte foreningens
+  forbruksvare som elektronikkomponenter og plast til 3D printerne.  De får
+  egen hylleplass til prosjektene sine, egen nøkkel til lokalet, samt flere
+  andre fordeler.
 
   <p>
   <table class='grid-table'>
