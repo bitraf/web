@@ -1,0 +1,146 @@
+server {
+        listen 80;
+
+        server_tokens off;
+        server_name www.bitraf.no;
+
+        access_log /var/log/nginx/bitraf.access.log;
+        error_log /var/log/nginx/bitraf.error.log notice;
+
+        return 301 https://bitraf.no$request_uri;
+}
+
+server {
+        listen 80;
+        listen 443 ssl spdy;
+
+        server_tokens off;
+        server_name bitraf.no;
+
+        access_log /var/log/nginx/bitraf.access.log;
+        error_log /var/log/nginx/bitraf.error.log notice;
+
+        add_header Strict-Transport-Security "max-age=31536000";
+
+        ssl_certificate /etc/ssl/certs/bitraf.no.2015.cert;
+        ssl_certificate_key /etc/ssl/private/bitraf.no.2015.key;
+
+        ssl_session_timeout 5m;
+
+        ssl_dhparam /etc/ssl/dhparam.pem;
+
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_prefer_server_ciphers on;
+
+        location / {
+                root /home/bitweb/web/live;
+                index index.php index.html;
+        }
+
+        location ~ ^/~(.+?)(/.*)?$ {
+                alias /home/$1/www_docs$2;
+        }
+
+        location ~ ^/mediawiki/images.*php$ {
+                return 403;
+        }
+
+        location ~ \.php$ {
+                include /etc/nginx/fastcgi_params;
+                fastcgi_pass unix:/home/bitweb/php-fastcgi/php-fastcgi.socket;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME /home/bitweb/web/live/$fastcgi_script_name;
+                client_max_body_size 20m;
+        }
+
+        # Proxy
+        rewrite ^/wiki/([A-Z].*)$ /mediawiki/index.php?title=$1 last;
+        rewrite ^/wiki/(.*) /mediawiki/$1 last;
+
+        # Redirect
+        rewrite ^/arrangementer$ http://www.meetup.com/bitraf/ redirect;
+        rewrite ^/kontorplasser$ /wiki/Kontorplasser redirect;
+        rewrite ^/kontorplass/?$ /wiki/Kontorplasser redirect;
+        rewrite ^/foreningen$ /wiki/Foreningen redirect;
+        rewrite ^/foreningen/vedtekter$ /wiki/Foreningen redirect;
+        rewrite ^/foreningen/generalforsamling$ /wiki/Foreningen redirect;
+        rewrite ^/generalforsamling$ /wiki/Foreningen redirect;
+        rewrite ^/bedriftspartner$ /wiki/Bedriftsmedlemskap redirect;
+        rewrite ^/sponsorer$ /wiki/Sponsorer redirect;
+        rewrite ^/build-night$ /wiki/Byggekveld redirect;
+        rewrite ^/prosjekter$ /wiki/Prosjekter redirect;
+        rewrite ^/foreningen/styrevedtak$ /styrevedtak/ redirect;
+        rewrite ^/wp-content/uploads/..../../(.*)\.jpg$ /photos/$1.JPG redirect;
+
+        rewrite ^/wiki$ /wiki/ permanent;
+
+        # Ideally proxy
+        rewrite ^/referat-fra-konstituerende-generalforsamling$ /dokument/referat-fra-konstituerende-generalforsamling.php last;
+        rewrite ^/styrevedtak/styrevedtak-([0-9]+)$ /styrevedtak/styrevedtak-$1.html last;
+        rewrite ^/galleri$ /galleri.php last;
+        rewrite ^/wp-content/uploads/2012/03/highres_101293802.jpeg$ /spill.jpg last;
+        rewrite ^/photos/([A-Za-z0-9.-]+)$ /image.php?name=$1 last;
+}
+
+server {
+        listen 4433 ssl spdy;
+
+        server_tokens off;
+        server_name bitraf.no;
+
+        access_log /var/log/nginx/bitraf-staging.access.log;
+        error_log /var/log/nginx/bitraf-staging.error.log notice;
+
+        ssl_certificate /etc/ssl/certs/bitraf.no.2015.cert;
+        ssl_certificate_key /etc/ssl/private/bitraf.no.2015.key;
+
+        ssl_session_timeout 5m;
+
+        ssl_dhparam /etc/ssl/dhparam.pem;
+
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        ssl_prefer_server_ciphers on;
+
+        location / {
+                root /home/bitweb/web/staging;
+                index index.php index.html;
+        }
+
+        location ~ ^/mediawiki/images.*php$ {
+                return 403;
+        }
+
+        location ~ \.php$ {
+                include /etc/nginx/fastcgi_params;
+                fastcgi_pass unix:/home/bitweb/php-fastcgi/php-fastcgi.socket;
+                fastcgi_index index.php;
+                fastcgi_param SCRIPT_FILENAME /home/bitweb/web/staging/$fastcgi_script_name;
+        }
+
+        # Proxy
+        rewrite ^/wiki/([A-Z].*)$ /mediawiki/index.php?title=$1 last;
+        rewrite ^/wiki/(.*) /mediawiki/$1 last;
+
+        # Redirect
+        rewrite ^/arrangementer$ http://www.meetup.com/bitraf/ redirect;
+        rewrite ^/kontorplasser$ /wiki/Bitraf_24/7 redirect;
+        rewrite ^/foreningen$ /wiki/Foreningen redirect;
+        rewrite ^/foreningen/vedtekter$ /wiki/Foreningen redirect;
+        rewrite ^/foreningen/generalforsamling$ /wiki/Foreningen redirect;
+        rewrite ^/generalforsamling$ /wiki/Foreningen redirect;
+        rewrite ^/bedriftspartner$ /wiki/Bedriftsmedlemskap redirect;
+        rewrite ^/sponsorer$ /wiki/Sponsorer redirect;
+        rewrite ^/build-night$ /wiki/Byggekveld redirect;
+        rewrite ^/prosjekter$ /wiki/Prosjekter redirect;
+        rewrite ^/foreningen/styrevedtak$ /styrevedtak/ redirect;
+        rewrite ^/wp-content/uploads/..../../(.*)\.jpg$ /photos/$1.JPG redirect;
+
+        rewrite ^/wiki$ /wiki/ permanent;
+
+        # Ideally proxy
+        rewrite ^/referat-fra-konstituerende-generalforsamling$ /referat-fra-konstituerende-generalforsamling.php last;
+        rewrite ^/styrevedtak/styrevedtak-([0-9]+)$ /styrevedtak/styrevedtak-$1.html last;
+        rewrite ^/galleri$ /galleri.php last;
+        rewrite ^/wp-content/uploads/2012/03/highres_101293802.jpeg$ /spill.jpg last;
+        rewrite ^/photos/([A-Za-z0-9.-]+)$ /image.php?name=$1 last;
+}

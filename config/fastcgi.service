@@ -1,0 +1,14 @@
+[Unit]
+Description=fcgi for bitweb
+After=network.target postgresql.service
+
+[Service]
+ExecStart=/usr/bin/spawn-fcgi -n -s /home/bitweb/php-fastcgi/php-fastcgi.socket -C 6 -f /usr/bin/php5-cgi
+KillMode=process
+Restart=always
+User=www-data
+Group=www-data
+SupplementaryGroups=bitweb
+
+[Install]
+WantedBy=multi-user.target
