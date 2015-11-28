@@ -293,4 +293,5 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
   <p>
   <a href="http://renholdsdrift.no"><img src="images/renhold.png" alt="Renholds Service Drift"></a>
   <a href="http://profsys.no"><img src="images/profsys_logo.png" alt="Profsys AS"></a>
+  <a href="http://fiken.no"><img src="images/fiken-logo.png" alt="Fieken AS"></a>
   </div>
