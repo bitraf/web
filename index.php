@@ -50,7 +50,8 @@ setlocale(LC_TIME, "nb_NO.utf8");
     <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
     <div class='header-links'>
       <a href='/join/'>Bli medlem</a> | 
-      <a href='/wiki/'>Wiki</a> | <a href='/prosjekter'>Prosjekter</a> | <a href='/kontorplass/'>Kontorplass</a> | <a href='/galleri'>Galleri</a> | <a href='/foreningen'>Foreningen</a> |
+      <a href='https://p2k12.bitraf.no/getmylink.php'>Min side</a> |
+      <a href='/wiki/'>Wiki</a> | | <a href='/kontorplass/'>Kontorplass</a> | <a href='/galleri'>Galleri</a> | <a href='/foreningen'>Foreningen</a> |
       <a href='/sponsorer'>Sponsorer</a>
     </div>
     <div class="button twitter-button"><a href="https://twitter.com/Bitraffineriet" ><img src='/images/twitter-bird-white-on-blue.png' alt='Twitter'></a></div>
@@ -283,11 +284,6 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
               })();
 </script>
-
-  <h2>Endre medlemskap</h2>
-
-  <p>P&aring;  <a href='https://p2k12.bitraf.no/getmylink.php'>min side</a> kan du endre medlemskapet ditt og sette opp kredittkortbetaling.</p>
-  
 
   <h2>Sponsorer</h2>
   <p>
