@@ -47,7 +47,7 @@ def upload_image(description, author, imagedata, filename):
     files = {'imagefile': (filename, imagedata) }
     payload = {'key': secret_key, 'description': description}
 
-    r = requests.post(apiurl, files=files, data=payload, config={'verbose': sys.stderr})
+    r = requests.post(apiurl, files=files, data=payload)
 
     print r.text
 
