@@ -82,7 +82,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
   bestemmer hva som foregår.  På dagtid sitter det typisk frilansere og
   entrepenører og jobber her, og det kan du også.
 
-  <p>Bitraf holder til i store lokaler ved Youngstorget (Youngs gate 6).
+  <p>Bitraf holder til i store lokaler ved Youngstorget (Pløens gate 4).
 <!-- This is broken.
   <h2>Foreningslokale</h2>
   <div id="pan-container">
@@ -180,7 +180,7 @@ Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefa
   }
   </script-->
 
-  <p>Vi holder til i Youngs gate 6 rett ved Youngstorget i Oslo sentrum.  Det står Nilz ved døra vår (de holder til i samme portrom).
+  <p>Vi holder til i Pløens gate 4 rett ved Youngstorget i Oslo sentrum. 
   <p>For å komme inn, trykk på ringeklokken det står <em>Bitraf</em> på.
 
   <h2>Priser, medlemskap</h2>
