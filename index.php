@@ -46,6 +46,8 @@ setlocale(LC_TIME, "nb_NO.utf8");
 </head>
 <body onload="initialize()" onunload="GUnload()">
 <div id='globalWrapper'>
+  <p style='float:right'>Referat frå <a href='/wiki/Genfors_2016' title='Årsmøte (generalforsamling) var 28. april 2016'>årsmøte 2016</a>.</p>
+
   <header>
     <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
     <div class='header-links'>
@@ -60,6 +62,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
   </header>
 
   <div style='clear:both'></div>
+
 
   <div id="lead-image">
     <img src="/images/IMG_2052_scaled.jpg" alt="" title="Inngangsparti" />
