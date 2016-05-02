@@ -9,11 +9,13 @@ setlocale(LC_TIME, "nb_NO.utf8");
   <meta charset=utf-8>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitraf, Oslo</title>
+  <!--
   <script src="//maps.google.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript" src="//apis.google.com/js/plusone.js"></script>
+  -->
   <link href='/style/main.css' rel='stylesheet' type='text/css'>
   <style>
-  
+
   #annotation_event { font-weight: normal }
   .checkins {
     float: right;
@@ -44,7 +46,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
   }
   </style>
 </head>
-<body onload="initialize()" onunload="GUnload()">
+
 <div id='globalWrapper'>
   <p style='float:right'>Referat frå <a href='/wiki/Genfors_2016' title='Årsmøte (generalforsamling) var 28. april 2016'>årsmøte 2016</a>.</p>
 
@@ -73,19 +75,24 @@ setlocale(LC_TIME, "nb_NO.utf8");
   </div>
 
   <div class=info>
-  <p><strong>Bitraf er et <a href="http://en.wikipedia.org/wiki/Hackerspace">hackerspace
-  / makerspace</a>
-  i Oslo som er åpent for hvem som helst 7 dager i uka.</strong>  Kom innom om du er
-  interessert i program&shy;mering, digital kunst, elektronikk, fresing og fabrikasjon,
-  fri programvare, spillutvikling eller andre liknende aktiviteter.
+  <p><strong>Bitraf er et <span title="...og et hackerspace">makerspace</span>
+  i Oslo som er åpent for hvem som helst 7 dager i uka.</strong> Kom innom om
+  du er interessert i analogt og digitalt håndarbeid, 3D-printing, digital
+  kunst, programmering, design, elektronikk, laserskjæring og liknende
+  aktiviteter. Hos oss er det alt fra nybegynnere til folk som driver med disse
+  temaene profesjonelt, og alle er velkommen uansett nivå.
 
-  <p>Jobb med egne prosjekter i et sosialt miljø, hold eller
-  delta på en workshop, et game jam, hackathon, bug squashing party eller
-  et godt gammeldags LAN-party.  Bitraf er fullstendig brukerstyrt, så du
-  bestemmer hva som foregår.  På dagtid sitter det typisk frilansere og
-  entrepenører og jobber her, og det kan du også.
+  <p>I lokalet er det tilgang til utstyr vi har spleisa på, blant annet
+  3D-printere, laserskjærer, fres, industriell symaskin og dreiebenk.  Her kan
+  du jobbe med egne prosjekter i et sosialt miljø, og ikke minst få hjelp av
+  likesinnede. Bitraf er fullstendig brukerstyrt, så du bestemmer hva som
+  foregår. Medlemer holder ukentlige workshops der du kan delta, Bitraf lever
+  av at folk som deg deler kunnskap på denne måten. På dagtid sitter det gjerne
+  frilansere og entrepenører som har kontorplass her, og det kan du også.
 
   <p>Bitraf holder til i store lokaler ved Youngstorget (Pløens gate 4).
+  </div>
+
 <!-- This is broken.
   <h2>Foreningslokale</h2>
   <div id="pan-container">
@@ -110,9 +117,8 @@ setlocale(LC_TIME, "nb_NO.utf8");
       <p>Elektronikklab</p>
     </div>
   </div>
-
-  </div>
 -->
+
   <h2>Arrangementer</h2>
 
   <table class='grid-table'>
@@ -293,4 +299,5 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
   <a href="http://renholdsdrift.no"><img src="images/renhold.png" alt="Renholds Service Drift"></a>
   <a href="http://profsys.no"><img src="images/profsys_logo.png" alt="Profsys AS"></a>
   <a href="http://fiken.no"><img src="images/fiken-logo.png" alt="Fieken AS"></a>
-  </div>
+
+</div><!-- #globalWrapper -->
