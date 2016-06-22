@@ -67,7 +67,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
 
 
   <div id="lead-image">
-    <img src="/images/IMG_2052_scaled.jpg" alt="" title="Inngangsparti" />
+    <img src="/images/ploensgt.jpg" alt="" title="Inngangsparti" />
   </div>
   <div class=checkins>
     <iframe src=https://p2k12.bitraf.no/chart.php width=340 height=150 style="border:0"></iframe>
