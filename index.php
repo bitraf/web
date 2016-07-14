@@ -167,7 +167,7 @@ addEventsFrom("/var/lib/bitweb/meetup.bitraf", 5);
  </table>
 
   <p>Du finner arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>. 
-Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefaler folk å mruke tjenesten til å holde seg oppdatert.</p>
+Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefaler folk å bruke tjenesten til å holde seg oppdatert.</p>
 
   <h2>Kontakt</h2>
 
