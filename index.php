@@ -48,7 +48,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
 </head>
 
 <div id='globalWrapper'>
-  <p style='float:right'>Referat frå <a href='/wiki/Genfors_2016' title='Årsmøte (generalforsamling) var 28. april 2016'>årsmøte 2016</a>.</p>
+  <p style='float:right'>Referat fra <a href='/wiki/Genfors_2016' title='Årsmøte (generalforsamling) var 28. april 2016'>årsmøte 2016</a>.</p>
 
   <header>
     <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
@@ -83,12 +83,12 @@ setlocale(LC_TIME, "nb_NO.utf8");
   temaene profesjonelt, og alle er velkommen uansett nivå.
 
   <p>I lokalet er det tilgang til utstyr vi har spleisa på, blant annet
-  3D-printere, laserskjærer, fres, industriell symaskin og dreiebenk.  Her kan
+  3D-printere, laserskjærer, CNC-fres, og dreiebenk.  Her kan
   du jobbe med egne prosjekter i et sosialt miljø, og ikke minst få hjelp av
   likesinnede. Bitraf er fullstendig brukerstyrt, så du bestemmer hva som
-  foregår. Medlemer holder ukentlige workshops der du kan delta, Bitraf lever
+  foregår. Medlemmer holder jevnlig workshops der du kan delta, Bitraf lever
   av at folk som deg deler kunnskap på denne måten. På dagtid sitter det gjerne
-  frilansere og entrepenører som har kontorplass her, og det kan du også.
+  frilansere og entreprenører som har kontorplass her, og det kan du også.
 
   <p>Bitraf holder til i store lokaler ved Youngstorget (Pløens gate 4).
   </div>
@@ -189,16 +189,16 @@ Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefa
   }
   </script-->
 
-  <p>Vi holder til i Pløens gate 4 rett ved Youngstorget i Oslo sentrum. 
-  <p>For å komme inn, trykk på ringeklokken det står <em>Bitraf</em> på.
+  <p>Vi holder til i Pløens gate 4, rett ved Youngstorget i Oslo sentrum. 
+  <p>Trykk på ringeklokken det står <em>Bitraf</em> på for å komme inn.
 
   <h2>Priser, medlemskap</h2>
 
   <p>Det er gratis å være på Bitraf.
   <p>Lokalet er likevel betalt for av foreningens medlemmer og vi oppfordrer
   besøkende til å melde seg inn.  Medlemmer får benytte foreningens
-  forbruksvare som elektronikkomponenter og plast til 3D printerne.  De får
-  egen hylleplass til prosjektene sine, egen nøkkel til lokalet, samt flere
+  forbruksvarer som elektronikkomponenter og plast til 3D printerne.  De får
+  egen hylleplass til prosjektene sine, adgang til lokalet 24/7, samt flere
   andre fordeler.
 
   <p>
@@ -207,28 +207,26 @@ Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefa
       <td style='border: none; width: 15ex'>
       <th style='width: 15ex'>Pris per måned
     <tr>
-      <th>Bitraf Støtte
+      <th>Støttemedlem
       <td class=n>300 kr
     <tr>
-      <th>Bitraf Vanlig
+      <th>Vanlig medlem
       <td class=n>500 kr
     <tr>
-      <th>Bitraf Filantrop
+      <th>Filantropmedlem
       <td class=n>1000 kr
   </table>
 
-  <p>Du kan bruke <a href='http://p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien nne i lab'en</a>.</p>
+  <p>Du kan bruke <a href='http://p2k12.bitraf.no/my/'>vårt innmeldingsskjema</a> for å melde deg inn, eller du kan registrere deg ved å bruke <a href='/photos/DSC00895.JPG'>bringebærpaien inne i lab'en</a>.</p>
 
-  <p>Kontonummer (for folk som ikke har fått faktura og for donasjoner): <tt>1503.273.5581</tt></p>
+  <p>Vil du donere til Bitraf? Kontonummeret vårt er <tt>1503.273.5581</tt></p>
 
   <p>Et par ting er verdt å 
-  gjenta: <em>Hvem som helst</em> kan komme hit mandag&ndash;fredag,
-  og hele lørdag og søndag, <em>uten å betale</em>.  
+  gjenta: <em>Hvem som helst</em> kan komme hit hele uken, <em>uten å betale</em>.
 Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kolliderer med et annet.
+
 <p>PS: Hvis du ønsker å støtte Bitraf med Grasrotandelen din, kan du sende denne SMS'en til 2020: GRASROTANDELEN 898124452</p>
 <h2>Faste arrangementer</h2>
-
-<p>Utenom arbeidstiden er det fullt mulig å være i lokalet selv om man ikke deltar på noe arrangement.</p>
 
   <table class='grid-table calendar'>
     <tr>
@@ -245,7 +243,6 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
       <td colspan=5 rowspan=4>Arbeidstid<i id="annotation_event">¹</i>
     <tr>
       <th>13:00
-      <td rowspan=8 style='border-bottom: none'><a href='/build-night'>Build<br>Day<i id="annotation_event">²<i></a>
     <tr>
       <th>14:00
     <tr>
@@ -260,8 +257,6 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
       <td style='border: none'>
       <td style='border: none'>
       <td rowspan=5 class=ne><a href='/build-night'>Build<br>Night</a>
-      <td style='border: none'>
-      <td rowspan=5 class=ne>Spill-<br>utvikling
     <tr>
       <th>19:00
     <tr>
@@ -274,9 +269,6 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
       <tr>
       <th class=ne>22:00<br>&#8942;
   </table>
-  <p>¹ I arbeidstiden er det ikke tillatt med sjenerende støy.
-  <p>² Bare når noen tar initiativ.  Spør folk på IRC om de vil være med.
-
 
   <h2>Chat</h2>
 
