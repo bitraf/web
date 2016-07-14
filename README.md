@@ -6,7 +6,7 @@ The code for [Bitraf.no](http://bitraf.no) website.
 
 Most of the pages linked on the Bitraf website is actually wiki-pages. For instance [Kontorplasser](https://bitraf.no/wiki/Kontorplasser), [Foreningen](https://bitraf.no/wiki/Foreningen) and [Sponsorer](https://bitraf.no/wiki/Sponsorer). These you can edit using Mediawiki web interface once you have [logged in](https://bitraf.no/mediawiki/index.php?title=Spesial:Logg_inn).
 
-However, the pages with dynamic content are stored here. For instance the frontpage ([index.php]((https://github.com/bitraf/web/blob/master/index.php))), the gallery ([galleri.php](https://github.com/bitraf/web/blob/master/galleri.php))
+However, the pages with dynamic content are stored here. For instance the frontpage ([index.php](https://github.com/bitraf/web/blob/master/index.php)), the gallery ([galleri.php](https://github.com/bitraf/web/blob/master/galleri.php))
 
 ## Making changes
 
