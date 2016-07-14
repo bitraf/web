@@ -265,7 +265,6 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
     <tr>
       <th>21:00
       <td style='border:none'>
-      <td rowspan=4 class=ne>Pub<i id="annotation_event">²</i>
       <tr>
       <th class=ne>22:00<br>&#8942;
   </table>
