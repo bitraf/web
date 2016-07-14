@@ -27,21 +27,21 @@ One you have made the change, add a description of what you did "Fixed typo", an
 
 Log in to the server
 
-  ssh bitraf.no
+    ssh bitraf.no
 
 Pull the changes into staging
 
-  cd /home/bitweb/web/staging
-  git pull
+    cd /home/bitweb/web/staging
+    git pull
 
 Check on staging that everything looks good: https://bitraf.no:4433/
 
-  # all good?
+    # all good?
   
 Pull the changes into live
 
-  cd /home/bitweb/web/staging
-  git pull
+    cd /home/bitweb/web/staging
+    git pull
   
 Double-check the changes on live site: https://bitraf.no
 
