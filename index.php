@@ -288,7 +288,20 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
 </script>
 
   <h2>Sponsorer</h2>
-  <p>
+<style>
+.sponsorer {
+padding-top: 2rem;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+align-items: center;
+}
+.sponsorer a {
+display: inline-block;
+margin: 15px;
+}
+</style>
+  <p class="sponsorer">
     <a href="http://profsys.no"><img src="images/profsys_logo.png" alt="Profsys AS"></a>
     <a href="http://fiken.no"><img src="images/fiken-logo.png" alt="Fiken AS"></a>
     <a href="http://abida.no"><img src="images/abida.jpg" alt="Abida AS"></a>
