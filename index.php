@@ -48,7 +48,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
 </head>
 
 <div id='globalWrapper'>
-  <p style='float:right'>Referat fra <a href='/wiki/Genfors_2016' title='Årsmøte (generalforsamling) var 28. april 2016'>årsmøte 2016</a>.</p>
+  <p style='float:right'>Referat fra <a href='https://bitraf.no/dokument/bitraf-gf-2016.pdf' title='Årsmøte (generalforsamling) var 28. april 2016'>årsmøte 2016</a>.</p>
 
   <header>
     <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
