@@ -302,7 +302,6 @@ margin: 15px;
 }
 </style>
   <p class="sponsorer">
-    <a href="http://profsys.no"><img src="images/profsys_logo.png" alt="Profsys AS"></a>
     <a href="http://fiken.no"><img src="images/fiken-logo.png" alt="Fiken AS"></a>
     <a href="http://abida.no"><img src="images/abida.jpg" alt="Abida AS"></a>
 </div><!-- #globalWrapper -->
