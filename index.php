@@ -47,8 +47,12 @@ setlocale(LC_TIME, "nb_NO.utf8");
   </style>
 </head>
 
+<body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <div id='globalWrapper'>
-  <p style='float:right'>Referat fra <a href='https://bitraf.no/dokument/bitraf-gf-2016.pdf' title='Årsmøte (generalforsamling) var 28. april 2016'>årsmøte 2016</a>.</p>
+  <p style='float:right'>Referat fra <a href='https://bitraf.no/dokument/bitraf-am-2017.pdf' title='Årsmøte var 20. april 2017'>årsmøte 2017</a>.</p>
 
   <header>
     <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
