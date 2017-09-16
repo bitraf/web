@@ -277,7 +277,7 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
 
   <p>Det meste av chatten foregår på Slack. Trykk <a href="/slack-invite">her</a> for å bli invitert.
 
-  <p>Du kan også nå oss på irc: <a href='http://webchat.freenode.net/?channels=bitraf'>#bitraf, irc.freenode.net</a>
+  <p>Du kan også nå oss på IRC: #bitraf p&aring; Freenode</a>
   <h2>E-postliste</h2>
   <p>Meld deg på  <a href='https://groups.google.com/forum/#!forum/bitraf'>Bitrafs e-postliste</a>.</p>
 <script>
