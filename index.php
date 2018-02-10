@@ -9,6 +9,8 @@ setlocale(LC_TIME, "nb_NO.utf8");
   <meta charset=utf-8>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitraf, Oslo</title>
+  <!-- Google Search Console, BL's account -->
+  <meta name="google-site-verification" content="Zz2Ib4jBlmF9XIY3NDK3BfIesGSGbzGlIvPZgvoyEWI" />
   <!--
   <script src="//maps.google.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript" src="//apis.google.com/js/plusone.js"></script>
@@ -280,7 +282,8 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
   <p>Du kan også nå oss på IRC: #bitraf p&aring; Freenode</a>
   <h2>E-postliste</h2>
   <p>Meld deg på  <a href='https://groups.google.com/forum/#!forum/bitraf'>Bitrafs e-postliste</a>.</p>
-<script>
+<!-- Google Analytics code, MH's account -->
+  <script>
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-29715437-1']);
   _gaq.push(['_trackPageview']);
