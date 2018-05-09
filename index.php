@@ -71,7 +71,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
     <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
     <div class='header-links'>
       <a href='/join/'>Bli medlem</a> | 
-      <a href='https://p2k12.bitraf.no/getmylink.php'>Min side</a> |
+      <a href='https://p2k16.bitraf.no'>Min side</a> |
       <a href='/wiki/'>Wiki</a> | | <a href='/kontorplass/'>Kontorplass</a> | <a href='/galleri'>Galleri</a> | <a href='/foreningen'>Foreningen</a> |
       <a href='/sponsorer'>Sponsorer</a>
     </div>
