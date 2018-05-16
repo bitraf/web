@@ -14,7 +14,7 @@ class p2k12Auth extends AuthPlugin
     if (isset($this->data))
       return true;
 
-    $tmp = @file_get_contents('https://p2k12.bitraf.no/passwd');
+    $tmp = @file_get_contents('https://p2k16.bitraf.no/passwd.php');
 
     if ($tmp === false)
     {
