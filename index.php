@@ -70,7 +70,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
   <header>
     <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
     <div class='header-links'>
-      <a href='/join/'>Bli medlem</a> | 
+      <a href='/join/'>Bli medlem</a> |
       <a href='https://p2k16.bitraf.no'>Min side</a> |
       <a href='/wiki/'>Wiki</a> | | <a href='/kontorplass/'>Kontorplass</a> | <a href='/galleri'>Galleri</a> | <a href='/foreningen'>Foreningen</a> |
       <a href='/sponsorer'>Sponsorer</a>
@@ -183,7 +183,7 @@ addEventsFrom("/var/lib/bitweb/meetup.bitraf", 5);
 ?>
  </table>
 
-  <p>Du finner arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>. 
+  <p>Du finner arrangementer og mer informasjon på <a href='http://www.meetup.com/bitraf/'>vår side på meetup.com</a>.
 Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefaler folk å bruke tjenesten til å holde seg oppdatert.</p>
 
   <h2>Kontakt</h2>
@@ -206,7 +206,7 @@ Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefa
   }
   </script-->
 
-  <p>Vi holder til i Pløens gate 4, rett ved Youngstorget i Oslo sentrum. 
+  <p>Vi holder til i Pløens gate 4, rett ved Youngstorget i Oslo sentrum.
   <p>Trykk på ringeklokken det står <em>Bitraf</em> på for å komme inn.
 
   <h2>Priser, medlemskap</h2>
@@ -238,7 +238,7 @@ Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefa
 
   <p>Vil du donere til Bitraf? Kontonummeret vårt er <tt>1503.273.5581</tt></p>
 
-  <p>Et par ting er verdt å 
+  <p>Et par ting er verdt å
   gjenta: <em>Hvem som helst</em> kan komme hit hele uken, <em>uten å betale</em>.
 Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kolliderer med et annet.
 
