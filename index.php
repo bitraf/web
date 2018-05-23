@@ -234,7 +234,7 @@ Meetup-siden er der alle arrangementene på Bitraf blir annonsert, så vi anbefa
       <td class=n>1000 kr
   </table>
 
-  <p>Du kan bruke <a href='http://p2k12.bitraf.no/join'>vårt innmeldingsskjema</a> for å melde deg inn.</p>
+  <p>Du kan bruke <a href='http://p2k16.bitraf.no/'>vårt innmeldingsskjema</a> for å melde deg inn.</p>
 
   <p>Vil du donere til Bitraf? Kontonummeret vårt er <tt>1503.273.5581</tt></p>
 

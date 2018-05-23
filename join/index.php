@@ -8,6 +8,6 @@ header('Location: https://p2k16.bitraf.no');
 <meta http-equiv="refresh" content="0; url=https://p2k16.bitraf.no" />
 </head>
 <body>
-<a href=https://p2k12.bitraf.no/join'>https://p2k16.bitraf.no</a>
+<a href=https://p2k16.bitraf.no'>https://p2k16.bitraf.no</a>
 </body>
 </html>
