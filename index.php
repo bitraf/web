@@ -87,7 +87,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
     <img src="/images/ploensgt.jpg" alt="" title="Inngangsparti" />
   </div>
   <div class=checkins>
-    <iframe src=https://p2k12.bitraf.no/chart.php width=340 height=150 style="border:0"></iframe>
+    <iframe src=https://p2k16.bitraf.no/frontpage-graph width=340 height=150 style="border:0"></iframe>
     <p>Registrert bruk siste dager</p>
   </div>
 
