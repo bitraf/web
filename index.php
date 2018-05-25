@@ -321,10 +321,7 @@ margin: 15px;
 </style>
   <p class="sponsorer">
     <a href="http://fiken.no"><img src="images/sponsorer/fiken-logo.png" alt="Fiken AS"></a>
-    <a href="http://abida.no"><img src="images/sponsorer/abida.jpg" alt="Abida AS"></a>
     <a href="http://spinnark.no"><img src="images/sponsorer/spinn.png" alt="Spinn Arkitekter"></a>
     <a href="http://syselv.no"><img src="images/sponsorer/syselv.jpg" alt="Sy Selv"></a>
-    <a href="http://microsoft.no"><img src="images/sponsorer/microsoft.png" alt="Microsoft Norge"></a>
-    <a href="http://accenture.no"><img src="images/sponsorer/logo-accenture.png" alt="Accenture Norge"></a>
     <a href="http://telenordigital.no"><img src="images/sponsorer/logo-telenor.png" alt="Telenor Digital"></a>
 </div><!-- #globalWrapper -->
