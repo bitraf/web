@@ -88,7 +88,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
   </div>
   <div class=checkins>
     <iframe src=https://p2k16.bitraf.no/frontpage-graph width=340 height=150 style="border:0"></iframe>
-    <p>Registrert bruk siste dager</p>
+    <p>Innsjekkede personer siste uke inkludert i dag</p>
   </div>
 
   <div class=info>
