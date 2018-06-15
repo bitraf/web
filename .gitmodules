@@ -1,0 +1,3 @@
+[submodule "mediawiki/extensions/Wikilog"]
+	path = mediawiki/extensions/Wikilog
+	url = https://github.com/bitraf/Wikilog
