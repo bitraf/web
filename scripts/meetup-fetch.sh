@@ -24,6 +24,13 @@ curl --retry 3 -s "https://api.meetup.com/2/events?key=$MEETUP_KEY&sign=true&gro
 # Ignore CloudFlare error reports.
 grep -q -F '<html>' "$TMPFILE" && exit 0
 
+if ! head -c 1 "$TMPFILE" | grep -q -F '{'; then
+  # This happens a lot and the only solution is waiting.
+  #echo >&2 "Response from api.meetup.com was successful, but did not contain a JSON object."
+  #echo >&2 "This is typical when meetup.com is 'experiencing some technical difficulties'."
+  exit 0
+fi
+
 LINES=$(json_xs < "$TMPFILE" | wc -l)
 
 if [ $LINES -lt 50 ]; then
