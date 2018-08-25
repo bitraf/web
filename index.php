@@ -65,7 +65,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <div id='globalWrapper'>
-  <p style='float:right'>Referat fra <a href='https://bitraf.no/dokument/bitraf-am-2017.pdf' title='Årsmøte var 20. april 2017'>årsmøte 2017</a>.</p>
+  <p style='float:right'>Referat fra <a href='https://bitraf.no/dokument/bitraf-am-2018.pdf' title='Årsmøte var 19. april 2018'>årsmøte 2018</a>.</p>
 
   <header>
     <a href='/'><img src='/images/bitraf.png' alt='Bitraf'></a>
