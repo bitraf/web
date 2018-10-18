@@ -73,6 +73,7 @@ $wgFileExtensions[] = 'pdf';
 $wgFileExtensions[] = 'odt';
 $wgFileExtensions[] = 'ods';
 $wgFileExtensions[] = 'gz';
+$wgFileExtensions[] = 'svg';
 
 # InstantCommons allows wiki to use images from http://commons.wikimedia.org
 $wgUseInstantCommons = false;
