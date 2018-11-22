@@ -40,7 +40,7 @@ Check on staging that everything looks good: https://bitraf.no:4433/
   
 Pull the changes into live
 
-    cd /home/bitweb/web/staging
+    cd /home/bitweb/web/live
     git pull
   
 Double-check the changes on live site: https://bitraf.no
