@@ -320,8 +320,11 @@ margin: 15px;
 }
 </style>
   <p class="sponsorer">
+    <a href="https://www.knowit.no"><img src="images/sponsorer/knowit.png" alt="Knowit"></a>
+    <a href="http://sero.no"><img src="images/sponsorer/sero.png" alt="Sero"></a>
+    <a href="https://www.pixavi.com"><img src="images/sponsorer/bartecpixavi.png" alt="Bartec Pixavi"></a>
+    <a href="https://www.fremtind.no/"><img src="images/sponsorer/fremtind.png" alt="Fremtind Forsikring"></a>
     <a href="http://fiken.no"><img src="images/sponsorer/fiken-logo.png" alt="Fiken AS"></a>
     <a href="http://spinnark.no"><img src="images/sponsorer/spinn.png" alt="Spinn Arkitekter"></a>
-    <a href="http://syselv.no"><img src="images/sponsorer/syselv.jpg" alt="Sy Selv"></a>
-    <a href="http://telenordigital.no"><img src="images/sponsorer/logo-telenor.png" alt="Telenor Digital"></a>
+    <!--<a href="http://telenordigital.no"><img src="images/sponsorer/logo-telenor.png" alt="Telenor Digital"></a> -->
 </div><!-- #globalWrapper -->
