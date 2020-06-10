@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Võrok"
-		]
-	},
-	"bitraf.css": "/* Taa lehe pääl om Bitraf-vällänägemist muutvit kujonduisi. */",
-	"bitraf.js": "/* Olõi soovitõt; pruugiq [[MediaWiki:common.js]] */"
-}

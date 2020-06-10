@@ -1,6 +1,0 @@
-{
-	"@metadata": [],
-	"skinname-bitraf": "Bitraf",
-	"bitraf.css": "/** Ovdje idu izmjene bitraf stylesheeta */",
-	"bitraf.js": "/* Ne rabi se više; molimo rabite [[MediaWiki:common.js]] */"
-}
