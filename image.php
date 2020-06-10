@@ -20,12 +20,44 @@ if (file_exists("/photos/scaled/{$path}"))
 
 $data = @file_get_contents("/photos/{$path}");
 
+function get_rotation($filename) {
+  if (!function_exists('exif_read_data')) {
+    return;
+  }
+  $exif = exif_read_data($filename);
+  if(!$exif || !isset($exif['Orientation'])) {
+    return;
+  }
+  $orientation = $exif['Orientation'];
+  if ($orientation == 1) {
+    return;
+  }
+  $img = imagecreatefromjpeg($filename);
+  $deg = 0;
+  switch ($orientation) {
+    case 3:
+      $deg = 180;
+      break;
+    case 6:
+      $deg = 270;
+      break;
+    case 8:
+      $deg = 90;
+      break;
+  }
+  return $deg;
+}
+
 $image = @imagecreatefromstring($data);
+$rotation = get_rotation("/photos/{$path}");
+if ($rotation) {
+  $image = imagerotate($image, $rotation, 0);
+}
 
 $old_width = imagesx($image);
 $old_height = imagesy($image);
 
-if ($old_width < 960)
+if (!$rotation && $old_width < 960)
 {
   echo "$data";
   exit;
