@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# NOTE(mastensg 2019-12-08): disabled because meetup has a new auth scheme.
+exit 0
+
 GROUP="$1"
 shift
 

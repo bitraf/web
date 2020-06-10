@@ -2,4 +2,5 @@
 #
 # To install, run sudo crontab -u bitweb bitweb-cron
 
-0,15,30,45 * * * * /home/bitweb/web/scripts/meetup-fetch.sh bitraf
+# NOTE(mastensg 2019-12-08): disabled because meetup has a new auth scheme.
+#0,15,30,45 * * * * /home/bitweb/web/live/scripts/meetup-fetch.sh bitraf
