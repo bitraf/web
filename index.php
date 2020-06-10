@@ -92,7 +92,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
   </div>
 
   <div class=info>
-  <p><strong>Bitraf er et <span title="...og et hackerspace">makerspace</span>
+  <p><strong>Bitraf er et <span style="text-decoration: underline dotted grey" title="...og et hackerspace">makerspace</span>
   i Oslo som er åpent for hvem som helst 7 dager i uka.</strong> Kom innom om
   du er interessert i analogt og digitalt håndarbeid, 3D-printing, digital
   kunst, programmering, design, elektronikk, laserskjæring og liknende
