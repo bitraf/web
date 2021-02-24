@@ -53,6 +53,17 @@ setlocale(LC_TIME, "nb_NO.utf8");
     right: 0;
     top: 0;
   }
+    .donation-info {
+      border: 2px solid silver;
+      padding: 10px 18px;
+      max-width: min(100%, 240px);
+      float: right;
+      text-align: center;
+      margin: 0 auto;
+    }
+    iframe {
+      max-width: 100%;
+    }
   </style>
 </head>
 
@@ -317,6 +328,9 @@ align-items: center;
 .sponsorer a {
 display: inline-block;
 margin: 15px;
+}
+.sponsorer img {
+  max-width: 100%;
 }
 </style>
   <p class="sponsorer">
