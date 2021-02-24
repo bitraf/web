@@ -64,6 +64,11 @@ setlocale(LC_TIME, "nb_NO.utf8");
     iframe {
       max-width: 100%;
     }
+    @media (max-width: 600px) {
+      .hidden-xs {
+        display: none;
+      }
+    }
   </style>
 </head>
 
@@ -259,42 +264,42 @@ Betalende medlemmer kan i tillegg holde arrangementer, så lenge det ikke kollid
   <table class='grid-table calendar'>
     <tr>
       <td style='border: none'>
-      <th>Mandag
-      <th>Tirsdag
-      <th>Onsdag
-      <th>Torsdag
-      <th>Fredag
-      <th>Lørdag
-      <th>Søndag
+      <th>Man<span class="hidden-xs">dag</span>
+      <th>Tirs<span class="hidden-xs">dag</span>
+      <th>Ons<span class="hidden-xs">dag</span>
+      <th>Tors<span class="hidden-xs">dag</span>
+      <th>Fre<span class="hidden-xs">dag</span>
+      <th>Lør<span class="hidden-xs">dag</span>
+      <th>Søn<span class="hidden-xs">dag</span>
     <tr>
-      <th style='border-top: none'>&#8942;<br>12:00
+      <th style='border-top: none'>&#8942;<br>12<span class="hidden-xs">:00</span>
       <td colspan=5 rowspan=4>Arbeidstid<i id="annotation_event">¹</i>
     <tr>
-      <th>13:00
+      <th>13<span class="hidden-xs">:00</span>
     <tr>
-      <th>14:00
+      <th>14<span class="hidden-xs">:00</span>
     <tr>
-      <th>15:00
+      <th>15<span class="hidden-xs">:00</span>
     <tr>
-      <th>16:00
+      <th>16<span class="hidden-xs">:00</span>
     <tr>
-      <th>17:00
+      <th>17<span class="hidden-xs">:00</span>
     <tr>
-      <th>18:00
+      <th>18<span class="hidden-xs">:00</span>
       <td style='border: none' rowspan='5'>
       <td style='border: none'>
       <td style='border: none'>
       <td rowspan=5 class=ne><a href='/build-night'>Build<br>Night</a>
     <tr>
-      <th>19:00
+      <th>19<span class="hidden-xs">:00</span>
     <tr>
-      <th>20:00
+      <th>20<span class="hidden-xs">:00</span>
       <td style='border: none'>
     <tr>
-      <th>21:00
+      <th>21<span class="hidden-xs">:00</span>
       <td style='border:none'>
       <tr>
-      <th class=ne>22:00<br>&#8942;
+      <th class=ne>22<span class="hidden-xs">:00</span><br>&#8942;
   </table>
 
   <h2>Chat</h2>
