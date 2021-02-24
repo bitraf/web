@@ -59,7 +59,7 @@ setlocale(LC_TIME, "nb_NO.utf8");
       max-width: min(100%, 240px);
       float: right;
       text-align: center;
-      margin: 0 auto;
+      margin: 8px auto 16px;
     }
     iframe {
       max-width: 100%;
